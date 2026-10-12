@@ -11,6 +11,12 @@ export interface Settings {
   longPressMs: number
   elementFilter: string
   locatorLanguage: string
+  locatorWholeLine: boolean
+  pageObjectLanguage: string
+  pageObjectLocatorStyle: string
+  pageObjectBaseClass: string
+  pageObjectGenerateBaseClass: boolean
+  pageObjectSortByName: boolean
   contrastHints: boolean
   recorderOutput: string
   replayTimeoutSeconds: number
@@ -19,6 +25,8 @@ export interface Settings {
   reconnectAutomatically: boolean
   reconnectToLastDevice: boolean
   showGrid: boolean
+  saveHierarchyWithScreenshot: boolean
+  screenRecordingLimitSeconds: number
   visualTolerance: number
   filesDownloadFolder: string
   perfWindowSeconds: number
@@ -35,6 +43,12 @@ export const defaultSettings: Settings = {
   longPressMs: 700,
   elementFilter: '',
   locatorLanguage: 'AS_SHOWN',
+  locatorWholeLine: false,
+  pageObjectLanguage: 'MOBILEWRIGHT_TS',
+  pageObjectLocatorStyle: 'BASE_CLASS_FIELDS',
+  pageObjectBaseClass: 'BasePage',
+  pageObjectGenerateBaseClass: true,
+  pageObjectSortByName: false,
   contrastHints: true,
   recorderOutput: 'MOBILEWRIGHT',
   replayTimeoutSeconds: 10,
@@ -43,6 +57,8 @@ export const defaultSettings: Settings = {
   reconnectAutomatically: true,
   reconnectToLastDevice: false,
   showGrid: false,
+  saveHierarchyWithScreenshot: false,
+  screenRecordingLimitSeconds: 0,
   visualTolerance: 8,
   filesDownloadFolder: '',
   perfWindowSeconds: 60,

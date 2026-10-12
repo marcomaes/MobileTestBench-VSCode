@@ -75,9 +75,41 @@
         "command": "mobileTestBench.openSetupGuide",
         "title": "Open Setup Guide",
         "category": "Mobile Test Bench"
+      },
+      {
+        "command": "mobileTestBench.bootDevice",
+        "title": "Boot Device",
+        "category": "Mobile Test Bench"
+      },
+      {
+        "command": "mobileTestBench.shutdownDevice",
+        "title": "Shut Down Device",
+        "category": "Mobile Test Bench"
+      },
+      {
+        "command": "mobileTestBench.rebootDevice",
+        "title": "Reboot Device",
+        "category": "Mobile Test Bench"
       }
     ],
     "menus": {
+      "view/item/context": [
+        {
+          "command": "mobileTestBench.bootDevice",
+          "when": "view == mobileTestBench.devices && viewItem == device.offline",
+          "group": "power@1"
+        },
+        {
+          "command": "mobileTestBench.shutdownDevice",
+          "when": "view == mobileTestBench.devices && viewItem == device",
+          "group": "power@2"
+        },
+        {
+          "command": "mobileTestBench.rebootDevice",
+          "when": "view == mobileTestBench.devices && viewItem == device",
+          "group": "power@3"
+        }
+      ],
       "view/title": [
         {
           "command": "mobileTestBench.refreshDevices",
@@ -152,6 +184,38 @@
           "default": "AS_SHOWN",
           "description": "Language of the Copy as action of the Locators tab."
         },
+        "mobileTestBench.locatorWholeLine": {
+          "type": "boolean",
+          "default": false,
+          "description": "Copy an Appium locator as a whole statement (driver.findElement(...)) instead of the bare locator."
+        },
+        "mobileTestBench.pageObjectLanguage": {
+          "type": "string",
+          "default": "MOBILEWRIGHT_TS",
+          "enum": ["MOBILEWRIGHT_TS", "MOBILEWRIGHT_JS", "APPIUM_JAVA", "APPIUM_KOTLIN", "APPIUM_PYTHON", "APPIUM_CSHARP"],
+          "description": "Language of the generated page object."
+        },
+        "mobileTestBench.pageObjectLocatorStyle": {
+          "type": "string",
+          "default": "BASE_CLASS_FIELDS",
+          "enum": ["BASE_CLASS_FIELDS", "GETTERS", "CONSTRUCTOR_FIELDS"],
+          "description": "Where the locators of a generated page object live."
+        },
+        "mobileTestBench.pageObjectBaseClass": {
+          "type": "string",
+          "default": "BasePage",
+          "description": "Name of the base class a generated page object extends."
+        },
+        "mobileTestBench.pageObjectGenerateBaseClass": {
+          "type": "boolean",
+          "default": true,
+          "description": "Also generate the base class file when it does not exist yet."
+        },
+        "mobileTestBench.pageObjectSortByName": {
+          "type": "boolean",
+          "default": false,
+          "description": "Order the elements of a generated page object by name."
+        },
         "mobileTestBench.contrastHints": {
           "type": "boolean",
           "default": true,
@@ -191,6 +255,18 @@
           "type": "boolean",
           "default": false,
           "description": "Draw a coordinate grid over the mirror."
+        },
+        "mobileTestBench.saveHierarchyWithScreenshot": {
+          "type": "boolean",
+          "default": false,
+          "description": "When saving a screenshot, also save the UI hierarchy as an XML file next to the PNG."
+        },
+        "mobileTestBench.screenRecordingLimitSeconds": {
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 3600,
+          "description": "Stop a screen recording by itself after this many seconds (0 = no limit)."
         },
         "mobileTestBench.filesDownloadFolder": {
           "type": "string",
