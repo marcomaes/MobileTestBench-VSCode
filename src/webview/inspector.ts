@@ -226,7 +226,7 @@ export function createInspector(container: HTMLElement, options: InspectorOption
     selectionListeners.forEach((cb) => cb(n))
   }
 
-  function message(text: string, error = false): void {
+  function message(text: string, error = false, notify = true): void {
     root = undefined
     selected = undefined
     rowOf.clear()
@@ -237,12 +237,14 @@ export function createInspector(container: HTMLElement, options: InspectorOption
     m.textContent = text
     treeEl.append(m)
     filterProblem.style.display = 'none'
+    // The first message runs during setup, before the owner finished building its own page: nobody to tell yet.
+    if (!notify) return
     options.onSelect?.(undefined)
     selectionListeners.forEach((cb) => cb(undefined))
     clearedListeners.forEach((cb) => cb())
   }
 
-  message('Connect a device, then press Inspect.')
+  message('Connect a device, then press Inspect.', false, false)
 
   return {
     element: container,

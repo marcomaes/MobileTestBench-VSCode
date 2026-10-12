@@ -390,7 +390,10 @@ foregroundEl.onclick = () => {
 }
 
 // ---------------------------------------------------------------- geometry and drawing
-const frameForGeometry = (): Size | undefined => (frameSize ? (caps?.upright ? size(frameSize.height, frameSize.width) : frameSize) : undefined)
+// A function declaration: createInspector fires onSelect during setup, before this point of the file runs.
+function frameForGeometry(): Size | undefined {
+  return frameSize ? (caps?.upright ? size(frameSize.height, frameSize.width) : frameSize) : undefined
+}
 
 function geometry(): ScreenGeometry | undefined {
   const f = frameForGeometry()

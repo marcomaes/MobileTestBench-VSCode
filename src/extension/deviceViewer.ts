@@ -433,8 +433,9 @@ export class DeviceViewer implements vscode.Disposable {
       })
       this.post({ type: 'session', connected: true })
       this.sendCapabilities()
-      // Transport and logical size settle after the first frames: refresh once more.
-      setTimeout(() => this.sendCapabilities(), 1500)
+      // Transport and logical size settle after the first frames (the first size read can lose against the stream
+      // start): ask again until the size is known, at most 10 times.
+      void this.settleCapabilities(session)
       this.status(session.transport)
       if (!session.supportsInput) void this.notify(`Input is not available for ${device.name}. For iOS, start WebDriverAgent and check the WDA URL in the settings.`, 'warning')
       if (this.session === session && this.reconnectGeneration === watchGeneration) this.startWatching(device)
@@ -479,6 +480,16 @@ export class DeviceViewer implements vscode.Disposable {
     this.post({ type: 'session', connected: false })
     this.placeholder('Disconnected')
     this.status('Not connected')
+  }
+
+  private async settleCapabilities(session: DeviceSession): Promise<void> {
+    for (let attempt = 0; attempt < 10 && this.session === session && !this.disposed; attempt++) {
+      await new Promise((r) => setTimeout(r, 1000))
+      if (this.session !== session) return
+      if (!session.logicalSize()) await session.refreshSize().catch(() => {})
+      this.sendCapabilities()
+      if (session.logicalSize()) return
+    }
   }
 
   private sendCapabilities(): void {
