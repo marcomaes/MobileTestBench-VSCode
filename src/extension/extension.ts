@@ -1,13 +1,13 @@
 // ported-from: ui/DeviceToolWindowFactory.kt
 import * as vscode from 'vscode'
-import { DeviceServices } from '../deviceServices'
+import { DeviceServices, createGrpcLink } from '../deviceServices'
 import type { Device } from '../core/model'
 import { DeviceTree } from './deviceTree'
 import { DeviceViewer } from './deviceViewer'
 import { readSettings } from './settings'
 
 export function activate(context: vscode.ExtensionContext): void {
-  const services = new DeviceServices(readSettings, shellEnvironment())
+  const services = new DeviceServices(readSettings, shellEnvironment(), createGrpcLink(shellEnvironment()))
   const tree = new DeviceTree(services)
 
   context.subscriptions.push(

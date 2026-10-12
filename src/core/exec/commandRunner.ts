@@ -78,7 +78,7 @@ export class CommandRunner {
   }
 
   /** Starts a long running process; the caller reads its streams and ends it with `kill`. */
-  start(command: string[]): ChildProcess {
-    return spawn(command[0], command.slice(1), { env: { ...this.environment }, stdio: ['ignore', 'pipe', 'pipe'] })
+  start(command: string[], stdin: 'ignore' | 'pipe' = 'ignore'): ChildProcess {
+    return spawn(command[0], command.slice(1), { env: { ...this.environment }, stdio: [stdin, 'pipe', 'pipe'] })
   }
 }

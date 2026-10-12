@@ -192,6 +192,11 @@
           "default": false,
           "description": "Draw a coordinate grid over the mirror."
         },
+        "mobileTestBench.filesDownloadFolder": {
+          "type": "string",
+          "default": "",
+          "description": "Folder the Files tab last downloaded to (the next download starts there)."
+        },
         "mobileTestBench.visualTolerance": {
           "type": "number",
           "default": 8,
@@ -201,6 +206,17 @@
           "type": "number",
           "default": 60,
           "description": "Window of the performance charts, in seconds."
+        },
+        "mobileTestBench.perfStartRuns": {
+          "type": "number",
+          "default": 5,
+          "description": "Runs per app start measurement in the Performance tab (1 to 10)."
+        },
+        "mobileTestBench.perfStartKind": {
+          "type": "string",
+          "default": "COLD",
+          "enum": ["COLD", "WARM"],
+          "description": "Kind of the last app start measurement in the Performance tab."
         }
       }
     }

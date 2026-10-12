@@ -20,7 +20,10 @@ export interface Settings {
   reconnectToLastDevice: boolean
   showGrid: boolean
   visualTolerance: number
+  filesDownloadFolder: string
   perfWindowSeconds: number
+  perfStartRuns: number
+  perfStartKind: string
 }
 
 export const defaultSettings: Settings = {
@@ -41,5 +44,8 @@ export const defaultSettings: Settings = {
   reconnectToLastDevice: false,
   showGrid: false,
   visualTolerance: 8,
+  filesDownloadFolder: '',
   perfWindowSeconds: 60,
+  perfStartRuns: 5,
+  perfStartKind: 'COLD',
 }
