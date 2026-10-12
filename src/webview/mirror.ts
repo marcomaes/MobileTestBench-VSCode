@@ -99,12 +99,13 @@ app.innerHTML = `
   #toolbar button.on { background: var(--vscode-button-background); color: var(--vscode-button-foreground); }
   #title { font-weight: 600; margin-right: 8px; }
   #work { flex: 1; min-height: 0; display: flex; flex-direction: column; }
-  #main { display: flex; min-height: 0; min-width: 0; flex: 1 1 0; }
+  #main { display: flex; min-height: 0; min-width: 0; flex: 1 1 0; overflow: hidden; }
   #screen { position: relative; min-width: 0; min-height: 0; flex: 1 1 0; }
   canvas { width: 100%; height: 100%; display: block; outline: none; cursor: default; }
   canvas.inspect { cursor: crosshair; }
   #side { display: none; min-width: 0; min-height: 0; flex: 1 1 0; border-left: 1px solid var(--vscode-panel-border); }
-  #side.on { display: block; }
+  #side.on { display: flex; flex-direction: column; overflow: hidden; }
+  #side .mtb-inspector { flex: 1; height: auto; }
   .split { flex: none; background: var(--vscode-panel-border); }
   .split.v { width: 4px; cursor: col-resize; display: none; } .split.h { height: 4px; cursor: row-resize; display: none; }
   .split:hover { background: var(--vscode-focusBorder); }
@@ -1117,7 +1118,7 @@ function setToolsOpen(open: boolean): void {
   splitH.style.display = open ? 'block' : 'none'
   applyProportions()
   if (open) {
-    const view = activeTool ?? toolViews[0]
+    const view = activeTool ?? bottomViews[0]
     if (view) {
       mounted.get(view.id)?.classList.remove('on')
       activeTool = undefined
@@ -1131,7 +1132,28 @@ function setToolsOpen(open: boolean): void {
   draw()
 }
 
-for (const view of toolViews) {
+// Locators and Recorder are tabs of the inspector (as in the IntelliJ InspectorPanel), the rest is in Device Tools.
+const INSPECTOR_TOOLS = new Set(['locators', 'recorder'])
+const bottomViews = toolViews.filter((v) => !INSPECTOR_TOOLS.has(v.id))
+for (const view of toolViews.filter((v) => INSPECTOR_TOOLS.has(v.id))) {
+  const el = document.createElement('div')
+  try {
+    view.mount(el, apiFor(view))
+  } catch (e) {
+    el.textContent = `${view.title} failed to start: ${e instanceof Error ? e.message : String(e)}`
+  }
+  inspector.addTab(view.title, el, (visible) => {
+    if (visible) {
+      view.shown?.()
+      send({ type: 'toolShown', tool: view.id })
+    } else {
+      view.hidden?.()
+      send({ type: 'toolHidden', tool: view.id })
+    }
+  })
+}
+
+for (const view of bottomViews) {
   const b = button(view.title, view.title, () => {
     showTool(view)
     remember({ toolsTab: view.title })
@@ -1139,7 +1161,7 @@ for (const view of toolViews) {
   b.dataset.id = view.id
   tabsEl.append(b)
 }
-if (toolViews.length === 0) toolsBtn.style.display = 'none'
+if (bottomViews.length === 0) toolsBtn.style.display = 'none'
 
 // ---------------------------------------------------------------- host messages
 window.addEventListener('message', (event: MessageEvent<ToWebview>) => {
@@ -1156,8 +1178,8 @@ window.addEventListener('message', (event: MessageEvent<ToWebview>) => {
       copyWholeLine = m.locatorWholeLine ?? false
       applyProportions()
       if (l.inspectorOpen) setInspect(true)
-      const saved = new ProjectLayout(l).tabIn(toolViews.map((t) => t.title))
-      const tab = toolViews.find((v) => v.title === saved)
+      const saved = new ProjectLayout(l).tabIn(bottomViews.map((t) => t.title))
+      const tab = bottomViews.find((v) => v.title === saved)
       if (tab) showTool(tab)
       if (l.toolsOpen) setToolsOpen(true)
       tracking = true

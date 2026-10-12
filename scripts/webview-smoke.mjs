@@ -32,6 +32,9 @@ try {
 const toolbar = w.document.getElementById('toolbar')?.children.length ?? 0
 const tabs = w.document.getElementById('tabs')?.children.length ?? 0
 console.log(`toolbar buttons: ${toolbar}, tool tabs: ${tabs}, messages to host: ${sent.join(',')}`)
+const inspectorTabs = [...w.document.querySelectorAll('.mtb-itabs button')].map((b) => b.textContent)
+console.log(`inspector tabs: ${inspectorTabs.join(', ')}`)
+for (const t of ['Elements', 'Locators', 'Recorder']) if (!inspectorTabs.includes(t)) errors.push(`The inspector has no ${t} tab`)
 if (toolbar === 0) errors.push('The toolbar is empty')
 if (!sent.includes('ready')) errors.push('The page never sent "ready" to the host')
 if (errors.length) {

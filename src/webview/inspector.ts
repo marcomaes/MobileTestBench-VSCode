@@ -52,8 +52,8 @@ export interface Inspector {
   clear(text?: string): void
   /** Selects [node] (undefined clears the selection), scrolls it into view and tells the listeners. */
   select(node: UiNode | undefined): void
-  /** Adds a tab after the existing ones. */
-  addTab(title: string, content: HTMLElement): void
+  /** Adds a tab after the existing ones. [onVisible] is told when the tab becomes visible or hidden by a tab switch. */
+  addTab(title: string, content: HTMLElement, onVisible?: (visible: boolean) => void): void
   showTab(title: string): void
   onSelection(cb: (node: UiNode | undefined) => void): () => void
   onHierarchy(cb: (root: UiNode, frameBase64?: string) => void): () => void
@@ -129,8 +129,11 @@ export function createInspector(container: HTMLElement, options: InspectorOption
 
   const panes = new Map<string, HTMLElement>()
   const tabButtons = new Map<string, HTMLButtonElement>()
-  function addTab(title: string, content: HTMLElement): void {
+  const visibleHooks = new Map<string, (visible: boolean) => void>()
+  let currentTab: string | undefined
+  function addTab(title: string, content: HTMLElement, onVisible?: (visible: boolean) => void): void {
     content.classList.add('mtb-ipane')
+    if (onVisible) visibleHooks.set(title, onVisible)
     panes.set(title, content)
     body.append(content)
     const b = document.createElement('button')
@@ -142,6 +145,11 @@ export function createInspector(container: HTMLElement, options: InspectorOption
   }
   function showTab(title: string): void {
     if (!panes.has(title)) return
+    if (currentTab !== title) {
+      if (currentTab) visibleHooks.get(currentTab)?.(false)
+      currentTab = title
+      visibleHooks.get(title)?.(true)
+    }
     for (const [t, el] of panes) el.classList.toggle('on', t === title)
     for (const [t, b] of tabButtons) b.classList.toggle('on', t === title)
   }
