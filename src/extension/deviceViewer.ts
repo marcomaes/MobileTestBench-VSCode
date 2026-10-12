@@ -38,6 +38,7 @@ import { toDto } from './serialize'
 import { readSettings, writeSetting } from './settings'
 import { toolHosts } from './tools'
 import type { ToolContext, ToolHost } from './tools/toolHost'
+import { changesScreen, type Gesture, type GestureListener } from './gestures'
 
 const FRAME_INTERVAL_MS = 33
 /** Foreground app polling: interval, call timeout and the delay before a changed layout is saved. */
@@ -126,6 +127,9 @@ export class DeviceViewer implements vscode.Disposable {
   private screenRecordingGeneration = 0
 
   private snapshots: HierarchySnapshots | undefined
+  private readonly gestureListeners = new Set<GestureListener>()
+  /** Why input is refused right now (a replay is running), undefined when it is allowed. */
+  private inputBlock: string | undefined
   private locatorGeneration = 0
 
   private constructor(
@@ -174,6 +178,21 @@ export class DeviceViewer implements vscode.Disposable {
       currentFrame: () => (this.lastFrame ? { data: this.lastFrame.data, mime: this.lastFrame.mime, width: this.lastFrame.width, height: this.lastFrame.height } : undefined),
       highlight: (bounds) => this.post({ type: 'highlight', bounds }),
       updateSetting: writeSetting,
+      viewer: {
+        onGesture: (listener) => {
+          this.gestureListeners.add(listener)
+          return () => void this.gestureListeners.delete(listener)
+        },
+        startSnapshots: () => this.startSnapshots(),
+        stopSnapshots: () => this.stopSnapshots(),
+        awaitSnapshot: () => this.awaitSnapshot(),
+        latestSnapshot: () => this.snapshots?.latest(),
+        lastKnownHierarchy: () => this.lastKnownHierarchy(),
+        blockInput: (reason) => {
+          this.inputBlock = reason
+        },
+        status: (message, level) => this.status(message, level),
+      },
     }
   }
 
@@ -207,37 +226,45 @@ export class DeviceViewer implements vscode.Disposable {
       switch (m.type) {
         case 'ready': {
           const settings = readSettings()
-          this.post({ type: 'restore', layout: this.layout.toJSON(), showGrid: settings.showGrid, saveHierarchyWithScreenshot: settings.saveHierarchyWithScreenshot })
+          this.post({ type: 'restore', layout: this.layout.toJSON(), showGrid: settings.showGrid, saveHierarchyWithScreenshot: settings.saveHierarchyWithScreenshot, elementFilter: settings.elementFilter, locatorLanguage: settings.locatorLanguage, locatorWholeLine: settings.locatorWholeLine })
           this.sendDevice()
           if (this.device.bootable) this.placeholder(`${this.device.name} is offline. Use Device Power > Boot.`)
           else await this.connect()
           break
         }
         case 'tap':
-          this.input(async (s) => s.tap(m.x, m.y))
+          this.input(async (s) => s.tap(m.x, m.y), { kind: 'tap', x: m.x, y: m.y })
           break
-        case 'doubleTap':
+        case 'doubleTap': {
           // Where a double tap cannot be sent in time the click stays the plain tap it was before.
-          this.input(async (s) => (s.supportsDoubleTap ? s.doubleTap(m.x, m.y) : s.tap(m.x, m.y)))
+          const double = this.session?.supportsDoubleTap === true
+          this.input(async (s) => (s.supportsDoubleTap ? s.doubleTap(m.x, m.y) : s.tap(m.x, m.y)), { kind: double ? 'doubleTap' : 'tap', x: m.x, y: m.y })
           break
+        }
         case 'longPress':
-          this.input(async (s) => s.longPress(m.x, m.y, m.durationMs))
+          this.input(async (s) => s.longPress(m.x, m.y, m.durationMs), { kind: 'longPress', x: m.x, y: m.y, durationMs: m.durationMs })
           break
         case 'swipe':
-          this.input(async (s) => s.swipe(m.fromX, m.fromY, m.toX, m.toY, m.durationMs))
+          this.input(async (s) => s.swipe(m.fromX, m.fromY, m.toX, m.toY, m.durationMs), { kind: 'swipe', fromX: m.fromX, fromY: m.fromY, toX: m.toX, toY: m.toY })
           break
-        case 'dragWithHold':
-          this.input(async (s) => (s.supportsHoldDrag ? s.dragWithHold(m.fromX, m.fromY, m.toX, m.toY, m.holdMs, m.durationMs) : s.swipe(m.fromX, m.fromY, m.toX, m.toY, m.durationMs)))
+        case 'dragWithHold': {
+          // Where a hold-drag cannot be sent the click stays the swipe it would have been.
+          const hold = this.session?.supportsHoldDrag === true
+          this.input(
+            async (s) => (s.supportsHoldDrag ? s.dragWithHold(m.fromX, m.fromY, m.toX, m.toY, m.holdMs, m.durationMs) : s.swipe(m.fromX, m.fromY, m.toX, m.toY, m.durationMs)),
+            hold ? { kind: 'dragWithHold', fromX: m.fromX, fromY: m.fromY, toX: m.toX, toY: m.toY, holdMs: m.holdMs } : { kind: 'swipe', fromX: m.fromX, fromY: m.fromY, toX: m.toX, toY: m.toY },
+          )
           break
+        }
         case 'key':
-          this.input(async (s) => s.press(m.key))
+          this.input(async (s) => s.press(m.key), { kind: 'key', key: m.key })
           break
         case 'text':
-          this.input(async (s) => s.typeText(m.text), false)
+          this.input(async (s) => s.typeText(m.text), { kind: 'text', text: m.text })
           break
         case 'promptText': {
           const text = await vscode.window.showInputBox({ title: 'Type Text', prompt: 'Text to type on the device' })
-          if (text) this.input(async (s) => s.typeText(text), false)
+          if (text) this.input(async (s) => s.typeText(text), { kind: 'text', text })
           break
         }
         case 'hierarchy':
@@ -293,6 +320,9 @@ export class DeviceViewer implements vscode.Disposable {
           if (m.on) await this.startScreenRecording()
           else await this.stopScreenRecording()
           break
+        case 'elementFilter':
+          await writeSetting('elementFilter', m.text)
+          break
         case 'openSettings':
           await vscode.commands.executeCommand('workbench.action.openSettings', '@ext:marcomaes.mobile-test-bench')
           break
@@ -315,20 +345,24 @@ export class DeviceViewer implements vscode.Disposable {
 
   /**
    * Input goes to the device in order. A frozen screen and a session without input stop it with a hint.
-   * [changesScreen]: false for typing, which keeps the layout, so the recorder's hierarchy stays valid.
+   * [gesture]: what the user did, reported to the gesture listeners (the recorder) on the queue before the input is sent, like the
+   * Kotlin `beforeInput`. Typing keeps the layout, so it does not restart the recorder's hierarchy capture.
    */
-  private input(block: (session: DeviceSession) => Promise<void>, changesScreen = true): void {
+  private input(block: (session: DeviceSession) => Promise<void>, gesture?: Gesture): void {
     const current = this.session
     if (!current) return
     if (this.freeze.frozen) return this.status('The screen is frozen: turn Freeze off to interact with the device')
     if (!current.supportsInput) return this.status('Input is not available for this device')
+    if (this.inputBlock) return this.status(this.inputBlock)
+    const screenChanges = gesture ? changesScreen(gesture) : true
     this.inputQueue = this.inputQueue.then(async () => {
       try {
+        if (gesture) for (const listener of [...this.gestureListeners]) await Promise.resolve(listener(gesture)).catch(() => undefined)
         await block(current)
       } catch (e) {
         this.status(`Input failed: ${e instanceof Error ? e.message : String(e)}`, 'error')
       } finally {
-        if (changesScreen) this.snapshots?.inputDone()
+        if (screenChanges) this.snapshots?.inputDone()
       }
     })
   }

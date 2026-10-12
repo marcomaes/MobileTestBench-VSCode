@@ -72,6 +72,8 @@ export type ToHost =
   | { type: 'screenshot'; action: 'copy' | 'save'; outline?: RectDto }
   | { type: 'screenRecord'; on: boolean }
   | { type: 'openSettings' }
+  /** The element filter text of the tree changed (setting elementFilter). */
+  | { type: 'elementFilter'; text: string }
 
 /** Host to webview. */
 export type ToWebview =
@@ -85,7 +87,7 @@ export type ToWebview =
   | { type: 'toolEvent'; tool: string; event: string; data?: unknown }
   | { type: 'highlight'; bounds: Array<{ x: number; y: number; width: number; height: number }> }
   /** Sent once after `ready`: the saved layout and the grid setting. */
-  | { type: 'restore'; layout: Required<LayoutPatch>; showGrid: boolean; saveHierarchyWithScreenshot: boolean }
+  | { type: 'restore'; layout: Required<LayoutPatch>; showGrid: boolean; saveHierarchyWithScreenshot: boolean; elementFilter?: string; locatorLanguage?: string; locatorWholeLine?: boolean }
   /** The text drawn on the empty screen (Connecting, Disconnected, offline hint, waiting for a device). */
   | { type: 'placeholder'; text: string }
   /** A session is live (true) or gone (false). When it ends the webview clears its frame, hierarchy and overlays. */

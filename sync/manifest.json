@@ -1,6 +1,14 @@
 {
   "pluginCommit": "287683b576a08b75b66c82751d3690ecd52d441a",
   "ports": {
+    "android/GrpcEmulatorLink.kt": {
+      "hash": "f2426652d95fd9bd9a34575ca0b9fbf5a21cff5f",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/android/grpcEmulatorLink.ts",
+        "test/core/grpcEmulatorLink.test.ts"
+      ]
+    },
     "core/android/AdbClient.kt": {
       "hash": "e906103abb80e4968108989c6e293afb2c58d357",
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
@@ -15,11 +23,60 @@
         "src/core/android/androidSession.ts"
       ]
     },
+    "core/android/EmulatorDiscovery.kt": {
+      "hash": "0d2a333595693c8219b4e6749e25d2d7208c989e",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/android/emulatorDiscovery.ts"
+      ]
+    },
     "core/android/EmulatorLink.kt": {
       "hash": "67d4f39f9e482e25e76d968a05fa66ef9e1ef165",
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
       "ts": [
         "src/core/android/emulatorLink.ts"
+      ]
+    },
+    "core/apps/Apps.kt": {
+      "hash": "fa9b5349800035f86486e6b6a2da2aa6d168c3d9",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/apps/apps.ts"
+      ]
+    },
+    "core/apps/ResetPlan.kt": {
+      "hash": "bdcaff47952eb30561c0e003f3bc37e2b95f5db2",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/apps/resetPlan.ts"
+      ]
+    },
+    "core/battery/Battery.kt": {
+      "hash": "b5f41e2c2210d22d3bec45f6cc0e8fb026997355",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/battery/battery.ts"
+      ]
+    },
+    "core/biometrics/Biometrics.kt": {
+      "hash": "99eb28954d71066ad2417f8b8cebd29beaafbbb5",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/biometrics/biometrics.ts"
+      ]
+    },
+    "core/coords/Coordinates.kt": {
+      "hash": "6ecfd39e372ec82423c58d1c2317129901e132af",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/coords/coordinates.ts"
+      ]
+    },
+    "core/crashes/Crashes.kt": {
+      "hash": "c544a13a576c6ae7eb85a2c351f393a58616d57a",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/crashes/crashes.ts"
       ]
     },
     "core/discovery/DeviceDiscovery.kt": {
@@ -36,6 +93,20 @@
         "src/core/discovery/deviceParsers.ts"
       ]
     },
+    "core/display/Display.kt": {
+      "hash": "9bb7b888ba3033b2a91ac46e821c3b859f6f411d",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/display/display.ts"
+      ]
+    },
+    "core/display/Locale.kt": {
+      "hash": "c890987e772aa59bd05e358c9ab65416807de302",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/display/locale.ts"
+      ]
+    },
     "core/exec/CommandRunner.kt": {
       "hash": "48570ad75c0d52c5e2c511db2db46e446c16bd39",
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
@@ -50,11 +121,88 @@
         "src/core/exec/toolLocator.ts"
       ]
     },
+    "core/files/Files.kt": {
+      "hash": "b0cc17c2db94a53bd85f52a6d3eb850dd04b1897",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/files/files.ts"
+      ]
+    },
+    "core/files/Preview.kt": {
+      "hash": "6ba609c299c034276ae15077749a2cfe4d723691",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/files/preview.ts"
+      ]
+    },
+    "core/freeze/FreezeState.kt": {
+      "hash": "3cdc193e237c1955ce36ca006fec501b34bb864d",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/freeze/freezeState.ts"
+      ]
+    },
+    "core/HierarchyDump.kt": {
+      "hash": "56eea506108bfb9cca21c77ca63304d83873e352",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/hierarchyDump.ts"
+      ]
+    },
     "core/input/Gestures.kt": {
       "hash": "aa783ec35cd40250c8e68a45560018037c14169f",
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
       "ts": [
         "src/core/input/gestures.ts"
+      ]
+    },
+    "core/input/Input.kt": {
+      "hash": "49279421465d9dc6a5166fc755b5c6097fb3e3c5",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/input/input.ts"
+      ]
+    },
+    "core/inspector/AccessibilityAudit.kt": {
+      "hash": "bf5ae8f83601b4c271bba4055e6a08094a580443",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/accessibilityAudit.ts"
+      ]
+    },
+    "core/inspector/AppiumLocatorQuery.kt": {
+      "hash": "9c116350909866305286169a7eeb77e75d89a872",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/appiumLocatorQuery.ts"
+      ]
+    },
+    "core/inspector/AppiumSyntax.kt": {
+      "hash": "04e440a376633d4cce4d526f787ab46bb70b6306",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/appiumSyntax.ts"
+      ]
+    },
+    "core/inspector/Contrast.kt": {
+      "hash": "73eab61d59b251ab8990d259d21adc186a0543d3",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/contrast.ts"
+      ]
+    },
+    "core/inspector/FilterQuery.kt": {
+      "hash": "d3086cde5e172ac2979c983e2ba77f1f3687333a",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/filterQuery.ts"
+      ]
+    },
+    "core/inspector/HierarchyFilter.kt": {
+      "hash": "ff4d7349ac23672dc9738ae52edb682820be9962",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/hierarchyFilter.ts"
       ]
     },
     "core/inspector/HierarchyParsers.kt": {
@@ -64,11 +212,67 @@
         "src/core/inspector/hierarchyParsers.ts"
       ]
     },
+    "core/inspector/IosClassChainQuery.kt": {
+      "hash": "0a9a80e90093b6c43f1f29b9e7e20f6ed1c26821",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/iosClassChainQuery.ts"
+      ]
+    },
+    "core/inspector/IosPredicateQuery.kt": {
+      "hash": "2084f590002a2bc68b295eef5e1bfc09dd6bda15",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/iosPredicateQuery.ts"
+      ]
+    },
+    "core/inspector/LocatorExtraction.kt": {
+      "hash": "3cbff2c40a8c9bd8dd846e92cf408fdf7e3c825c",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/locatorExtraction.ts"
+      ]
+    },
+    "core/inspector/LocatorQuery.kt": {
+      "hash": "4ed42268453424973d2f1aa9570c0247c9133a26",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/locatorQuery.ts"
+      ]
+    },
+    "core/inspector/Locators.kt": {
+      "hash": "8405b5fec16ad43cec4f308325c08ee174d5fa5d",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/locators.ts"
+      ]
+    },
+    "core/inspector/ScopedLocators.kt": {
+      "hash": "999f9d08730dd4f35aad1ad080cda2d4765c2a60",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/scopedLocators.ts"
+      ]
+    },
+    "core/inspector/ShowLocator.kt": {
+      "hash": "6d7ef63898bc6b5c79854835f83a7bf23058771e",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/showLocator.ts"
+      ]
+    },
     "core/inspector/UiNode.kt": {
       "hash": "1256a3bc21b3b3be249fb134369b2373b491bee6",
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
       "ts": [
         "src/core/inspector/uiNode.ts"
+      ]
+    },
+    "core/inspector/UiSelectorQuery.kt": {
+      "hash": "287af814db4a9be8a2a021ad4c2563fbaccded1e",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/uiSelectorQuery.ts"
       ]
     },
     "core/ios/AgentInstallHint.kt": {
@@ -83,6 +287,13 @@
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
       "ts": [
         "src/core/ios/iosMobilecliSession.ts"
+      ]
+    },
+    "core/ios/IosSimulatorSession.kt": {
+      "hash": "fa19fa98d20edffd5f624ba030ae5e739edce1c5",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/ios/iosSimulatorSession.ts"
       ]
     },
     "core/ios/MjpegReader.kt": {
@@ -113,6 +324,56 @@
         "src/core/ios/simctlClient.ts"
       ]
     },
+    "core/ios/WdaClient.kt": {
+      "hash": "81abcda75850bc48bf923e1eaa2c6bb41fff8551",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/ios/wdaClient.ts"
+      ]
+    },
+    "core/links/UrlLauncher.kt": {
+      "hash": "fce14d1ac884d88fd5aef1d6c43ba0ff78a088d4",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/links/urlLauncher.ts"
+      ]
+    },
+    "core/location/LocationOverride.kt": {
+      "hash": "dea399b0dd76f763b419a7c0d048f6d3e3079f71",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/location/locationOverride.ts"
+      ]
+    },
+    "core/logs/Logs.kt": {
+      "hash": "de9d4f366b6bcb688487929d6fe61c88e8bb3dd4",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/logs/logStream.ts",
+        "src/core/logs/logs.ts"
+      ]
+    },
+    "core/logs/MobilecliLogParser.kt": {
+      "hash": "91c9db4990bb2491c386a00bc1856fb5160d977c",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/logs/mobilecliLogParser.ts"
+      ]
+    },
+    "core/logs/StackFrames.kt": {
+      "hash": "dd264821453a44a0680697c3c4acb40608906e2a",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/logs/stackFrames.ts"
+      ]
+    },
+    "core/memory/Memory.kt": {
+      "hash": "ebfee21b383eac8a9ceb0f846487fe22f688a753",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/memory/memory.ts"
+      ]
+    },
     "core/MobilecliJson.kt": {
       "hash": "72208413720b56b3e50031d1587289dfaa24885e",
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
@@ -127,11 +388,68 @@
         "src/core/model.ts"
       ]
     },
+    "core/network/Network.kt": {
+      "hash": "070470fb4ce0f54e55c08022cffd2988a17716be",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/network/network.ts"
+      ]
+    },
+    "core/notifications/Notifications.kt": {
+      "hash": "e02b3d257dae81ecceea879b63ef11b11ca7f353",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/notifications/notificationBackends.ts",
+        "src/core/notifications/notifications.ts"
+      ]
+    },
     "core/Orientation.kt": {
       "hash": "61c12d6ad0a3945bea914b7b05d232c4c827259d",
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
       "ts": [
         "src/core/orientation.ts"
+      ]
+    },
+    "core/pageobject/LocatorCode.kt": {
+      "hash": "eec33e62245666a0d36d315c6e1012053bd87964",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/pageobject/locatorCode.ts"
+      ]
+    },
+    "core/pageobject/PageObject.kt": {
+      "hash": "ed44bc35c6cfb9e10991c177e145330735f2da01",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/pageobject/pageObject.ts"
+      ]
+    },
+    "core/perf/PerfBackends.kt": {
+      "hash": "c1705270b0a5340a286e1cc19f40121a6d4d77ca",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/perf/perfBackends.ts"
+      ]
+    },
+    "core/perf/PerfModel.kt": {
+      "hash": "4814bfd6d3803f3cdde490cfb23b7f412831cee5",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/perf/perfModel.ts"
+      ]
+    },
+    "core/perf/PerfParsers.kt": {
+      "hash": "0184d60c6ef8d835a3ff5481eec621e31c64303f",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/perf/perfParsers.ts"
+      ]
+    },
+    "core/permissions/Permissions.kt": {
+      "hash": "0fb1ec24fadd3742bb2baabd72723872bd03c239",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/permissions/permissions.ts"
       ]
     },
     "core/power/DevicePower.kt": {
@@ -141,11 +459,109 @@
         "src/core/power/devicePower.ts"
       ]
     },
+    "core/project/ProjectLayout.kt": {
+      "hash": "67c5fdf6de74f1e11cea81663bc266b950816c7e",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/project/projectLayout.ts"
+      ]
+    },
+    "core/reconnect/Reconnect.kt": {
+      "hash": "f9217cc3a7c42915113151c741e24eca7d524164",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/reconnect/reconnect.ts"
+      ]
+    },
+    "core/recording/AppiumSteps.kt": {
+      "hash": "ff87252da491c060a863e5fdf5dd63954a6b2742",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/recording/appiumSteps.ts"
+      ]
+    },
+    "core/recording/Assertion.kt": {
+      "hash": "82709b2b1d6f656ed7c7a95f604037501d79c0f9",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/recording/assertion.ts"
+      ]
+    },
+    "core/recording/HierarchySnapshots.kt": {
+      "hash": "8bb81394c64ec0a633f636dedd85e3ce1d53864c",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/recording/hierarchySnapshots.ts"
+      ]
+    },
+    "core/recording/ReplayOptions.kt": {
+      "hash": "cad53306a7c02b176851d1b92b6a9d321cdc6e21",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/recording/replayOptions.ts"
+      ]
+    },
+    "core/recording/ScreenRecording.kt": {
+      "hash": "7229af719f977abccf5dfa40dac3161ff8197134",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/recording/screenRecording.ts"
+      ]
+    },
+    "core/recording/ScreenRecordingLimit.kt": {
+      "hash": "9c17442e649e47ee7012b6528dddc0bf2c842b6c",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/recording/screenRecordingLimit.ts"
+      ]
+    },
+    "core/recording/ScriptPlayer.kt": {
+      "hash": "48c4ec4396e249312167e73c6fa3f89e2b92c105",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/recording/scriptPlayer.ts"
+      ]
+    },
+    "core/recording/ScriptRecorder.kt": {
+      "hash": "e61e4433f20813cc4657d1814d2963186278e12e",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/recording/scriptRecorder.ts"
+      ]
+    },
+    "core/recording/ScrollUntilVisible.kt": {
+      "hash": "0f46064540218e3c949755d21e4d9fea023dbc7b",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/recording/scrollUntilVisible.ts"
+      ]
+    },
+    "core/recording/TextClearing.kt": {
+      "hash": "17e83b6bf20e622aa3c2eeb399f98bd1a3c8bd5a",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/recording/textClearing.ts"
+      ]
+    },
+    "core/recording/WebdriverIoSteps.kt": {
+      "hash": "95e4d1654e433cbb6094606cd8af47fdee70d548",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/recording/webdriverIoSteps.ts"
+      ]
+    },
     "core/ScreenGeometry.kt": {
       "hash": "c62448fe9883466af578715b7b3ed6ee1922a4f3",
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
       "ts": [
         "src/core/screenGeometry.ts"
+      ]
+    },
+    "core/ScreenshotAnnotator.kt": {
+      "hash": "a157c0fd50127062db08349802513c21d1bbc180",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/screenshotAnnotator.ts"
       ]
     },
     "core/session/DeviceSession.kt": {
@@ -169,6 +585,34 @@
         "src/core/session/transportInfo.ts"
       ]
     },
+    "core/visual/Baselines.kt": {
+      "hash": "55af4eda4ae26a8486e9a963758ca8a930fad54f",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/visual/baselines.ts"
+      ]
+    },
+    "core/visual/ImageDiff.kt": {
+      "hash": "97d736ffd0397d90543fe9db0f97b21ff5c67b83",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/visual/imageDiff.ts"
+      ]
+    },
+    "core/webview/WebLocators.kt": {
+      "hash": "a7070baead599b239ff273b368fd56106aeaca6f",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/webview/webLocators.ts"
+      ]
+    },
+    "core/webview/WebView.kt": {
+      "hash": "33d984222d1623a3276604bb81fb8a85538388be",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/webview/webView.ts"
+      ]
+    },
     "DeviceServices.kt": {
       "hash": "b4c066c3a337e05b2b52677a5e30f7bd43366056",
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
@@ -184,11 +628,266 @@
         "src/settings.ts"
       ]
     },
+    "settings/ProjectViewState.kt": {
+      "hash": "51a59607152029ad60c2eef9dd2e099a7943032c",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/projectViewState.ts"
+      ]
+    },
+    "test:core/AccessibilityAndroidTest.kt": {
+      "hash": "9cccb822a477ef02c12f80d33a7340adfac18137",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/accessibilityAndroid.test.ts"
+      ]
+    },
+    "test:core/AccessibilityAuditTest.kt": {
+      "hash": "d3cf953ca9d5abcf618bf61bee9dbd552f954f3c",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/accessibilityAudit.test.ts"
+      ]
+    },
+    "test:core/AgentInstallHintTest.kt": {
+      "hash": "ced90f32d1adc3642834efe2a3151b24a2435161",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/iosMobilecliSession.test.ts"
+      ]
+    },
+    "test:core/AndroidHierarchyFallbackTest.kt": {
+      "hash": "542d210029d4224f579665332c12d79a7a940d41",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/androidSession.test.ts"
+      ]
+    },
+    "test:core/AndroidSessionTest.kt": {
+      "hash": "8ed0a0a3543d33af1f87a5fe47e5cbd3af89260b",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/androidSession.test.ts"
+      ]
+    },
+    "test:core/AppiumLocatorQueryTest.kt": {
+      "hash": "204338156217eb302cbb801529fa8465505e1ae0",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/appiumLocatorQuery.test.ts",
+        "test/core/appiumLocatorQueryCode.test.ts"
+      ]
+    },
+    "test:core/AppiumStepsTest.kt": {
+      "hash": "bc8eeabd780e5a6e07d2f2f8d98d5d7621854106",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/appiumSteps.test.ts"
+      ]
+    },
+    "test:core/AppsTest.kt": {
+      "hash": "057b35a10bcb9f8dc78f3d5f8de43059caa13488",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/apps.test.ts"
+      ]
+    },
+    "test:core/AssertionTest.kt": {
+      "hash": "c0bf504870ff7a6a3e1a90eca0dec601ef121571",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/assertion.test.ts"
+      ]
+    },
+    "test:core/BatteryTest.kt": {
+      "hash": "afde78daefd02fb88a3bf4ab00bca270421d13fc",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/battery.test.ts"
+      ]
+    },
+    "test:core/BiometricsTest.kt": {
+      "hash": "422982ab8a825a15eccb119cf79f9a5c44528fef",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/biometrics.test.ts"
+      ]
+    },
+    "test:core/ContrastTest.kt": {
+      "hash": "a988cea5bb2afb4de27814d366c49fe19b0653de",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/contrast.test.ts"
+      ]
+    },
+    "test:core/CoordinatesTest.kt": {
+      "hash": "460f2d69720a1e94070f3e6de0e3b6a55e3e0ba1",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/coordinates.test.ts"
+      ]
+    },
+    "test:core/CrashesTest.kt": {
+      "hash": "3ad9e2aa777817ce727c9472e464296bdb9d5c99",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/crashes.test.ts"
+      ]
+    },
+    "test:core/DeviceKeysTransportTest.kt": {
+      "hash": "7c2de12fe9bc220d876eaff67534386bf911e67c",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/deviceKeysTransport.test.ts"
+      ]
+    },
+    "test:core/DevicePowerTest.kt": {
+      "hash": "bac206b85c566989fcce72b6247fdcf1ab53687d",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/devicePower.test.ts"
+      ]
+    },
+    "test:core/DisplayTest.kt": {
+      "hash": "82dc8b5293aabb10c1ec3696667eda0cb1070911",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/display.test.ts"
+      ]
+    },
+    "test:core/FilePreviewTest.kt": {
+      "hash": "855a24759fc69c2a07e3bccafa8a56017bcc38e5",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/filePreview.test.ts"
+      ]
+    },
+    "test:core/FilesTest.kt": {
+      "hash": "6bca4118c5f244476f17102d44a0c11bc8d5ce81",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/files.test.ts"
+      ]
+    },
+    "test:core/FreezeStateTest.kt": {
+      "hash": "f5c3c6d88de5cbef5b30380d053225bf6b2a0201",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/freezeState.test.ts"
+      ]
+    },
     "test:core/GesturesTest.kt": {
       "hash": "18b3ae0b1250d23ef93db3bf01b7de9898bb13cb",
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
       "ts": [
-        "test/core/gestures.test.ts"
+        "test/core/gestures.test.ts",
+        "test/core/gesturesRecorder.test.ts",
+        "test/core/wda.test.ts"
+      ]
+    },
+    "test:core/HierarchyDumpTest.kt": {
+      "hash": "7de4d4a25df1048c009d723174493b1bed7642da",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/hierarchyDump.test.ts"
+      ]
+    },
+    "test:core/HierarchyFilterTest.kt": {
+      "hash": "aed82ddd6931dc3444efd7b46ef9364594f0317d",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/hierarchyFilter.test.ts"
+      ]
+    },
+    "test:core/HierarchySnapshotsTest.kt": {
+      "hash": "3e4b0bd2ec1d03d1067cb9b3f1aed40bee08c287",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/hierarchySnapshots.test.ts"
+      ]
+    },
+    "test:core/InputTest.kt": {
+      "hash": "88b932f93e3ef3b63d8c0328a367775201a75500",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/input.test.ts"
+      ]
+    },
+    "test:core/InspectorTest.kt": {
+      "hash": "25d203891b2568c50877a253bf0e8640977fa677",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/inspector.test.ts"
+      ]
+    },
+    "test:core/IosMobilecliSessionTest.kt": {
+      "hash": "2a092deb07efc0bb06f5810cc6d35f2f2cef3670",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/iosMobilecliSession.test.ts"
+      ]
+    },
+    "test:core/LocaleTest.kt": {
+      "hash": "8c66215ce0e24cc3c9b78184f685c10656efa0f8",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/locale.test.ts"
+      ]
+    },
+    "test:core/LocationOverrideTest.kt": {
+      "hash": "d11ad6c651fc27c541be253593411724eae6ecf9",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/locationOverride.test.ts"
+      ]
+    },
+    "test:core/LocatorCodeTest.kt": {
+      "hash": "7d815b208b9c1b6b096ebfe88385782705f46b60",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/locatorCode.test.ts"
+      ]
+    },
+    "test:core/LocatorExtractionTest.kt": {
+      "hash": "27df0cf46cb1071377d7f51304849e436e3bfd45",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/locatorExtraction.test.ts"
+      ]
+    },
+    "test:core/LocatorHintTest.kt": {
+      "hash": "45aa4d4783854460ea645ed762866e10684e2ba9",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/locatorHint.test.ts"
+      ]
+    },
+    "test:core/LocatorQueryTest.kt": {
+      "hash": "b93adb7cb4f70e957eca3007036f48cc85a7fc8c",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/locatorQuery.test.ts"
+      ]
+    },
+    "test:core/LogsTest.kt": {
+      "hash": "c0ee207621ec124b57664432d337849dcb6219e5",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/logs.test.ts"
+      ]
+    },
+    "test:core/LogsUpgradeTest.kt": {
+      "hash": "04a20ddf425db93261636caa8742a75f6294a6ae",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/logsUpgrade.test.ts"
+      ]
+    },
+    "test:core/MemoryTest.kt": {
+      "hash": "a2e962fa0c9b488f75de19b672063ee7c9aa2866",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/memory.test.ts"
       ]
     },
     "test:core/MobilecliJsonTest.kt": {
@@ -198,18 +897,243 @@
         "test/core/mobilecliJson.test.ts"
       ]
     },
+    "test:core/NetworkTest.kt": {
+      "hash": "487d7bf4dea7aa31d176b78024e06a84dcde07f7",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/network.test.ts"
+      ]
+    },
+    "test:core/NotificationsTest.kt": {
+      "hash": "5f9a8b032c29dbf202771c36ef00313e49236e5f",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/notifications.test.ts"
+      ]
+    },
+    "test:core/OrientationTest.kt": {
+      "hash": "5b19f472eed728f4ad79455d563f7eba2927a855",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/orientation.test.ts"
+      ]
+    },
+    "test:core/PageObjectTest.kt": {
+      "hash": "ab96c4c69e55c3688aa982db8657903efb6af0e9",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/pageObject.test.ts"
+      ]
+    },
     "test:core/ParsersTest.kt": {
       "hash": "4b4760ce3e223303536bf828defbe57bd13ed606",
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
       "ts": [
+        "test/core/emulatorDiscovery.test.ts",
         "test/core/parsers.test.ts"
+      ]
+    },
+    "test:core/PerfTest.kt": {
+      "hash": "bcd958ee78cd6aada66f7418f1d91ca578ed9ccc",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/perf.test.ts"
+      ]
+    },
+    "test:core/PermissionsTest.kt": {
+      "hash": "de14efa76f3046584dcb7521ded1ab8147aa2622",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/permissions.test.ts"
+      ]
+    },
+    "test:core/ProjectLayoutTest.kt": {
+      "hash": "79042dec0325614767faa72e2fe110079ffb79d0",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/projectLayout.test.ts"
+      ]
+    },
+    "test:core/ReconnectTest.kt": {
+      "hash": "1a3d8f056be6c9d2aa585d2079b8a5423680e3f7",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/reconnect.test.ts"
+      ]
+    },
+    "test:core/ReplayControlsTest.kt": {
+      "hash": "12d444056295e576bff1b2eedc0f7f4630794a08",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/replayControls.test.ts"
+      ]
+    },
+    "test:core/ResetPlanTest.kt": {
+      "hash": "9d4d349becb5dc035139303b2d39a93286fed3fc",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/resetPlan.test.ts"
+      ]
+    },
+    "test:core/ScopedLocatorsTest.kt": {
+      "hash": "a0990c10724a9e5c8ed7e86bc4b6e6b664f1040b",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/scopedLocators.test.ts",
+        "test/core/scopedLocatorsRecorder.test.ts"
+      ]
+    },
+    "test:core/ScreenRecordingLimitTest.kt": {
+      "hash": "093c2dfc1f059abad20f3fb2f06414d3265fba32",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/screenRecordingLimit.test.ts"
+      ]
+    },
+    "test:core/ScreenRecordingTest.kt": {
+      "hash": "9f06dde7e38c290585e41b96bb997a7cd0b17874",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/screenRecording.test.ts"
+      ]
+    },
+    "test:core/ScreenshotAnnotatorTest.kt": {
+      "hash": "bce66d2747c13335b8eb081acad8d7e634177dd7",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/screenshotAnnotator.test.ts"
+      ]
+    },
+    "test:core/ScriptPlayerTest.kt": {
+      "hash": "a64303392b54f2e5500a1e5e84e110839bc86ba3",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/scriptPlayer.test.ts"
+      ]
+    },
+    "test:core/ScriptRecorderTest.kt": {
+      "hash": "9bae9c2f4f1f5d689e372ee72f8b9dbbc891f9ee",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/scriptRecorder.test.ts"
+      ]
+    },
+    "test:core/ScrollUntilVisibleTest.kt": {
+      "hash": "1f57846e20716d9c056f17931682e9bf771d6d99",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/scrollUntilVisible.test.ts"
+      ]
+    },
+    "test:core/session/TransportInfoTest.kt": {
+      "hash": "676128963b5cf3f6e72d2c8b36ee5adc5d38b431",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/transportInfo.test.ts"
       ]
     },
     "test:core/StreamAndGeometryTest.kt": {
       "hash": "bd5b0984b213756128de56a5c72d6374a7ed8a05",
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
       "ts": [
-        "test/core/streamAndGeometry.test.ts"
+        "test/core/streamAndGeometry.test.ts",
+        "test/core/wda.test.ts"
+      ]
+    },
+    "test:core/UrlLauncherTest.kt": {
+      "hash": "d8e59c49d30b27107d8c0985a1277c7bfff4cdda",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/urlLauncher.test.ts"
+      ]
+    },
+    "test:core/visual/VisualTest.kt": {
+      "hash": "229d9cf15a69fa10516d7e2073501cae0387b025",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/visual/visual.test.ts"
+      ]
+    },
+    "test:core/WaitsAndFillTest.kt": {
+      "hash": "97a8f98a9c28a1778f89c2bde4bcc4fcd04d7cd4",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/waitsAndFill.test.ts"
+      ]
+    },
+    "test:core/WebdriverIoTest.kt": {
+      "hash": "bee6a52aa7a165181acc231dfdbce31f08d3b772",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/webdriverIo.test.ts"
+      ]
+    },
+    "test:core/WebViewTest.kt": {
+      "hash": "d424937ccd563135799b980d328edb401a31990c",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/webView.test.ts"
+      ]
+    },
+    "test:DeviceServicesWithoutMobilecliTest.kt": {
+      "hash": "9b29d83d9568448a3b49308cd837941875b45900",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/deviceServicesWithoutMobilecli.test.ts"
+      ]
+    },
+    "test:ui/ProjectViewStateTest.kt": {
+      "hash": "d5c4d3ea0a1b1594cc59e3eb705d8cb047b38347",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/projectViewState.test.ts"
+      ]
+    },
+    "test:ui/ReplayUiSmokeTest.kt": {
+      "hash": "3b9c63e35f1c2d99690f44156440462991b45c9b",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/locatorsModel.test.ts",
+        "test/core/recorderController.test.ts"
+      ]
+    },
+    "test:ui/ShowLocatorActionTest.kt": {
+      "hash": "ec48c75d31e4804f406b0733dc3ea6325b8821a0",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/showLocatorAction.test.ts"
+      ]
+    },
+    "ui/AppsPanel.kt": {
+      "hash": "8c5b337a4683b9d966b04e1fabcbece9af10e844",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/apps.ts",
+        "src/webview/tools/apps.ts"
+      ]
+    },
+    "ui/BatteryPanel.kt": {
+      "hash": "a9dd22b2879b6bcdee853c56bad0e8886fa4c3b0",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/battery.ts",
+        "src/webview/tools/battery.ts"
+      ]
+    },
+    "ui/BiometricsPanel.kt": {
+      "hash": "6acce23141e05b6f09f6ff2aecfb389ac5fa2268",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/biometrics.ts",
+        "src/webview/tools/biometrics.ts"
+      ]
+    },
+    "ui/CrashesPanel.kt": {
+      "hash": "c8d86ba40134864af7609e53a2b1c2168f492b81",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/crashes.ts",
+        "src/webview/tools/crashes.ts"
       ]
     },
     "ui/DeviceToolsPanel.kt": {
@@ -233,14 +1157,134 @@
       "hash": "c8b6c10e85648b2905740d0586b87076fe3cd828",
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
       "ts": [
-        "src/extension/deviceViewer.ts"
+        "src/extension/devicePower.ts",
+        "src/extension/deviceViewer.ts",
+        "src/extension/gestures.ts",
+        "src/extension/recorderController.ts",
+        "src/extension/screenshots.ts",
+        "src/webview/mirror.ts"
+      ]
+    },
+    "ui/DisplayPanel.kt": {
+      "hash": "62169f0ce0e9af9105184527df65e43406335805",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/display.ts",
+        "src/webview/tools/display.ts"
+      ]
+    },
+    "ui/EditorInsert.kt": {
+      "hash": "4def3f98c0b3bc8e1262d66d2c6b46d2a52a39df",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/editorInsert.ts"
+      ]
+    },
+    "ui/FilesPanel.kt": {
+      "hash": "f083f679a04fa4860a413125f64d1e1dcb33420b",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/files.ts",
+        "src/webview/tools/files.ts"
+      ]
+    },
+    "ui/InputPanel.kt": {
+      "hash": "0498a8957e667860d0f3085079e0acd9b1e1ace6",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/input.ts",
+        "src/webview/tools/input.ts"
       ]
     },
     "ui/InspectorPanel.kt": {
       "hash": "cd02b7327e4cb2557e491fcbb42ddf34f09c7000",
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
       "ts": [
-        "src/webview/mirror.ts"
+        "src/extension/locatorsModel.ts",
+        "src/extension/tools/locators.ts",
+        "src/webview/inspector.ts",
+        "src/webview/tools/locators.ts"
+      ]
+    },
+    "ui/LocationPanel.kt": {
+      "hash": "e0c15aebb3984165748227078a4dcdafee875c1f",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/location.ts",
+        "src/webview/tools/location.ts"
+      ]
+    },
+    "ui/LogPanel.kt": {
+      "hash": "35d46607ae79961181feb673b8e4d5a42523c628",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/logs.ts",
+        "src/webview/tools/logs.ts"
+      ]
+    },
+    "ui/NetworkPanel.kt": {
+      "hash": "e612ce260dcfac2148283b99d5f2e3fb5ba93b8e",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/network.ts",
+        "src/webview/tools/network.ts"
+      ]
+    },
+    "ui/NotificationsPanel.kt": {
+      "hash": "ad13330b3e252826269c81108c08aa10a5a41532",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/notifications.ts",
+        "src/webview/tools/notifications.ts"
+      ]
+    },
+    "ui/PageObjectDialog.kt": {
+      "hash": "aace9b483e02eb5e02ee8f89c44b3ae080052990",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/locatorsModel.ts",
+        "src/extension/tools/locators.ts",
+        "src/webview/tools/locators.ts"
+      ]
+    },
+    "ui/PerfChart.kt": {
+      "hash": "4a3648493f24c9b62c0a06e9239433509fd23dec",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/webview/perfChart.ts"
+      ]
+    },
+    "ui/PerformancePanel.kt": {
+      "hash": "53c77a82d7263d228221b9bb0293510b53273aa4",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/performance.ts",
+        "src/webview/tools/performance.ts"
+      ]
+    },
+    "ui/PermissionsDialog.kt": {
+      "hash": "d2c8763fd5353a5d54b46fa56dd26e1702249e64",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/apps.ts",
+        "src/webview/tools/apps.ts"
+      ]
+    },
+    "ui/RecorderPanel.kt": {
+      "hash": "d793af2a43fba66157cbbc6fcb2263338a71cbdc",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/recorderController.ts",
+        "src/extension/tools/recorder.ts",
+        "src/webview/tools/recorder.ts"
+      ]
+    },
+    "ui/ResetStateDialog.kt": {
+      "hash": "c688401de257537f6ca4862fcb1952cf266ac70c",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/apps.ts",
+        "src/webview/tools/apps.ts"
       ]
     },
     "ui/ScreenView.kt": {
@@ -248,6 +1292,45 @@
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
       "ts": [
         "src/webview/mirror.ts"
+      ]
+    },
+    "ui/ShowLocatorAction.kt": {
+      "hash": "3365ac12174647c75c6b9e838a22bff6f4ec489a",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/editorLocatorText.ts"
+      ]
+    },
+    "ui/StackFrameOpener.kt": {
+      "hash": "e4ef1b06dcf35f63a5a47d5d4368cb7fa688d069",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/logs.ts",
+        "src/extension/tools/stackFrameOpener.ts"
+      ]
+    },
+    "ui/UrlLauncherPanel.kt": {
+      "hash": "4d4fac98704211575b9b89e0acfcde1a278cd21d",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/openUrl.ts",
+        "src/webview/tools/openUrl.ts"
+      ]
+    },
+    "ui/VisualPanel.kt": {
+      "hash": "93a434cfe7ae4133e1a76ecd7933468e26d5738d",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/visual.ts",
+        "src/webview/tools/visual.ts"
+      ]
+    },
+    "ui/WebViewPanel.kt": {
+      "hash": "8ded32b1b424cd2f0f9b2c6975f24aa6640d4902",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/webview.ts",
+        "src/webview/tools/webview.ts"
       ]
     }
   },

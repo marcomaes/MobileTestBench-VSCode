@@ -5,6 +5,25 @@ import type { DeviceSession } from '../../core/session/deviceSession'
 import type { UiNode } from '../../core/inspector/uiNode'
 import type { DeviceServices } from '../../deviceServices'
 import type { Settings } from '../../settings'
+import type { Captured } from '../../core/recording/hierarchySnapshots'
+import type { GestureListener } from '../gestures'
+
+/** What the viewer offers the recorder (the Kotlin recorder wiring inside DeviceViewerPanel). */
+export interface ViewerHooks {
+  /** Gestures the user makes on the mirror, reported before they reach the device. Returns the unsubscribe function. */
+  onGesture(listener: GestureListener): () => void
+  startSnapshots(): void
+  stopSnapshots(): void
+  awaitSnapshot(): Promise<Captured>
+  /** The newest recorder snapshot, undefined when none was captured. */
+  latestSnapshot(): UiNode | undefined
+  /** The newest hierarchy known without asking the device. */
+  lastKnownHierarchy(): UiNode | undefined
+  /** While [reason] is set the mirror does not send input (a replay is running); undefined releases it. */
+  blockInput(reason: string | undefined): void
+  /** Sets the status line of the viewer. */
+  status(message: string, level?: 'info' | 'error'): void
+}
 
 /** What a tool can use. One context per open device viewer. */
 export interface ToolContext {
@@ -22,6 +41,7 @@ export interface ToolContext {
   currentFrame(): { data: Buffer; mime: string; width: number; height: number } | undefined
   /** Highlights rectangles (logical coordinates) on the mirror. */
   highlight(bounds: Array<{ x: number; y: number; width: number; height: number }>): void
+  readonly viewer: ViewerHooks
   /** Writes a setting back to VS Code's configuration. */
   updateSetting<K extends keyof Settings>(key: K, value: Settings[K]): Promise<void>
 }

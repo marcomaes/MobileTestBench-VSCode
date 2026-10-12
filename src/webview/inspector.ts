@@ -5,6 +5,8 @@
 // Extending it (Locators, Recorder, Page object, filter, accessibility audit): call `addTab(title, element)` for a new tab,
 // `onSelection` / `onHierarchy` to follow what the user picks or what was captured, `select(node)` to pick programmatically
 // and `setMatchBounds` / `setIssueBounds` to draw rectangles on the mirror (logical coordinates).
+import { FilterCriteria, HierarchyFilter } from '../core/inspector/hierarchyFilter'
+import { MobilewrightLocators } from '../core/inspector/locators'
 import { UiNode } from '../core/inspector/uiNode'
 import type { Rect } from '../core/model'
 import type { NodeDto } from '../protocol'
@@ -28,6 +30,12 @@ export interface InspectorOptions {
   setMatchBounds?: (rects: Rect[]) => void
   /** Rectangles to draw on the mirror for elements with an accessibility issue. */
   setIssueBounds?: (rects: Rect[]) => void
+  /** The filter text changed by the user (the viewer saves it in the setting elementFilter). */
+  onFilterChange?: (text: string) => void
+  /** Right click on a tree row; [x], [y] are client coordinates. */
+  onContextMenu?: (node: UiNode, x: number, y: number) => void
+  /** The initial filter text (setting elementFilter). */
+  filterText?: string
 }
 
 export interface Inspector {
@@ -49,8 +57,12 @@ export interface Inspector {
   showTab(title: string): void
   onSelection(cb: (node: UiNode | undefined) => void): () => void
   onHierarchy(cb: (root: UiNode, frameBase64?: string) => void): () => void
+  /** The hierarchy was forgotten (a message, an error, no session): tools showing it should empty themselves. */
+  onCleared(cb: () => void): () => void
   setMatchBounds(rects: Rect[]): void
   setIssueBounds(rects: Rect[]): void
+  /** Puts [text] in the filter field and narrows the tree (no change callback). */
+  setFilterText(text: string): void
 }
 
 const ELEMENTS = 'Elements'
@@ -61,6 +73,7 @@ export function createInspector(container: HTMLElement, options: InspectorOption
   const rowOf = new Map<UiNode, HTMLElement>()
   const selectionListeners = new Set<(n: UiNode | undefined) => void>()
   const hierarchyListeners = new Set<(r: UiNode, f?: string) => void>()
+  const clearedListeners = new Set<() => void>()
 
   container.classList.add('mtb-inspector')
   const tabs = document.createElement('div')
@@ -69,13 +82,50 @@ export function createInspector(container: HTMLElement, options: InspectorOption
   body.className = 'mtb-ibody'
   container.append(tabs, body)
 
+  // The filter above the tree (Kotlin: filterField, Visible, Interactive and the "Not understood" line).
+  const filterInput = document.createElement('input')
+  filterInput.className = 'mtb-ifilter'
+  filterInput.type = 'text'
+  filterInput.value = options.filterText ?? ''
+  filterInput.placeholder = 'Filter: text, or clickable=true class~Button'
+  filterInput.title = [
+    'Free text matches type, id, label, text and value.',
+    'A word with a leading - or ! must not match: -error, -clickable=true.',
+    '/regex/ is a case-insensitive regular expression (quote it if it has spaces).',
+    'OR (or |) between groups shows elements matching either group: Login OR Sign.',
+    'Attribute terms, separated by spaces, must all match:',
+    ' key=value (equals), key!=value (not equal), key~value (contains), case-insensitive.',
+    'Quote a value with spaces: text="Log in".',
+    'Keys: enabled, clickable, focused, checked, selected, visible (true/false),',
+    ' type or class, id or resource-id, label, text, content-desc, value.',
+    'Any other key is read from the raw attributes. Example: clickable=true enabled=false class~Button',
+  ].join('\n')
+  const visibleBox = document.createElement('input')
+  visibleBox.type = 'checkbox'
+  const interactiveBox = document.createElement('input')
+  interactiveBox.type = 'checkbox'
+  const filterBar = document.createElement('div')
+  filterBar.className = 'mtb-ifilterbar'
+  const checkLabel = (box: HTMLInputElement, text: string): HTMLLabelElement => {
+    const l = document.createElement('label')
+    l.append(box, text)
+    return l
+  }
+  filterBar.append(filterInput, checkLabel(visibleBox, 'Visible'), checkLabel(interactiveBox, 'Interactive'))
+  const filterProblem = document.createElement('div')
+  filterProblem.className = 'mtb-ifilterproblem'
+  filterProblem.style.display = 'none'
+
   const treeEl = document.createElement('div')
   treeEl.className = 'mtb-itree'
+  const treeWrap = document.createElement('div')
+  treeWrap.className = 'mtb-itreewrap'
+  treeWrap.append(filterBar, filterProblem, treeEl)
   const propsEl = document.createElement('div')
   propsEl.className = 'mtb-iprops'
   const elements = document.createElement('div')
   elements.className = 'mtb-ipane mtb-ielements'
-  elements.append(treeEl, propsEl)
+  elements.append(treeWrap, propsEl)
 
   const panes = new Map<string, HTMLElement>()
   const tabButtons = new Map<string, HTMLButtonElement>()
@@ -97,21 +147,51 @@ export function createInspector(container: HTMLElement, options: InspectorOption
   }
   addTab(ELEMENTS, elements)
 
+  /** Fills the tree from [root], narrowed by the filter (Kotlin rebuildTree). */
   function renderTree(): void {
     treeEl.textContent = ''
     rowOf.clear()
-    if (!root) return
+    if (!root) {
+      filterProblem.style.display = 'none'
+      return
+    }
+    const criteria = new FilterCriteria({ text: filterInput.value, visibleOnly: visibleBox.checked, interactiveOnly: interactiveBox.checked })
+    const shown = HierarchyFilter.visibleNodes(root, criteria)
+    const problems = criteria.invalidTerms
+    filterProblem.style.display = problems.length > 0 ? 'block' : 'none'
+    filterProblem.textContent = 'Not understood: ' + problems.map((it) => `${it.text} (${it.reason})`).join('; ')
+    if (shown && shown.size === 0) {
+      const m = document.createElement('div')
+      m.className = 'mtb-imsg'
+      m.textContent = 'No element matches the filter'
+      treeEl.append(m)
+      return
+    }
     const add = (n: UiNode): void => {
       const row = document.createElement('div')
       row.className = 'mtb-irow'
-      row.textContent = '  '.repeat(n.depth) + n.displayLabel()
+      row.textContent = '  '.repeat(n.depth) + n.displayLabel() + (!n.isRoot && MobilewrightLocators.derive(n) === undefined ? '  (no locator)' : '')
       row.onclick = () => select(n)
+      row.oncontextmenu = (e) => {
+        e.preventDefault()
+        select(n)
+        options.onContextMenu?.(n, e.clientX, e.clientY)
+      }
+      if (n === selected) row.classList.add('sel')
       rowOf.set(n, row)
       treeEl.append(row)
-      n.children.forEach(add)
+      for (const c of n.children) if (!shown || shown.has(c)) add(c)
     }
     add(root)
   }
+  let filterQuiet = false
+  const onFilter = (): void => {
+    renderTree()
+    if (!filterQuiet) options.onFilterChange?.(filterInput.value)
+  }
+  filterInput.addEventListener('input', onFilter)
+  visibleBox.addEventListener('change', onFilter)
+  interactiveBox.addEventListener('change', onFilter)
 
   function renderProps(): void {
     propsEl.textContent = ''
@@ -156,7 +236,10 @@ export function createInspector(container: HTMLElement, options: InspectorOption
     m.className = error ? 'mtb-imsg err' : 'mtb-imsg'
     m.textContent = text
     treeEl.append(m)
+    filterProblem.style.display = 'none'
     options.onSelect?.(undefined)
+    selectionListeners.forEach((cb) => cb(undefined))
+    clearedListeners.forEach((cb) => cb())
   }
 
   message('Connect a device, then press Inspect.')
@@ -171,6 +254,7 @@ export function createInspector(container: HTMLElement, options: InspectorOption
       renderTree()
       renderProps()
       options.onSelect?.(undefined)
+      selectionListeners.forEach((cb) => cb(undefined))
       hierarchyListeners.forEach((cb) => cb(next, frameBase64))
     },
     setMessage: (text) => message(text),
@@ -187,6 +271,19 @@ export function createInspector(container: HTMLElement, options: InspectorOption
       hierarchyListeners.add(cb)
       return () => hierarchyListeners.delete(cb)
     },
+    onCleared(cb) {
+      clearedListeners.add(cb)
+      return () => clearedListeners.delete(cb)
+    },
+    setFilterText(text) {
+      filterInput.value = text
+      filterQuiet = true
+      try {
+        renderTree()
+      } finally {
+        filterQuiet = false
+      }
+    },
     setMatchBounds: (rects) => options.setMatchBounds?.(rects),
     setIssueBounds: (rects) => options.setIssueBounds?.(rects),
   }
@@ -202,7 +299,12 @@ export const inspectorCss = `
   .mtb-ipane { display: none; height: 100%; overflow: auto; }
   .mtb-ipane.on { display: block; }
   .mtb-ipane.mtb-ielements.on { display: grid; grid-template-rows: 1fr auto; overflow: hidden; }
-  .mtb-itree { overflow: auto; padding: 4px; font-family: var(--vscode-editor-font-family); font-size: 12px; }
+  .mtb-itreewrap { display: flex; flex-direction: column; min-height: 0; }
+  .mtb-ifilterbar { display: flex; gap: 8px; align-items: center; padding: 3px 4px; flex: none; }
+  .mtb-ifilter { flex: 1; min-width: 0; background: var(--vscode-input-background); color: var(--vscode-input-foreground); border: 1px solid var(--vscode-input-border, transparent); padding: 2px 4px; }
+  .mtb-ifilterbar label { white-space: nowrap; display: inline-flex; gap: 2px; align-items: center; }
+  .mtb-ifilterproblem { color: var(--vscode-errorForeground); padding: 0 6px 2px; font-size: 12px; flex: none; }
+  .mtb-itree { flex: 1; min-height: 0; overflow: auto; padding: 4px; font-family: var(--vscode-editor-font-family); font-size: 12px; }
   .mtb-irow { white-space: pre; cursor: pointer; padding: 0 2px; }
   .mtb-irow:hover { background: var(--vscode-list-hoverBackground); }
   .mtb-irow.sel { background: var(--vscode-list-activeSelectionBackground); color: var(--vscode-list-activeSelectionForeground); }

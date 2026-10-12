@@ -13,6 +13,8 @@ import { ProjectLayout, type LayoutPatch } from '../core/project/projectLayout'
 import { ScreenGeometry } from '../core/screenGeometry'
 import type { Capabilities, DeviceInfoDto, HardwareKey, OrientationName, ToHost, ToWebview } from '../protocol'
 import { createInspector, inspectorCss, nodeFromDto, nodeToDto } from './inspector'
+import { LocatorGenerator } from '../core/inspector/locators'
+import { LocatorCode, LocatorLanguage } from '../core/pageobject/locatorCode'
 import type { ToolApi, ToolView } from './toolApi'
 import { toolViews } from './tools'
 import { injectToolStyles } from './ui'
@@ -41,6 +43,12 @@ let frameApplied = 0
 let frameCount = 0
 let placeholder = 'Connecting...'
 let inspecting = false
+/** The recorder is recording: clicks reach the device even while inspecting. */
+let recording = false
+/** Set while the recorder waits for an element to assert on: a click picks instead of acting on the device. */
+let picker: ((x: number, y: number) => void) | undefined
+let copyLanguage = LocatorLanguage.AS_SHOWN
+let copyWholeLine = false
 let frozen = false
 let gridVisible = false
 let saveHierarchy = false
@@ -149,7 +157,28 @@ const foregroundEl = $('foreground')
 const statusEl = $('statusline')
 const cancelEl = $<HTMLButtonElement>('cancel')
 
+let filterSaveTimer: ReturnType<typeof setTimeout> | undefined
 const inspector = createInspector(sideEl, {
+  onFilterChange: (text) => {
+    // The setting is written once the user stopped typing.
+    if (filterSaveTimer) clearTimeout(filterSaveTimer)
+    filterSaveTimer = setTimeout(() => send({ type: 'elementFilter', text }), 600)
+  },
+  onContextMenu: (node, x, y) => {
+    const root = inspector.root()
+    const items: MenuItem[] = []
+    if (root && !node.isRoot) {
+      for (const suggestion of LocatorGenerator.suggest(node, root)) {
+        items.push({ label: LocatorCode.menuLabel(suggestion, copyLanguage), run: () => send({ type: 'copyText', text: LocatorCode.textFor(suggestion, copyLanguage, copyWholeLine).text }) })
+      }
+      items.push('sep')
+    }
+    const props: Array<[string, string]> = [['type', node.rawType]]
+    if (node.bounds) props.push(['bounds', `x=${node.bounds.x} y=${node.bounds.y} w=${node.bounds.width} h=${node.bounds.height}`])
+    props.push(['xpath', node.absoluteXPath()], ...Object.entries(node.attributes))
+    items.push({ label: 'Copy All Properties', run: () => send({ type: 'copyText', text: props.map(([k, v]) => `${k}=${v}`).join('\n') }) })
+    popup(undefined, items, { x, y })
+  },
   onSelect: (node) => {
     selectedBounds = node?.bounds
     draw()
@@ -274,7 +303,7 @@ function refreshButtons(): void {
   recordBtn.classList.toggle('on', screenRecording)
   recordBtn.textContent = screenRecording ? 'Stop recording' : 'Record screen'
   recordBtn.disabled = !screenRecording && !connected
-  canvas.classList.toggle('inspect', inspecting)
+  canvas.classList.toggle('inspect', inspectMode())
 }
 
 // ---------------------------------------------------------------- popup menu
@@ -622,13 +651,15 @@ function interact(message: ToHost): boolean {
 
 /** Re-reads the hierarchy shortly after the last input, so the tree follows what happens on the device. */
 function scheduleAutoRefresh(): void {
-  if (!inspecting || frozen) return
+  if (!inspecting || frozen || recording) return
   if (autoRefresh) clearTimeout(autoRefresh)
   autoRefresh = setTimeout(() => void refreshHierarchy(true), AUTO_REFRESH_DELAY_MS)
 }
 
 /** Inspect mode keeps its meaning (a click selects), except with Option/Alt, which interacts with the device. */
-const interactive = (alt: boolean): boolean => !inspecting || alt
+/** Clicks inspect instead of acting on the device: inspecting (not while recording, unless frozen) or picking an element to assert on. */
+const inspectMode = (): boolean => (inspecting && (!recording || frozen)) || picker !== undefined
+const interactive = (alt: boolean): boolean => !inspectMode() || alt
 
 const isContextClick = (e: MouseEvent): boolean => e.button === 2 || (e.button === 0 && e.ctrlKey && /Mac/i.test(navigator.platform))
 const longPressMs = (): number => caps?.longPressMs ?? Gestures.LONG_PRESS_MS
@@ -670,7 +701,7 @@ canvas.addEventListener('mousemove', (e) => {
     clearTimeout(down.lp)
     down.lp = undefined
   }
-  if (inspecting) {
+  if (inspectMode()) {
     const l = toLogical(px, py)
     const root = inspector.root()
     const next = root && l ? HierarchyQueries.deepestAt(root, l[0], l[1])?.bounds : undefined
@@ -683,7 +714,7 @@ canvas.addEventListener('mousemove', (e) => {
 
 canvas.addEventListener('mouseleave', () => {
   clearHover()
-  if (inspecting && hoverBounds) {
+  if (inspectMode() && hoverBounds) {
     hoverBounds = undefined
     draw()
   }
@@ -702,11 +733,11 @@ window.addEventListener('mouseup', (e) => {
   // ran, so a release cannot contradict the press.
   if (frozen) {
     // Frozen: a click in inspect mode selects from the frozen hierarchy, anything else is only a hint.
-    if (inspecting && !d.alt) inspectClick(end[0], end[1])
+    if (inspectMode() && !d.alt) inspectClick(end[0], end[1])
     else setStatus('The screen is frozen: turn Freeze off to interact with the device')
     return
   }
-  if (inspecting && !d.alt) {
+  if (inspectMode() && !d.alt) {
     if (!d.longFired) inspectClick(end[0], end[1])
     return
   }
@@ -744,7 +775,7 @@ canvas.addEventListener(
   (e) => {
     e.preventDefault()
     if (frozen) return setStatus('The screen is frozen: turn Freeze off to interact with the device')
-    if (inspecting && !e.altKey) return
+    if (inspectMode() && !e.altKey) return
     const lg = logical()
     const { px, py } = pointer(e)
     const point = toLogical(px, py)
@@ -827,6 +858,7 @@ canvas.addEventListener('contextmenu', (e) => {
 
 // ---------------------------------------------------------------- inspector control, hierarchy capture and freeze
 function inspectClick(x: number, y: number): void {
+  if (picker) return picker(x, y)
   const root = inspector.root()
   const node = root ? HierarchyQueries.deepestAt(root, x, y) : undefined
   if (node) inspector.select(node)
@@ -919,6 +951,8 @@ function clearSession(): void {
   bitmap = undefined
   frameSize = undefined
   frozen = false
+  recording = false
+  picker = undefined
   refreshInFlight = false
   refreshAgain = false
   if (autoRefresh) clearTimeout(autoRefresh)
@@ -1010,6 +1044,25 @@ function apiFor(view: ToolView): ToolApi {
       set.add(handler)
       return () => set.delete(handler)
     },
+    viewer: {
+      inspector,
+      setCopyOptions: (languageName, wholeLine) => {
+        copyLanguage = LocatorLanguage.fromName(languageName)
+        copyWholeLine = wholeLine
+      },
+      setRecording: (on) => {
+        recording = on
+        if (!on) picker = undefined
+        refreshButtons()
+        draw()
+      },
+      setPicker: (onPick) => {
+        picker = onPick
+        hoverBounds = undefined
+        refreshButtons()
+        draw()
+      },
+    },
     hierarchy: () => {
       const root = inspector.root()
       return root ? nodeToDto(root) : undefined
@@ -1095,6 +1148,9 @@ window.addEventListener('message', (event: MessageEvent<ToWebview>) => {
       toolsProportion = l.toolsProportion
       gridVisible = m.showGrid
       saveHierarchy = m.saveHierarchyWithScreenshot
+      inspector.setFilterText(m.elementFilter ?? '')
+      copyLanguage = LocatorLanguage.fromName(m.locatorLanguage)
+      copyWholeLine = m.locatorWholeLine ?? false
       applyProportions()
       if (l.inspectorOpen) setInspect(true)
       const saved = new ProjectLayout(l).tabIn(toolViews.map((t) => t.title))
