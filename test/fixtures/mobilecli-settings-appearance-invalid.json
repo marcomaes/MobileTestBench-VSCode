@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "invalid value for appearance 'bogus', must be 'light' or 'dark'"
+}

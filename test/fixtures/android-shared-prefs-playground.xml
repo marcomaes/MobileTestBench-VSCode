@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <long name="sites_visited_weekly_time" value="1791119957648" />
+    <string name="origins_visited_date">10/4/26</string>
+    <set name="sites_visited_weekly_set">
+        <string>4057822189</string>
+        <string>1286180641</string>
+    </set>
+    <int name="lastVersionCodeUsed" value="792219903" />
+    <set name="CachedFlagsDisabled" />
+</map>

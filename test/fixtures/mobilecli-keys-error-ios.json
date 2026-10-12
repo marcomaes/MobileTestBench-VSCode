@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "failed to press keys on device F2368465-C17E-4E1D-B270-D9433E8A6622: RPC error -32602: Unsupported key: foo"
+}

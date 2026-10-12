@@ -1,0 +1,255 @@
+{
+  "pluginCommit": "287683b576a08b75b66c82751d3690ecd52d441a",
+  "ports": {
+    "core/android/AdbClient.kt": {
+      "hash": "e906103abb80e4968108989c6e293afb2c58d357",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/android/adbClient.ts"
+      ]
+    },
+    "core/android/AndroidSession.kt": {
+      "hash": "d9723439decd8ae6aa3ab0a174207005b7090173",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/android/androidSession.ts"
+      ]
+    },
+    "core/android/EmulatorLink.kt": {
+      "hash": "67d4f39f9e482e25e76d968a05fa66ef9e1ef165",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/android/emulatorLink.ts"
+      ]
+    },
+    "core/discovery/DeviceDiscovery.kt": {
+      "hash": "b02f890c7d71bcc9f2ec872414a843a9aae7b3d2",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/discovery/deviceDiscovery.ts"
+      ]
+    },
+    "core/discovery/DeviceParsers.kt": {
+      "hash": "dc807d7326b487222b90cdc8041d2763e256f920",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/discovery/deviceParsers.ts"
+      ]
+    },
+    "core/exec/CommandRunner.kt": {
+      "hash": "48570ad75c0d52c5e2c511db2db46e446c16bd39",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/exec/commandRunner.ts"
+      ]
+    },
+    "core/exec/ToolLocator.kt": {
+      "hash": "9e0c6bdc24c985b2381bc89ed9816cf3d81f7862",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/exec/toolLocator.ts"
+      ]
+    },
+    "core/input/Gestures.kt": {
+      "hash": "aa783ec35cd40250c8e68a45560018037c14169f",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/input/gestures.ts"
+      ]
+    },
+    "core/inspector/HierarchyParsers.kt": {
+      "hash": "9d57b0cfa72ab3220c0df1a3c527670ef1930ee9",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/hierarchyParsers.ts"
+      ]
+    },
+    "core/inspector/UiNode.kt": {
+      "hash": "1256a3bc21b3b3be249fb134369b2373b491bee6",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/inspector/uiNode.ts"
+      ]
+    },
+    "core/ios/AgentInstallHint.kt": {
+      "hash": "0e620fbf9e0c41940fe273ff3e831256e3022f3b",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/ios/agentInstallHint.ts"
+      ]
+    },
+    "core/ios/IosMobilecliSession.kt": {
+      "hash": "e9a630b34586c65ae330d758cbaadcdb72e3dabe",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/ios/iosMobilecliSession.ts"
+      ]
+    },
+    "core/ios/MjpegReader.kt": {
+      "hash": "99e1f0337292d9562ff8f168896c0661dde77aa8",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/ios/mjpegReader.ts"
+      ]
+    },
+    "core/ios/MobilecliClient.kt": {
+      "hash": "605643b295a81de5769b953c7f95ad4ec8f730dd",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/ios/mobilecliClient.ts"
+      ]
+    },
+    "core/ios/MobilecliMjpegStream.kt": {
+      "hash": "64845c1bb24d1a3cbbb9955201c8047f0807e3fd",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/ios/mobilecliMjpegStream.ts"
+      ]
+    },
+    "core/ios/SimctlClient.kt": {
+      "hash": "b038d2a3f35bc1088ff54e6f66a4723221aad409",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/ios/simctlClient.ts"
+      ]
+    },
+    "core/MobilecliJson.kt": {
+      "hash": "72208413720b56b3e50031d1587289dfaa24885e",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/mobilecliJson.ts"
+      ]
+    },
+    "core/Model.kt": {
+      "hash": "5c7478898052a52231b659d86abab0a3119c1c79",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/model.ts"
+      ]
+    },
+    "core/Orientation.kt": {
+      "hash": "61c12d6ad0a3945bea914b7b05d232c4c827259d",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/orientation.ts"
+      ]
+    },
+    "core/power/DevicePower.kt": {
+      "hash": "913ddc1183bb3056910a84585aac435a8c9c219b",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/power/devicePower.ts"
+      ]
+    },
+    "core/ScreenGeometry.kt": {
+      "hash": "c62448fe9883466af578715b7b3ed6ee1922a4f3",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/screenGeometry.ts"
+      ]
+    },
+    "core/session/DeviceSession.kt": {
+      "hash": "824bc8303bd9b4695acf008ffe171ba0f4095a90",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/session/deviceSession.ts"
+      ]
+    },
+    "core/session/PollingFrameSource.kt": {
+      "hash": "ad3b0e2fed246e6a3f273370b43180afda771a84",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/session/pollingFrameSource.ts"
+      ]
+    },
+    "core/session/TransportInfo.kt": {
+      "hash": "af2b2d47afdc762eeab8358432c466940862834d",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/core/session/transportInfo.ts"
+      ]
+    },
+    "DeviceServices.kt": {
+      "hash": "b4c066c3a337e05b2b52677a5e30f7bd43366056",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/deviceServices.ts"
+      ]
+    },
+    "settings/JBViewMobileSettings.kt": {
+      "hash": "3629b6052e79c99867056666f778e98e086d0b75",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/settings.ts",
+        "src/settings.ts"
+      ]
+    },
+    "test:core/GesturesTest.kt": {
+      "hash": "18b3ae0b1250d23ef93db3bf01b7de9898bb13cb",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/gestures.test.ts"
+      ]
+    },
+    "test:core/MobilecliJsonTest.kt": {
+      "hash": "9665ac6aff354ea635d95ce68eed590c8ca65988",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/mobilecliJson.test.ts"
+      ]
+    },
+    "test:core/ParsersTest.kt": {
+      "hash": "4b4760ce3e223303536bf828defbe57bd13ed606",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/parsers.test.ts"
+      ]
+    },
+    "test:core/StreamAndGeometryTest.kt": {
+      "hash": "bd5b0984b213756128de56a5c72d6374a7ed8a05",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "test/core/streamAndGeometry.test.ts"
+      ]
+    },
+    "ui/DeviceToolsPanel.kt": {
+      "hash": "94b7d5fcd82c939f180d0b64e94ffe625c03725b",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/tools/index.ts",
+        "src/webview/mirror.ts",
+        "src/webview/tools/index.ts"
+      ]
+    },
+    "ui/DeviceToolWindowFactory.kt": {
+      "hash": "01b9ed496c5ad92aa457f0a670a9d1316cdc790b",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/deviceTree.ts",
+        "src/extension/extension.ts"
+      ]
+    },
+    "ui/DeviceViewerPanel.kt": {
+      "hash": "c8b6c10e85648b2905740d0586b87076fe3cd828",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/extension/deviceViewer.ts"
+      ]
+    },
+    "ui/InspectorPanel.kt": {
+      "hash": "cd02b7327e4cb2557e491fcbb42ddf34f09c7000",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/webview/mirror.ts"
+      ]
+    },
+    "ui/ScreenView.kt": {
+      "hash": "46ba256357164413084b8e863f22d670125dafd2",
+      "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
+      "ts": [
+        "src/webview/mirror.ts"
+      ]
+    }
+  },
+  "updated": "2026-10-12"
+}

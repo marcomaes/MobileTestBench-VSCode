@@ -1,0 +1,3 @@
+Load: 25.91 / 14.1 / 7.38
+  9.4% 8642/com.mobilenext.playground: 3.9% user + 5.5% kernel / faults: 1 minor
+36% TOTAL: 5.1% user + 15% kernel + 0.4% iowait + 15% irq + 0.3% softirq

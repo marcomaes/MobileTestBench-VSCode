@@ -1,0 +1,2 @@
+latitude 91 out of range, must be between -90 and 90
+longitude 181 out of range, must be between -180 and 180

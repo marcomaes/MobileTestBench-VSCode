@@ -1,0 +1,19 @@
+{
+  "status": "ok",
+  "data": [
+    {
+      "id": "0x105eac000",
+      "url": "https://mobilewright.dev/samples/webview/?source=webview",
+      "title": "Sample Login",
+      "bundleId": "",
+      "processName": "",
+      "bounds": {
+        "height": 758,
+        "width": 402,
+        "x": 0,
+        "y": 116
+      },
+      "isVisible": true
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "webview evaluate failed: agent error -32000: JavaScript execution returned a result of an unsupported type || body[0:120]=try { return (document.getElementById('name')) } catch (e) { return { __mce: (e \u0026\u0026 e.toString ? e.toString() : String(e)"
+}

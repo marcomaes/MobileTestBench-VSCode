@@ -1,0 +1,5 @@
+Applications Memory Usage (in Kilobytes):
+Uptime: 92682285 Realtime: 92682285
+
+** MEMINFO in pid 8642 [com.mobilenext.playground] **
+Got IoException! java.io.IOException: Timeout

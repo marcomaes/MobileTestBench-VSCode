@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "failed to shutdown device Scout_Tmp: emulator is already offline"
+}

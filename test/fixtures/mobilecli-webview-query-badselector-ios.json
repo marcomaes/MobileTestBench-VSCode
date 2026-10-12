@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "webview evaluate failed: agent error -32000: SyntaxError: 'div[[' is not a valid selector."
+}

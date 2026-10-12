@@ -1,0 +1,5 @@
+# Success envelopes (exit 0). All carry only a message; there is no size/duration/bytes field.
+mkdir:  {"status":"ok","data":{"message":"Created directory '/sdcard/Download/jbv scout'"}}
+push:   {"status":"ok","data":{"message":"Pushed '/local/path/my file.txt' to '/sdcard/Download/jbv scout/my file.txt'"}}
+pull:   {"status":"ok","data":{"message":"Pulled '/sdcard/Download/jbv scout/my file.txt' to '/local/path/back file.txt'"}}
+rm:     {"status":"ok","data":{"message":"Removed '<SIM>/.../tmp/jbv scout'"}}

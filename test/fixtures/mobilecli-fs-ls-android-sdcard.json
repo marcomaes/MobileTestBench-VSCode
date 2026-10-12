@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "data": [
+    {
+      "name": "Alarms",
+      "path": "/sdcard/Alarms",
+      "size": 0,
+      "modTime": "2026-08-18T10:06:00Z",
+      "isDir": true
+    },
+    {
+      "name": "DCIM",
+      "path": "/sdcard/DCIM",
+      "size": 0,
+      "modTime": "2026-08-18T17:18:00Z",
+      "isDir": true
+    },
+    {
+      "name": "Download",
+      "path": "/sdcard/Download",
+      "size": 0,
+      "modTime": "2026-10-04T15:32:00Z",
+      "isDir": true
+    }
+  ]
+}

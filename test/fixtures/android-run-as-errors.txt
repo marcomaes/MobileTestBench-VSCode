@@ -1,0 +1,7 @@
+# adb shell (shell protocol v2) keeps the remote exit code; adb exec-out does NOT (always 0).
+$ adb shell run-as com.android.chrome ls          -> stdout "run-as: package not debuggable: com.android.chrome"  exit 1
+$ adb shell run-as com.nope.zz ls                 -> "run-as: unknown package: com.nope.zz"  exit 1
+$ adb shell run-as com.mobilenext.playground cat shared_prefs/nope.xml -> "cat: shared_prefs/nope.xml: No such file or directory" exit 1
+$ adb shell find /data/data -maxdepth 1           -> "find: /data/data: Permission denied" exit 1
+$ adb pull "/sdcard/Download/jbv scout/zzz" x     -> "adb: error: failed to stat remote object '...': No such file or directory" exit 1
+$ adb push b.bin /data/zz                         -> "adb: error: failed to copy 'b.bin' to '/data/zz': remote couldn't create file: Permission denied" exit 1

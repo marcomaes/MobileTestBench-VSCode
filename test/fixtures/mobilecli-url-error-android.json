@@ -1,0 +1,4 @@
+{"status":"error","error":"failed to open URL on device Pixel_9: failed to open URL settings://: exit status 1
+Output: Starting: Intent { act=android.intent.action.VIEW dat=settings:///... }
+Error: Activity not started, unable to resolve Intent { act=android.intent.action.VIEW dat=settings:///... flg=0x10000000 xflg=0x4 }
+"}

@@ -1,0 +1,1 @@
+  mGlobalConfiguration: {1.0 310mcc260mnc [en_US,nl_NL] ldltr sw411dp w411dp h923dp 420dpi nrml long compactNeeded port 

@@ -1,0 +1,12 @@
+getpwuid_r did not find a match for uid 501
+Filtering the log data using "composedMessage CONTAINS[c] "enroll" OR composedMessage CONTAINS[c] "pearl" OR composedMessage CONTAINS[c] "biometric""
+Timestamp               Ty Process[PID:TID]
+2026-10-04 14:09:26.124 Df coreauthd[74081:1e65d9] [com.apple.LocalAuthentication:Biometry] BK notification received: com.apple.BiometricKit.enrollmentChanged
+2026-10-04 14:09:26.130 Df coreauthd[74081:22ec54] [com.apple.LocalAuthentication:Environment] Environment has changed (biometric enrollment)
+2026-10-04 14:09:26.131 Df SpringBoard[4151:22f218] [com.apple.LocalAuthentication:Environment] <LAEnvironment: 0x10936ee00> updated from <LAEnvironmentState 0x122afb9f0; <'Face ID' com.apple.LocalAuthentication error -7 (biometryType: 2, not enrolled, approvalState: Unknown)>> to <LAEnvironmentState 0x1144fc6c0; <'Face ID' usable (biometryType: 2, approvalState: Unknown)>>
+2026-10-04 14:09:30.405 Df coreauthd[74081:1e65d9] [com.apple.LocalAuthentication:Biometry] BK notification received: com.apple.BiometricKit.enrollmentChanged
+2026-10-04 14:09:30.421 Df coreauthd[74081:22f131] [com.apple.LocalAuthentication:Environment] Environment has changed (biometric enrollment)
+2026-10-04 14:09:30.433 Df coreauthd[74081:22ec54] [com.apple.LocalAuthentication:Environment] Environment state for PID 4151: <LACEnvironmentState 0x1058a1600; biometry: <'Face ID' com.apple.LocalAuthentication error -7 (biometryType: 2, not enrolled, approvalState: Unknown)>; userPassword: (null); companions: (
+)>
+2026-10-04 14:09:30.433 Df SpringBoard[4151:22f218] [com.apple.LocalAuthentication:Environment] <LAEnvironment: 0x10936ee00> updated from <LAEnvironmentState 0x1144fc6c0; <'Face ID' usable (biometryType: 2, approvalState: Unknown)>> to <LAEnvironmentState 0x1138c39f0; <'Face ID' com.apple.LocalAuthentication error -7 (biometryType: 2, not enrolled, approvalState: Unknown)>>
+Child process terminated with signal 15: Terminated

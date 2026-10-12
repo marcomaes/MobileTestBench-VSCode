@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "failed to terminate app on device F2368465-C17E-4E1D-B270-D9433E8A6622: failed to execute xcrun simctl command: exit status 3"
+}

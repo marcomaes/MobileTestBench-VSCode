@@ -1,0 +1,6 @@
+Tasks: 1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+  Mem:  4062432K total,  3789296K used,   273136K free,   109456K buffers
+ Swap:  3046800K total,  1057632K used,  1989168K free,  1623248K cached
+400%cpu  37%user   3%nice 110%sys 122%idle   0%iow 118%irq  10%sirq   0%host
+  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS
+ 8642 u0_a238      10 -10  41G 234M 176M S 26.6   1.4   2:32.69 com.mobilenext.playground

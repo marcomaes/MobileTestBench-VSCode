@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "webview evaluate failed: agent error -32000: ReferenceError: Can't find variable: foo"
+}

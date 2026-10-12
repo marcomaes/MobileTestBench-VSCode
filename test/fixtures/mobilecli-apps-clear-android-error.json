@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "failed to clear app on device Pixel_9: failed to clear app com.nope.nothing: exit status 1\nOutput: Failed\n"
+}

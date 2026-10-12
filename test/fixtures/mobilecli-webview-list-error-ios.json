@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "webview list failed: cannot attach to com.apple.springboard: app does not have get-task-allow entitlement — use a debug build"
+}

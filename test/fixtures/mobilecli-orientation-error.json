@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "invalid orientation value 'sideways', must be 'portrait' or 'landscape'"
+}

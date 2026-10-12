@@ -1,0 +1,7 @@
+Starting: Intent { cmp=com.mobilenext.playground/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.mobilenext.playground/.MainActivity
+TotalTime: 34211
+WaitTime: 34223
+Complete

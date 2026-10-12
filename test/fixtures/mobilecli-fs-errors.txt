@@ -1,0 +1,37 @@
+# Real mobilecli 1.0.17 `fs` error output. stdout carries the JSON envelope, exit code is 1, stderr repeats the bare message.
+# Paths have the simulator device directory shortened to <SIM>.
+
+## iOS simulator
+ls (path outside <SIM>, including "/", relative paths and ".."):
+{"status":"error","error":"failed to list files: path '/' is outside the simulator device directory"}
+ls (missing path inside <SIM>):
+{"status":"error","error":"failed to list files: ls failed: open <SIM>/Containers/.../nothere: no such file or directory"}
+ls (device-level relative path, no bundle id):
+{"status":"error","error":"failed to list files: get_app_container failed: failed to execute xcrun simctl command: exit status 2"}
+push (destination is an existing directory):
+{"status":"error","error":"failed to push file: open <SIM>/.../tmp/jbv scout/a: is a directory"}
+push (relative destination):
+{"status":"error","error":"failed to push file: path 'rel.bin' is outside the simulator device directory"}
+pull (remote is a directory):
+{"status":"error","error":"failed to pull file: pull failed: read <SIM>/.../tmp/jbv scout/a: is a directory"}
+pull (missing remote):
+{"status":"error","error":"failed to pull file: pull failed: open <SIM>/.../zzz: no such file or directory"}
+pull (local path is an existing directory):
+{"status":"error","error":"failed to pull file: open /private/tmp/.../out: is a directory"}
+rm (directory not empty, no -r):
+{"status":"error","error":"failed to remove: remove <SIM>/.../a: directory not empty"}
+rm (missing):
+{"status":"error","error":"failed to remove: remove <SIM>/.../zzz: no such file or directory"}
+
+## Android emulator (error text is always uninformative: the real reason is lost)
+ls (missing path or permission denied, e.g. /data/data):
+{"status":"error","error":"failed to list files: ls failed: exit status 1"}
+rm (missing, non-empty dir without -r, permission denied):
+{"status":"error","error":"failed to remove: exit status 1"}
+mkdir (already exists, no -p for nested, permission denied):
+{"status":"error","error":"failed to create directory: exit status 1"}
+
+## Android pull is NOT safe: these all return {"status":"ok"} and write the shell's error text INTO the local file
+pull /sdcard/Download/jbv scout/zzz (missing)          -> local file contains: cat: /sdcard/Download/jbv scout/zzz: No such file or directory
+pull /sdcard/Download/jbv scout/a (a directory)         -> local file contains: cat: /sdcard/Download/jbv scout/a: Is a directory
+pull /data/data/com.mobilenext.playground/shared_prefs/x.xml -> local file contains: cat: ...: Permission denied

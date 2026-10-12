@@ -1,0 +1,10 @@
+2026-10-04 15:46:51.746 Df CoreSimulatorBridge[4181:25eece] Requesting launch of com.mobilenext.playground with options: {
+2026-10-04 15:46:51.867 Df CoreSimulatorBridge[4181:25eece] Launch successful for 'com.mobilenext.playground', pid: 36136
+2026-10-04 15:46:52.064 Df playground[36136:260af1] [com.apple.UIKit:Application] Deactivation reason added: 10; deactivation reasons: 0 -> 1024; animating application lifecycle event: 0
+2026-10-04 15:46:52.382 Df playground[36136:260af1] [com.apple.UIKit:Application] Deactivation reason added: 11; deactivation reasons: 1024 -> 3072; animating application lifecycle event: 0
+2026-10-04 15:46:52.384 Df playground[36136:260af1] [com.apple.UIKit:Application] Deactivation reason removed: 10; deactivation reasons: 3072 -> 2048; animating application lifecycle event: 0
+2026-10-04 15:46:52.424 Df playground[36136:260af1] [com.apple.UIKit:Application] Deactivation reason added: 5; deactivation reasons: 2048 -> 2080; animating application lifecycle event: 1
+2026-10-04 15:46:52.482 Df playground[36136:260af1] [com.apple.UIKit:Application] Deactivation reason added: 12; deactivation reasons: 2080 -> 6176; animating application lifecycle event: 1
+2026-10-04 15:46:52.482 Df playground[36136:260af1] [com.apple.UIKit:Application] Deactivation reason removed: 11; deactivation reasons: 6176 -> 4128; animating application lifecycle event: 1
+2026-10-04 15:46:52.806 Df playground[36136:260af1] [com.apple.UIKit:Application] Deactivation reason removed: 12; deactivation reasons: 4128 -> 32; animating application lifecycle event: 1
+2026-10-04 15:46:52.807 Df playground[36136:260af1] [com.apple.UIKit:Application] Deactivation reason removed: 5; deactivation reasons: 32 -> 0; animating application lifecycle event: 0

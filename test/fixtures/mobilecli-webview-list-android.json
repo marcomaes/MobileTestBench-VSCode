@@ -1,0 +1,19 @@
+{
+  "status": "ok",
+  "data": [
+    {
+      "id": "b11ce8a",
+      "url": "https://mobilewright.dev/samples/webview/?source=webview",
+      "title": "Sample Login",
+      "bundleId": "com.mobilenext.playground",
+      "processName": "com.mobilenext.playground",
+      "bounds": {
+        "height": 2135,
+        "width": 1080,
+        "x": 0,
+        "y": 289
+      },
+      "isVisible": true
+    }
+  ]
+}

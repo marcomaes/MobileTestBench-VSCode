@@ -1,0 +1,4 @@
+$ xcrun simctl privacy <udid> grant microphone   (exit 117, stderr: first line, then the whole usage text)
+Bundle identifier is required for grant actions
+Grant, revoke, or reset privacy and permissions
+Usage: simctl privacy <device> <action> <service> [<bundle identifier>]

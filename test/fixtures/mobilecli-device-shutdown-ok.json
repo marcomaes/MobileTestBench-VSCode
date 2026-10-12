@@ -1,0 +1,9 @@
+{
+  "status": "ok",
+  "data": {
+    "message": "Device 33915C06-CAF3-430C-9607-AFD7B6AAF75E shut down successfully",
+    "platform": "ios",
+    "type": "simulator",
+    "version": "27.0"
+  }
+}

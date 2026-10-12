@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>launchCount</key>
+	<integer>3</integer>
+	<key>nested</key>
+	<dict>
+		<key>k</key>
+		<string>v</string>
+	</dict>
+	<key>onboarded</key>
+	<true/>
+	<key>ratio</key>
+	<real>0.5</real>
+	<key>seen</key>
+	<date>2026-10-04T13:30:00Z</date>
+	<key>tags</key>
+	<array>
+		<string>a</string>
+		<string>b</string>
+	</array>
+	<key>token</key>
+	<data>
+	SGVsbG8=
+	</data>
+	<key>username</key>
+	<string>scoutuser</string>
+</dict>
+</plist>

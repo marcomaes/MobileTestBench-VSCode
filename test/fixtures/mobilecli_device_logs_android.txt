@@ -1,0 +1,10 @@
+{"timestamp":"2026-10-05 03:03:50.597","message":"adbd service requested 'shell,v2,TERM=xterm-256color:export ANDROID_LOG_TAGS=''; exec logcat '-v' 'threadtime,year' '-T' '1''","level":"Info","pid":516,"process":"adbd","tag":"adbd"}
+{"timestamp":"2026-10-05 03:03:50.984","message":"adbd service requested 'shell,v2,TERM=xterm-256color,raw:cat /proc/516/cmdline'","level":"Info","pid":516,"process":"adbd","tag":"adbd"}
+{"timestamp":"2026-10-05 03:03:52.220","message":"isSatelliteEnabled: mIsSatelliteEnabled=null","level":"Error","pid":1048,"process":"com.android.phone","tag":"SatelliteController"}
+{"timestamp":"2026-10-05 03:03:52.221","message":"isInCarrierRoamingNbIotNtn: satellite is disabled","level":"Debug","pid":1048,"process":"com.android.phone","tag":"SatelliteController"}
+{"timestamp":"2026-10-05 03:03:52.221","message":"getCarrierRoamingNtnConnectType: Checking connect type from PLMN config for subId: 1","level":"Debug","pid":1048,"process":"com.android.phone","tag":"SatelliteController"}
+{"timestamp":"2026-10-05 03:03:52.221","message":"satelliteConfigParser is not ready","level":"Verbose","pid":1048,"process":"com.android.phone","tag":"SatelliteController"}
+{"timestamp":"2026-10-05 03:03:52.223","message":"Sending oneway calls to frozen process.","level":"Warning","pid":647,"process":"system_server","tag":"libbinder.IPCThreadState"}
+{"timestamp":"2026-10-05 03:03:52.243","message":"satelliteConfigParser is not ready","level":"Verbose","pid":1048,"process":"com.android.phone","tag":"SatelliteController"}
+{"timestamp":"2026-10-05 03:03:52.316","message":"AGTM parsing failed flags.readFromStream(s) at 159","level":"Warning","pid":491,"process":"surfaceflinger","tag":"skia"}
+{"timestamp":"2026-10-05 03:03:52.649","message":"Ignore this poll. newStats: null txLinkSpeedMbps: 1 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@aef3db7","level":"Error","pid":647,"process":"system_server","tag":"WifiDataStall"}

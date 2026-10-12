@@ -1,0 +1,33 @@
+{
+  "status": "ok",
+  "data": [
+    {
+      "name": ".DocumentRevisions-V100",
+      "path": "/Users/user/Library/Developer/CoreSimulator/Devices/F2368465-C17E-4E1D-B270-D9433E8A6622/data/.DocumentRevisions-V100",
+      "size": 0,
+      "modTime": "2026-10-02T18:39:24.230683971+02:00",
+      "isDir": true
+    },
+    {
+      "name": "Containers",
+      "path": "/Users/user/Library/Developer/CoreSimulator/Devices/F2368465-C17E-4E1D-B270-D9433E8A6622/data/Containers",
+      "size": 0,
+      "modTime": "2026-08-18T11:01:16.130667047+02:00",
+      "isDir": true
+    },
+    {
+      "name": "Documents",
+      "path": "/Users/user/Library/Developer/CoreSimulator/Devices/F2368465-C17E-4E1D-B270-D9433E8A6622/data/Documents",
+      "size": 0,
+      "modTime": "2026-08-18T10:11:19.372382059+02:00",
+      "isDir": true
+    },
+    {
+      "name": "Downloads",
+      "path": "/Users/user/Library/Developer/CoreSimulator/Devices/F2368465-C17E-4E1D-B270-D9433E8A6622/data/Downloads",
+      "size": 0,
+      "modTime": "2026-08-18T10:10:10.676754889+02:00",
+      "isDir": true
+    }
+  ]
+}

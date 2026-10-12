@@ -1,0 +1,81 @@
+{
+  "name": "mobile-test-bench",
+  "displayName": "Mobile Test Bench",
+  "description": "Mirror and control Android and iOS devices in VS Code, inspect their UI, and get ready-to-use Mobilewright, Appium and WebdriverIO locators.",
+  "version": "1.0.1",
+  "publisher": "marcomaes",
+  "license": "Apache-2.0",
+  "repository": { "type": "git", "url": "https://github.com/marcomaes/MobileTestBench" },
+  "engines": { "vscode": "^1.90.0" },
+  "categories": ["Testing", "Debuggers", "Other"],
+  "keywords": ["mobile", "android", "ios", "appium", "mobilewright", "webdriverio", "inspector", "emulator", "simulator"],
+  "main": "./dist/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [{ "id": "mobileTestBench", "title": "Mobile Devices", "icon": "media/icons/toolWindowDevice.svg" }]
+    },
+    "views": {
+      "mobileTestBench": [{ "id": "mobileTestBench.devices", "name": "Devices" }]
+    },
+    "viewsWelcome": [
+      { "view": "mobileTestBench.devices", "contents": "No devices found.\n[Refresh](command:mobileTestBench.refreshDevices)\n[Setup guide](command:mobileTestBench.openSetupGuide)" }
+    ],
+    "commands": [
+      { "command": "mobileTestBench.refreshDevices", "title": "Refresh Devices", "category": "Mobile Test Bench", "icon": "$(refresh)" },
+      { "command": "mobileTestBench.openDevice", "title": "Open Device", "category": "Mobile Test Bench" },
+      { "command": "mobileTestBench.showLocator", "title": "Show Locator on Device", "category": "Mobile Test Bench" },
+      { "command": "mobileTestBench.openSetupGuide", "title": "Open Setup Guide", "category": "Mobile Test Bench" }
+    ],
+    "menus": {
+      "view/title": [{ "command": "mobileTestBench.refreshDevices", "when": "view == mobileTestBench.devices", "group": "navigation" }],
+      "editor/context": [{ "command": "mobileTestBench.showLocator", "group": "navigation@99" }],
+      "commandPalette": [{ "command": "mobileTestBench.showLocator", "when": "editorTextFocus" }]
+    },
+    "keybindings": [
+      { "command": "mobileTestBench.showLocator", "key": "ctrl+alt+shift+m", "mac": "ctrl+alt+shift+m", "when": "editorTextFocus" }
+    ],
+    "configuration": {
+      "title": "Mobile Test Bench",
+      "properties": {
+        "mobileTestBench.adbPath": { "type": "string", "default": "", "markdownDescription": "Path to `adb`. Empty: look in `ANDROID_HOME`, the default SDK folder and `PATH`." },
+        "mobileTestBench.useEmulatorGrpc": { "type": "boolean", "default": true, "description": "Use the emulator gRPC connection for fast frames and input on Android emulators." },
+        "mobileTestBench.screenshotIntervalMs": { "type": "number", "default": 250, "minimum": 50, "description": "Interval of the screenshot fallback, in milliseconds." },
+        "mobileTestBench.wdaUrl": { "type": "string", "default": "http://localhost:8100", "description": "WebDriverAgent URL, for iOS simulators when mobilecli is not installed." },
+        "mobileTestBench.mjpegUrl": { "type": "string", "default": "http://localhost:9100", "description": "WebDriverAgent MJPEG stream URL." },
+        "mobileTestBench.longPressMs": { "type": "number", "default": 700, "minimum": 300, "maximum": 3000, "description": "How long the mouse stays down before it counts as a long press, in milliseconds." },
+        "mobileTestBench.elementFilter": { "type": "string", "default": "", "description": "Last filter text of the element inspector." },
+        "mobileTestBench.locatorLanguage": { "type": "string", "default": "AS_SHOWN", "description": "Language of the Copy as action of the Locators tab." },
+        "mobileTestBench.contrastHints": { "type": "boolean", "default": true, "description": "Add colour contrast hints to the accessibility audit." },
+        "mobileTestBench.recorderOutput": { "type": "string", "default": "MOBILEWRIGHT", "description": "Output flavour of the recorder." },
+        "mobileTestBench.replayTimeoutSeconds": { "type": "number", "default": 10, "description": "Default wait timeout of a replay step, in seconds." },
+        "mobileTestBench.replayDelayMs": { "type": "number", "default": 0, "description": "Pause between replay steps, in milliseconds." },
+        "mobileTestBench.hideSystemApps": { "type": "boolean", "default": true, "description": "Hide system apps in the Apps tab." },
+        "mobileTestBench.reconnectAutomatically": { "type": "boolean", "default": true, "description": "Reconnect automatically when a device drops." },
+        "mobileTestBench.reconnectToLastDevice": { "type": "boolean", "default": false, "description": "Reconnect to the last used device when the workspace opens." },
+        "mobileTestBench.showGrid": { "type": "boolean", "default": false, "description": "Draw a coordinate grid over the mirror." },
+        "mobileTestBench.visualTolerance": { "type": "number", "default": 8, "description": "Colour tolerance of the visual diff." },
+        "mobileTestBench.perfWindowSeconds": { "type": "number", "default": 60, "description": "Window of the performance charts, in seconds." }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "sync": "node scripts/sync.mjs",
+    "sync:check": "node scripts/sync.mjs check",
+    "sync:fixtures": "node scripts/sync.mjs fixtures",
+    "package": "npm run build && vsce package",
+    "vscode:prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.90.0",
+    "@vscode/vsce": "^3.0.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  }
+}

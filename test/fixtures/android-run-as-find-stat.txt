@@ -1,0 +1,11 @@
+$ adb shell "run-as com.mobilenext.playground sh -c 'cd \"files/jbv scout\" && find . -mindepth 1 -maxdepth 1 -exec stat -c \"%F|%s|%Y|%n\" {} +'"
+regular file|3|1791120506|./a b.txt
+symbolic link|7|1791120506|./lnk
+regular file|10240|1791120506|./allb.bin
+$ adb shell "find /sdcard/Download/'jbv scout' -mindepth 1 -maxdepth 1 -exec stat -c '%F|%s|%Y|%n' {} +"
+directory|4096|1791120446|/sdcard/Download/jbv scout/a
+regular file|12|1791120432|/sdcard/Download/jbv scout/my file.txt
+directory|4096|1791120484|/sdcard/Download/jbv scout/it's $HOME;x
+$ adb shell "stat -c '%F|%s|%Y|%n' /sdcard /sdcard/"
+symbolic link|21|1786513725|/sdcard
+directory|4096|1791102426|/sdcard/

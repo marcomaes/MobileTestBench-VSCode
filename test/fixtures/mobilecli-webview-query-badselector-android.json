@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "webview evaluate failed: agent error -32603: Internal error: Failed to execute 'querySelectorAll' on 'Document': 'div[[' is not a valid selector."
+}

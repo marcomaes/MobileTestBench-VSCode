@@ -1,0 +1,11 @@
+$ adb shell run-as com.mobilenext.playground ls -la
+total 84
+drwx------   9 u0_a238 u0_a238        4096 2026-10-04 15:19 .
+drwxrwx--x 268 system  system        16384 2026-08-30 14:42 ..
+drwxrwx--x   2 u0_a238 u0_a238        4096 2026-10-04 15:19 app_textures
+drwx------   3 u0_a238 u0_a238        4096 2026-10-04 15:19 app_webview
+drwxrws--x   5 u0_a238 u0_a238_cache  4096 2026-10-04 15:19 cache
+drwxrwx--x   2 u0_a238 u0_a238        4096 2026-10-04 14:13 files
+drwxrwxrwx   3 u0_a238 u0_a238        4096 2026-10-04 15:18 mobilecli
+drwxrwx--x   3 u0_a238 u0_a238        4096 2026-10-04 15:19 no_backup
+drwxrwx--x   2 u0_a238 u0_a238        4096 2026-10-04 15:21 shared_prefs

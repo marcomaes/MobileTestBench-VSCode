@@ -1,0 +1,4 @@
+(xcrun simctl privacy help, Xcode on this machine; note: "camera" is accepted by grant/revoke/reset but is not listed)
+Usage: simctl privacy <device> <action> <service> [<bundle identifier>]
+	action: grant (needs bundle id) | revoke (needs bundle id) | reset (bundle id optional; without it resets ALL apps)
+	service: all calendar contacts-limited contacts location location-always photos-add photos media-library microphone motion reminders siri

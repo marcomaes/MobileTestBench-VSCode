@@ -1,0 +1,14 @@
+$ adb shell pm grant com.mobilenext.playground android.permission.INTERNET   (exit 255, stderr)
+
+Exception occurred while executing 'grant':
+java.lang.SecurityException: Permission android.permission.INTERNET requested by package com.mobilenext.playground is not a changeable permission type
+	at com.android.server.permission.access.permission.PermissionService.setRuntimePermissionGranted(PermissionService.kt:1111)
+$ adb shell pm grant com.mobilenext.playground android.permission.NOPE_X   (exit 255, stderr)
+
+Exception occurred while executing 'grant':
+java.lang.IllegalArgumentException: Unknown permission android.permission.NOPE_X
+	at com.android.server.wm.Task$$ExternalSyntheticBUOutline2.m(R8$$SyntheticClass:0)
+$ adb shell pm grant com.not.installed android.permission.CAMERA   (exit 1, stdout)
+Failure [package not found]
+Error: package not found
+$ adb shell pm grant com.mobilenext.playground android.permission.RECORD_AUDIO   (not requested by the app: exit 0, no output, nothing changes)

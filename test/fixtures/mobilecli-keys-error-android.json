@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "failed to press keys on device Pixel_9: AndroidDevice: unsupported key: foo"
+}

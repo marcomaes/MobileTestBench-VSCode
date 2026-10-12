@@ -1,0 +1,1 @@
+TimeZoneState{mZoneId=Europe/Amsterdam, mUserShouldConfirmId=true}

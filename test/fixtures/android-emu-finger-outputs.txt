@@ -1,0 +1,4 @@
+OK
+KO: invalid fingerid
+KO: missing fingerid
+OK

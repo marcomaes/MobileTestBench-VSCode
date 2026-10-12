@@ -1,0 +1,11 @@
+**
+!dist/**
+!media/**
+!package.json
+!README.md
+!CHANGELOG.md
+!LICENSE
+!NOTICE
+!docs/**
+!src/proto/**
+dist/**/*.map

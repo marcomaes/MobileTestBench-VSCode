@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string name="username">scout &amp; co</string>
+    <boolean name="onboarded" value="true" />
+    <int name="launch_count" value="3" />
+    <long name="last_seen" value="1791119957648" />
+    <float name="ratio" value="0.5" />
+    <string name="multi">line one
+line two</string>
+    <set name="tags">
+        <string>a</string>
+        <string>b</string>
+    </set>
+    <set name="empty_set" />
+</map>

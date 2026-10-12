@@ -1,0 +1,1 @@
+{"jsonrpc":"2.0","error":{"code":-32000,"data":"failed to perform gesture on device F2368465-C17E-4E1D-B270-D9433E8A6622: RPC error -32602: Finger 0 has 'release' before end of sequence at index 1","message":"Server error"},"id":3}

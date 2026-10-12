@@ -1,0 +1,6 @@
+Current network status:
+  download speed:     473600 bits/s (57.8 KB/s)
+  upload speed:       473600 bits/s (57.8 KB/s)
+  minimum latency:  80 ms
+  maximum latency:  400 ms
+OK

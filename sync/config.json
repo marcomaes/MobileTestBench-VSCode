@@ -1,0 +1,9 @@
+{
+  "pluginDir": "../../MobileTestBench",
+  "pluginDirEnv": "MTB_PLUGIN_DIR",
+  "kotlinRoot": "src/main/kotlin/io/github/marcomaes/mobiletestbench",
+  "kotlinTestRoot": "src/test/kotlin/io/github/marcomaes/mobiletestbench",
+  "fixturesDir": "src/test/resources/fixtures",
+  "tsRoots": ["src", "test"],
+  "localFixturesDir": "test/fixtures"
+}

@@ -1,0 +1,149 @@
+{
+  "status": "ok",
+  "data": [
+    {
+      "packageName": "com.google.android.youtube",
+      "appName": "YouTube",
+      "version": "21.36.45",
+      "versionCode": "1561295689"
+    },
+    {
+      "packageName": "io.appium.settings",
+      "appName": "Appium Settings",
+      "version": "8.0.8",
+      "versionCode": "190"
+    },
+    {
+      "packageName": "com.google.android.googlequicksearchbox",
+      "appName": "Google",
+      "version": "17.56.15.ve.arm64",
+      "versionCode": "301803618"
+    },
+    {
+      "packageName": "com.mobilenext.playground",
+      "appName": "Playground",
+      "version": "1.0",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.google.android.apps.messaging",
+      "appName": "Messages",
+      "version": "messages.android_20260824_01_RC05.phone_dynamic",
+      "versionCode": "321731063"
+    },
+    {
+      "packageName": "com.google.android.apps.safetyhub",
+      "appName": "Personal Safety",
+      "version": "2026.08.06.960186296.0-release_gms",
+      "versionCode": "100886377"
+    },
+    {
+      "packageName": "com.android.vending",
+      "appName": "Google Play Store",
+      "version": "53.0.27-34 [0] [PR] 973951861",
+      "versionCode": "85302740"
+    },
+    {
+      "packageName": "com.android.camera2",
+      "appName": "Camera",
+      "version": "2.0.002",
+      "versionCode": "20002000"
+    },
+    {
+      "packageName": "nl.minbzk.p_direkt",
+      "appName": "App-Direkt",
+      "version": "1.23.1",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.android.stk",
+      "appName": "SIM Toolkit",
+      "version": "17",
+      "versionCode": "37"
+    },
+    {
+      "packageName": "com.google.android.deskclock",
+      "appName": "Clock",
+      "version": "9.1 (965977594)",
+      "versionCode": "76112330"
+    },
+    {
+      "packageName": "com.google.android.gm",
+      "appName": "Gmail",
+      "version": "2026.08.31.977101690.Release",
+      "versionCode": "66003358"
+    },
+    {
+      "packageName": "com.koushikdutta.vysor",
+      "appName": "Vysor",
+      "version": "4.2.2",
+      "versionCode": "1708394400"
+    },
+    {
+      "packageName": "com.google.android.dialer",
+      "appName": "Phone",
+      "version": "235.0.965622757",
+      "versionCode": "20009028"
+    },
+    {
+      "packageName": "com.google.android.apps.docs",
+      "appName": "Drive",
+      "version": "2.26.365.0.all.alldpi",
+      "versionCode": "214640115"
+    },
+    {
+      "packageName": "com.google.android.apps.maps",
+      "appName": "Maps",
+      "version": "26.36.03.973607363",
+      "versionCode": "1068763340"
+    },
+    {
+      "packageName": "com.google.android.contacts",
+      "appName": "Contacts",
+      "version": "4.86.23.966666027",
+      "versionCode": "3289989"
+    },
+    {
+      "packageName": "com.android.chrome",
+      "appName": "Chrome",
+      "version": "152.0.7977.64",
+      "versionCode": "797706404"
+    },
+    {
+      "packageName": "io.testsmith.practicesoftwaretesting",
+      "appName": "ToolShop",
+      "version": "1.0.0",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.google.android.apps.photos",
+      "appName": "Photos",
+      "version": "7.90.0.971743778",
+      "versionCode": "52288898"
+    },
+    {
+      "packageName": "com.google.android.calendar",
+      "appName": "Calendar",
+      "version": "2026.34.1-975609621-release",
+      "versionCode": "2018284094"
+    },
+    {
+      "packageName": "com.google.android.documentsui",
+      "appName": "Files",
+      "version": "17",
+      "versionCode": "371899999"
+    },
+    {
+      "packageName": "com.android.settings",
+      "appName": "Settings",
+      "version": "17",
+      "versionCode": "37"
+    },
+    {
+      "packageName": "com.google.android.apps.youtube.music",
+      "appName": "YouTube Music",
+      "version": "9.35.54",
+      "versionCode": "93554240"
+    }
+  ]
+}

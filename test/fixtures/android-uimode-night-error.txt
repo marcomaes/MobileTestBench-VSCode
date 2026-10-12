@@ -1,0 +1,1 @@
+Error: mode must be 'yes', 'no', or 'auto', or 'custom_schedule', or 'custom_bedtime'

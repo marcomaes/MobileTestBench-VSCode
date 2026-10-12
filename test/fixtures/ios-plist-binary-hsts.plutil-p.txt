@@ -1,0 +1,16 @@
+{
+  "com.apple.CFNetwork.defaultStorageSession" => {
+    "auth.wikimedia.org" => {
+      "Create Time" => 812812957.933916
+      "Expiry" => 919197667.933915
+      "HSTS Host" => true
+      "Include Subdomains" => true
+    }
+    "en.wikipedia.org" => {
+      "Create Time" => 812812958.055501
+      "Expiry" => 919197668.055501
+      "HSTS Host" => true
+      "Include Subdomains" => true
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "failed to get foreground app on device Pixel_9: could not determine foreground app"
+}

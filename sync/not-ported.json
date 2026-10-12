@@ -1,0 +1,4 @@
+{
+  "_comment": "Kotlin files that have no TypeScript counterpart on purpose. Key: path under the Kotlin root (or test:<path> for tests). Value: why.",
+  "settings/JBViewMobileConfigurable.kt": "Swing settings page. VS Code renders contributes.configuration from package.json instead."
+}

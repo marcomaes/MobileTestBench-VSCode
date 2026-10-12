@@ -1,0 +1,32 @@
+Applications Graphics Acceleration Info:
+Uptime: 92696369 Realtime: 92696369
+
+** Graphics info for pid 8642 [com.mobilenext.playground] **
+
+Stats since: 92669182431270ns
+Total frames rendered: 40
+Janky frames: 40 (100.00%)
+Janky frames (legacy): 40 (100.00%)
+50th percentile: 250ms
+90th percentile: 900ms
+95th percentile: 2450ms
+99th percentile: 3550ms
+Number Missed Vsync: 29
+Number High input latency: 0
+Number Slow UI thread: 32
+Number Slow bitmap uploads: 7
+Number Slow issue draw commands: 40
+Number Frame deadline missed: 40
+Number Frame deadline missed (legacy): 40
+HISTOGRAM: <trimmed>
+50th gpu percentile: 4950ms
+90th gpu percentile: 4950ms
+95th gpu percentile: 4950ms
+99th gpu percentile: 4950ms
+GPU HISTOGRAM: <trimmed>
+
+Pipeline=Skia (OpenGL)
+Memory policy:
+  Max surface area: 2617920
+  Max resource usage: 125.66MB (x48)
+  Background retention: 50% (altUiHidden = true)

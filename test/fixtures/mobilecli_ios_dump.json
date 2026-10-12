@@ -1,0 +1,433 @@
+{
+  "status": "ok",
+  "data": {
+    "elements": [
+      {
+        "ref": "@e1",
+        "type": "Other",
+        "name": "Home screen icons",
+        "identifier": "Home screen icons",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 402,
+          "height": 874
+        },
+        "children": [
+          {
+            "ref": "@e2",
+            "type": "Icon",
+            "label": "Fitness",
+            "name": "Fitness",
+            "value": "",
+            "identifier": "Fitness",
+            "rect": {
+              "x": 28,
+              "y": 88,
+              "width": 68,
+              "height": 90
+            },
+            "children": [
+              {
+                "ref": "@e3",
+                "type": "Other",
+                "name": "label-view",
+                "identifier": "label-view",
+                "rect": {
+                  "x": 33,
+                  "y": 157,
+                  "width": 57,
+                  "height": 19
+                }
+              }
+            ]
+          },
+          {
+            "ref": "@e4",
+            "type": "Icon",
+            "label": "Watch",
+            "name": "Watch",
+            "value": "",
+            "identifier": "Watch",
+            "rect": {
+              "x": 120,
+              "y": 88,
+              "width": 68,
+              "height": 90
+            },
+            "children": [
+              {
+                "ref": "@e5",
+                "type": "Other",
+                "name": "label-view",
+                "identifier": "label-view",
+                "rect": {
+                  "x": 128,
+                  "y": 157,
+                  "width": 52,
+                  "height": 19
+                }
+              }
+            ]
+          },
+          {
+            "ref": "@e6",
+            "type": "Icon",
+            "label": "Contacts",
+            "name": "Contacts",
+            "value": "",
+            "identifier": "Contacts",
+            "rect": {
+              "x": 211,
+              "y": 88,
+              "width": 72,
+              "height": 90
+            },
+            "children": [
+              {
+                "ref": "@e7",
+                "type": "Other",
+                "name": "label-view",
+                "identifier": "label-view",
+                "rect": {
+                  "x": 213,
+                  "y": 157,
+                  "width": 68,
+                  "height": 19
+                }
+              }
+            ]
+          },
+          {
+            "ref": "@e8",
+            "type": "Icon",
+            "label": "Files",
+            "name": "Files",
+            "value": "",
+            "identifier": "Files",
+            "rect": {
+              "x": 306,
+              "y": 88,
+              "width": 68,
+              "height": 90
+            },
+            "children": [
+              {
+                "ref": "@e9",
+                "type": "Other",
+                "name": "label-view",
+                "identifier": "label-view",
+                "rect": {
+                  "x": 318,
+                  "y": 157,
+                  "width": 42,
+                  "height": 19
+                }
+              }
+            ]
+          },
+          {
+            "ref": "@e10",
+            "type": "Icon",
+            "label": "Preview",
+            "name": "Preview",
+            "value": "",
+            "identifier": "Preview",
+            "rect": {
+              "x": 28,
+              "y": 188,
+              "width": 68,
+              "height": 90
+            },
+            "children": [
+              {
+                "ref": "@e11",
+                "type": "Other",
+                "name": "label-view",
+                "identifier": "label-view",
+                "rect": {
+                  "x": 31,
+                  "y": 257,
+                  "width": 61,
+                  "height": 19
+                }
+              }
+            ]
+          },
+          {
+            "ref": "@e12",
+            "type": "Icon",
+            "label": "Utilities folder",
+            "name": "Utilities",
+            "value": "2 apps",
+            "identifier": "Utilities",
+            "rect": {
+              "x": 120,
+              "y": 188,
+              "width": 68,
+              "height": 90
+            }
+          },
+          {
+            "ref": "@e13",
+            "type": "Icon",
+            "label": "App-Direkt",
+            "name": "App-Direkt",
+            "value": "",
+            "identifier": "App-Direkt",
+            "rect": {
+              "x": 205,
+              "y": 188,
+              "width": 84,
+              "height": 90
+            },
+            "children": [
+              {
+                "ref": "@e14",
+                "type": "Other",
+                "name": "label-view",
+                "identifier": "label-view",
+                "rect": {
+                  "x": 207,
+                  "y": 257,
+                  "width": 80,
+                  "height": 19
+                }
+              }
+            ]
+          },
+          {
+            "ref": "@e15",
+            "type": "Icon",
+            "label": "ToolShop",
+            "name": "ToolShop",
+            "value": "",
+            "identifier": "ToolShop",
+            "rect": {
+              "x": 302,
+              "y": 188,
+              "width": 74,
+              "height": 90
+            },
+            "children": [
+              {
+                "ref": "@e16",
+                "type": "Other",
+                "name": "label-view",
+                "identifier": "label-view",
+                "rect": {
+                  "x": 304,
+                  "y": 257,
+                  "width": 70,
+                  "height": 19
+                }
+              }
+            ]
+          },
+          {
+            "ref": "@e17",
+            "type": "Icon",
+            "label": "Playground",
+            "name": "Playground",
+            "value": "",
+            "identifier": "Playground",
+            "rect": {
+              "x": 19,
+              "y": 288,
+              "width": 85,
+              "height": 90
+            },
+            "children": [
+              {
+                "ref": "@e18",
+                "type": "Other",
+                "name": "label-view",
+                "identifier": "label-view",
+                "rect": {
+                  "x": 21,
+                  "y": 357,
+                  "width": 81,
+                  "height": 19
+                }
+              }
+            ]
+          },
+          {
+            "ref": "@e19",
+            "type": "Icon",
+            "label": "Device Kit",
+            "name": "Device Kit",
+            "value": "",
+            "identifier": "Device Kit",
+            "rect": {
+              "x": 115,
+              "y": 288,
+              "width": 78,
+              "height": 90
+            },
+            "children": [
+              {
+                "ref": "@e20",
+                "type": "Other",
+                "name": "label-view",
+                "identifier": "label-view",
+                "rect": {
+                  "x": 117,
+                  "y": 357,
+                  "width": 74,
+                  "height": 19
+                }
+              }
+            ]
+          },
+          {
+            "ref": "@e21",
+            "type": "Other",
+            "label": "Search",
+            "name": "spotlight-pill",
+            "value": "Page 2 of 2",
+            "identifier": "spotlight-pill",
+            "rect": {
+              "x": 162,
+              "y": 703,
+              "width": 78,
+              "height": 30
+            },
+            "children": [
+              {
+                "ref": "@e22",
+                "type": "PageIndicator",
+                "name": "Page control",
+                "value": "Page 2 of 2",
+                "identifier": "Page control",
+                "rect": {
+                  "x": 162,
+                  "y": 703,
+                  "width": 78,
+                  "height": 35
+                }
+              },
+              {
+                "ref": "@e23",
+                "type": "Other",
+                "name": "spotlight-pill",
+                "identifier": "spotlight-pill",
+                "rect": {
+                  "x": 162,
+                  "y": 703,
+                  "width": 78,
+                  "height": 30
+                },
+                "children": [
+                  {
+                    "ref": "@e24",
+                    "type": "Image",
+                    "label": "Search",
+                    "name": "magnifyingglass",
+                    "identifier": "magnifyingglass",
+                    "rect": {
+                      "x": 173,
+                      "y": 713,
+                      "width": 11,
+                      "height": 10
+                    }
+                  },
+                  {
+                    "ref": "@e25",
+                    "type": "StaticText",
+                    "label": "Search",
+                    "name": "Search",
+                    "rect": {
+                      "x": 188,
+                      "y": 711,
+                      "width": 40,
+                      "height": 14
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "ref": "@e26",
+            "type": "Icon",
+            "label": "Safari",
+            "name": "Safari",
+            "value": "",
+            "identifier": "Safari",
+            "rect": {
+              "x": 123,
+              "y": 771,
+              "width": 68,
+              "height": 68
+            }
+          },
+          {
+            "ref": "@e27",
+            "type": "Icon",
+            "label": "Messages",
+            "name": "Messages",
+            "value": "",
+            "identifier": "Messages",
+            "rect": {
+              "x": 211,
+              "y": 771,
+              "width": 68,
+              "height": 68
+            }
+          }
+        ]
+      },
+      {
+        "ref": "@e28",
+        "type": "StaticText",
+        "label": "18:39",
+        "name": "18:39",
+        "rect": {
+          "x": 51,
+          "y": 22,
+          "width": 45,
+          "height": 20
+        }
+      },
+      {
+        "ref": "@e29",
+        "type": "Other",
+        "name": "3 of 3 Wi-Fi bars",
+        "value": "SSID, 3 of 3 Wi-Fi bars",
+        "identifier": "3 of 3 Wi-Fi bars",
+        "rect": {
+          "x": 315,
+          "y": 26,
+          "width": 17,
+          "height": 12
+        }
+      },
+      {
+        "ref": "@e30",
+        "type": "StaticText",
+        "label": "18:39",
+        "name": "18:39",
+        "rect": {
+          "x": 51,
+          "y": 22,
+          "width": 45,
+          "height": 20
+        }
+      },
+      {
+        "ref": "@e31",
+        "type": "Other",
+        "name": "3 of 3 Wi-Fi bars",
+        "value": "SSID, 3 of 3 Wi-Fi bars",
+        "identifier": "3 of 3 Wi-Fi bars",
+        "rect": {
+          "x": 315,
+          "y": 26,
+          "width": 17,
+          "height": 12
+        }
+      }
+    ]
+  }
+}

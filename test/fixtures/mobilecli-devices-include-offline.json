@@ -1,0 +1,34 @@
+{
+  "status": "ok",
+  "data": {
+    "devices": [
+      {
+        "id": "Pixel_9",
+        "name": "Pixel 9",
+        "platform": "android",
+        "type": "emulator",
+        "version": "17",
+        "state": "online",
+        "model": "sdk_gphone16k_arm64"
+      },
+      {
+        "id": "33915C06-CAF3-430C-9607-AFD7B6AAF75E",
+        "name": "iPhone 18 Pro",
+        "platform": "ios",
+        "type": "simulator",
+        "version": "27.0",
+        "state": "offline",
+        "model": "com.apple.CoreSimulator.SimDeviceType.iPhone-18-Pro"
+      },
+      {
+        "id": "F2368465-C17E-4E1D-B270-D9433E8A6622",
+        "name": "iPhone 17 Pro",
+        "platform": "ios",
+        "type": "simulator",
+        "version": "26.5",
+        "state": "online",
+        "model": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro"
+      }
+    ]
+  }
+}

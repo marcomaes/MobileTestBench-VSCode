@@ -1,0 +1,7 @@
+$ xcrun simctl privacy <udid> grant bogus com.mobilenext.playground   (exit 1, on stderr)
+An error was encountered processing the command (domain=NSPOSIXErrorDomain, code=1):
+Simulator device failed to complete the requested operation.
+Operation not permitted
+Underlying error (domain=NSPOSIXErrorDomain, code=1):
+	Failed to set access
+	Operation not permitted

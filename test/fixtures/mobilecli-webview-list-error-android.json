@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "webview list failed: webview injection requires a debug build: com.google.android.apps.nexuslauncher is not debuggable"
+}

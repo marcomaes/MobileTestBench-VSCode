@@ -1,0 +1,42 @@
+Applications Memory Usage (in Kilobytes):
+Uptime: 92646726 Realtime: 92646726
+
+** MEMINFO in pid 8642 [com.mobilenext.playground] **
+                   Pss  Private  Private  SwapPss      Rss     Heap     Heap     Heap
+                 Total    Dirty    Clean    Dirty    Total     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------   ------   ------
+  Native Heap    14559    13664      880    12026    15584    42512    32357     6021
+  Dalvik Heap     6344     4048     2160       76     8304    11075     5538     5537
+ Dalvik Other     8179     4688      416      353    11424                           
+        Stack     1456     1104      352     1024     1456                           
+    Other dev       22        0       16        0      672                           
+     .so mmap     4977      320      848      694    48976                           
+    .jar mmap     3131        0      240        0    53264                           
+    .apk mmap    19121       16     3440      720    54192                           
+    .ttf mmap      257        0        0        0     1120                           
+    .dex mmap     3661        0     3616     9520     4896                           
+    .oat mmap       38        0        0        0     2080                           
+    .art mmap     6694     1632     4592     3450    18992                           
+   Other mmap    10586    10000        0        0    13536                           
+        Memfd       26        0        0        0      960                           
+      Unknown     4299     3232     1056     9416     4848                           
+        TOTAL   120629    38704    17616    37279   240304    53587    37895    11558
+ 
+ App Summary
+                       Pss(KB)                        Rss(KB)
+                        ------                         ------
+           Java Heap:    10272                          27296
+         Native Heap:    13664                          15584
+                Code:    10080                         172272
+               Stack:     1104                           1456
+            Graphics:        0                              0
+       Private Other:    21200
+              System:    64309
+             Unknown:                                   23696
+ 
+           TOTAL PSS:   120629            TOTAL RSS:   240304       TOTAL SWAP PSS:    37279
+ 
+ Objects
+               Views:       67         ViewRootImpl:        2
+         AppContexts:        8           Activities:        2
+              Assets:       21        AssetManagers:        0

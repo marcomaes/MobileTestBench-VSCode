@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCUIElementTypeApplication type="XCUIElementTypeApplication" name="Demo" label="Demo" enabled="true" visible="true" accessible="false" x="0" y="0" width="390" height="844" index="0">
+  <XCUIElementTypeWindow type="XCUIElementTypeWindow" enabled="true" visible="true" accessible="false" x="0" y="0" width="390" height="844" index="0">
+    <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Welcome" name="Welcome" label="Welcome" enabled="true" visible="true" accessible="true" x="20" y="100" width="350" height="30" index="0"/>
+    <XCUIElementTypeTextField type="XCUIElementTypeTextField" name="email-input" label="Email" enabled="true" visible="true" accessible="true" x="20" y="200" width="350" height="44" index="1"/>
+    <XCUIElementTypeButton type="XCUIElementTypeButton" name="Sign In" label="Sign In" enabled="true" visible="true" accessible="true" x="20" y="300" width="350" height="44" index="2"/>
+    <XCUIElementTypeButton type="XCUIElementTypeButton" name="Hidden" label="Hidden" enabled="true" visible="false" accessible="true" x="20" y="300" width="10" height="10" index="3"/>
+  </XCUIElementTypeWindow>
+</XCUIElementTypeApplication>

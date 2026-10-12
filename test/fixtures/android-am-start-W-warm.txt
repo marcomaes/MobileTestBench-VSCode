@@ -1,0 +1,7 @@
+Starting: Intent { cmp=com.mobilenext.playground/.MainActivity }
+Warning: Activity not started, its current task has been brought to the front
+Status: ok
+LaunchState: UNKNOWN (0)
+Activity: com.mobilenext.playground/.MainActivity
+WaitTime: 2526
+Complete

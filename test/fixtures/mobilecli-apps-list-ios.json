@@ -1,0 +1,243 @@
+{
+  "status": "ok",
+  "data": [
+    {
+      "packageName": "com.apple.PridePoster",
+      "appName": "Pride",
+      "version": "1.0",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.apple.EscrowSecurityAlert",
+      "appName": "EscrowSecurityAlert",
+      "version": "1.0",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.apple.CarPlayApp",
+      "appName": "CarPlay",
+      "version": "1.0",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.apple.EmojiPoster",
+      "appName": "Emoji",
+      "version": "1.0",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.apple.PreviewShell",
+      "appName": "Xcode Previews",
+      "version": "16.0",
+      "versionCode": "23.50.7"
+    },
+    {
+      "packageName": "com.mobilenext.playground",
+      "appName": "Playground",
+      "version": "1.0",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.apple.reminders",
+      "appName": "Reminders",
+      "version": "7.0",
+      "versionCode": "3976"
+    },
+    {
+      "packageName": "com.apple.commandandcontrol",
+      "appName": "Voice Control",
+      "version": "1.2.43",
+      "versionCode": "1.2.43"
+    },
+    {
+      "packageName": "com.apple.Passbook",
+      "appName": "Wallet",
+      "version": "1.0",
+      "versionCode": "1642.6.5"
+    },
+    {
+      "packageName": "com.apple.Fitness",
+      "appName": "Fitness",
+      "version": "1.0",
+      "versionCode": "1.0"
+    },
+    {
+      "packageName": "com.apple.livetranscriptionui",
+      "appName": "Live Captions",
+      "version": "1.0",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.apple.mobilecal",
+      "appName": "Calendar",
+      "version": "1.0",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.apple.Posters.UnityPosterApp",
+      "appName": "Unity",
+      "version": "1.0",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.apple.Bridge",
+      "appName": "Watch",
+      "version": "1.0",
+      "versionCode": "1.0"
+    },
+    {
+      "packageName": "com.apple.NanoUniverse.AegirProxyApp",
+      "appName": "Astronomy",
+      "version": "1.0",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.apple.VoiceOverTouch",
+      "appName": "VoiceOver",
+      "version": "1.0",
+      "versionCode": "1.0"
+    },
+    {
+      "packageName": "com.apple.springboard",
+      "appName": "SpringBoard",
+      "version": "1.0",
+      "versionCode": "50"
+    },
+    {
+      "packageName": "com.apple.Passwords",
+      "appName": "Passwords",
+      "version": "2.5",
+      "versionCode": "8624.2.5.10.4"
+    },
+    {
+      "packageName": "com.apple.mobileslideshow",
+      "appName": "Photos",
+      "version": "1.0",
+      "versionCode": "852.0.102"
+    },
+    {
+      "packageName": "com.apple.Maps",
+      "appName": "Maps",
+      "version": "1.0",
+      "versionCode": "2921.35.2.9.29"
+    },
+    {
+      "packageName": "com.apple.ShortcutsActions",
+      "appName": "ShortcutsActions"
+    },
+    {
+      "packageName": "com.apple.Posters.KaleidoscopePosterApp",
+      "appName": "Kaleidoscope",
+      "version": "1.0",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.apple.webapp",
+      "appName": "Web",
+      "version": "8624",
+      "versionCode": "8624.2.5.10.4"
+    },
+    {
+      "packageName": "P-Direkt",
+      "appName": "App-Direkt",
+      "version": "1.24.2",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.apple.MobileSMS",
+      "appName": "Messages",
+      "version": "26.0",
+      "versionCode": "1450.600.61.2.7"
+    },
+    {
+      "packageName": "com.apple.shortcuts",
+      "appName": "Shortcuts",
+      "version": "7.0",
+      "versionCode": "4610"
+    },
+    {
+      "packageName": "com.apple.Preview",
+      "appName": "Preview",
+      "version": "1.0",
+      "versionCode": "1016.206.3"
+    },
+    {
+      "packageName": "com.apple.Posters.WeatherPosterApp",
+      "appName": "Weather Wallpaper",
+      "version": "6.0",
+      "versionCode": "1318"
+    },
+    {
+      "packageName": "com.apple.DocumentsApp",
+      "appName": "Files",
+      "version": "1.0",
+      "versionCode": "367.5.1"
+    },
+    {
+      "packageName": "com.apple.GradientPoster",
+      "appName": "Color",
+      "version": "1.0",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.apple.Health",
+      "appName": "Health",
+      "version": "1.0",
+      "versionCode": "6200.6.8.2.1"
+    },
+    {
+      "packageName": "com.apple.MobileAddressBook",
+      "appName": "Contacts",
+      "version": "1.0",
+      "versionCode": "1.0"
+    },
+    {
+      "packageName": "com.apple.assistivetouchd",
+      "appName": "AssistiveTouch",
+      "version": "1.0",
+      "versionCode": "1.0"
+    },
+    {
+      "packageName": "com.apple.fullkeyboardaccess",
+      "appName": "FullKeyboardAccess",
+      "version": "1.0",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "com.apple.news",
+      "appName": "News",
+      "version": "11.5",
+      "versionCode": "5883"
+    },
+    {
+      "packageName": "com.apple.mobilesafari",
+      "appName": "Safari",
+      "version": "26.5",
+      "versionCode": "8624.2.5.10.4"
+    },
+    {
+      "packageName": "com.apple.Preferences",
+      "appName": "Settings",
+      "version": "1",
+      "versionCode": "1353.5.5"
+    },
+    {
+      "packageName": "com.apple.SystemIntents",
+      "appName": "SystemIntents",
+      "version": "1.0",
+      "versionCode": "5.4.4"
+    },
+    {
+      "packageName": "com.mobilenext.devicekit-iosUITests.xctrunner",
+      "appName": "Device Kit",
+      "version": "0.0.26",
+      "versionCode": "1"
+    },
+    {
+      "packageName": "practice-software-testing-mobile-app",
+      "appName": "ToolShop",
+      "version": "1.0.0",
+      "versionCode": "1"
+    }
+  ]
+}

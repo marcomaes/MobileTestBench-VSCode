@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "failed to press button on device Pixel_9: AndroidDevice: unsupported button key: ASSISTANT"
+}

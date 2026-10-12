@@ -1,0 +1,15 @@
+{
+  "launchCount" => 3
+  "nested" => {
+    "k" => "v"
+  }
+  "onboarded" => true
+  "ratio" => 0.5
+  "seen" => 2026-10-04 13:30:00 +0000
+  "tags" => [
+    0 => "a"
+    1 => "b"
+  ]
+  "token" => {length = 5, bytes = 0x48656c6c6f}
+  "username" => "scoutuser"
+}

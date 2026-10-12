@@ -1,0 +1,20 @@
+$ adb shell "am broadcast -a com.example.TEST -n 'com.mobilenext.playground/.NoSuchReceiver' --es k 'v w' --ei n 5 --ez b true"
+Broadcasting: Intent { act=com.example.TEST flg=0x400000 cmp=com.mobilenext.playground/.NoSuchReceiver (has extras) }
+Broadcast completed: result=0
+[exit ]
+$ adb shell "am broadcast -n com.nope/.X -a a"
+Broadcasting: Intent { act=a flg=0x400000 cmp=com.nope/.X }
+Broadcast completed: result=0
+[exit ]
+$ adb shell "am broadcast"
+
+Exception occurred while executing 'broadcast':
+java.lang.IllegalArgumentException: No intent supplied
+	at android.content.Intent.parseCommandArgs(Intent.java:9181)
+[exit ]
+$ adb shell "am broadcast -a x --ei n notanumber"
+
+Exception occurred while executing 'broadcast':
+java.lang.NumberFormatException: For input string: "notanumber"
+	at java.lang.Integer.parseInt(Integer.java:779)
+[exit ]

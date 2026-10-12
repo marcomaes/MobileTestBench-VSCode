@@ -1,0 +1,33 @@
+{
+  "status": "ok",
+  "data": [
+    {
+      "name": "cache",
+      "path": "/cache",
+      "size": 0,
+      "modTime": "2026-08-12T07:48:00Z",
+      "isDir": true
+    },
+    {
+      "name": "data",
+      "path": "/data",
+      "size": 0,
+      "modTime": "2026-09-11T17:22:00Z",
+      "isDir": true
+    },
+    {
+      "name": "etc",
+      "path": "/etc",
+      "size": 11,
+      "modTime": "2026-08-12T07:48:00Z",
+      "isDir": false
+    },
+    {
+      "name": "sdcard",
+      "path": "/sdcard",
+      "size": 21,
+      "modTime": "2026-08-12T07:48:00Z",
+      "isDir": false
+    }
+  ]
+}

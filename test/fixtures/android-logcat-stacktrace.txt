@@ -1,0 +1,22 @@
+10-04 13:55:09.238 29498  5308 W LocaleConfig: Failed to parse XML configuration from trusted_bluetooth_selection_preferences
+10-04 13:55:09.238 29498  5308 W LocaleConfig: org.xmlpull.v1.XmlPullParserException: Unexpected start tag: found PreferenceScreen, expected locale-config
+10-04 13:55:09.238 29498  5308 W LocaleConfig: 	at com.android.internal.util.XmlUtils.beginDocument(XmlUtils.java:1580)
+10-04 13:55:09.238 29498  5308 W LocaleConfig: 	at android.app.LocaleConfig.parseLocaleConfig(LocaleConfig.java:212)
+10-04 13:55:09.238 29498  5308 W LocaleConfig: 	at android.app.LocaleConfig.<init>(LocaleConfig.java:154)
+10-04 13:55:09.238 29498  5308 W LocaleConfig: 	at android.app.LocaleConfig.fromContextIgnoringOverride(LocaleConfig.java:134)
+10-04 13:55:09.238 29498  5308 W LocaleConfig: 	at android.app.ContextImpl.setResources(ContextImpl.java:4077)
+10-04 13:55:09.238 29498  5308 W LocaleConfig: 	at android.app.ContextImpl.<init>(ContextImpl.java:3989)
+10-04 13:55:09.238 29498  5308 W LocaleConfig: 	at android.app.ContextImpl.createPackageContextAsUser(ContextImpl.java:3135)
+10-04 13:55:09.238 29498  5308 W LocaleConfig: 	at android.app.ContextImpl.createPackageContext(ContextImpl.java:3117)
+10-04 13:55:09.238 29498  5308 W LocaleConfig: 	at android.content.ContextWrapper.createPackageContext(ContextWrapper.java:1157)
+10-04 13:55:09.238 29498  5308 W LocaleConfig: 	at android.content.ContextWrapper.createPackageContext(ContextWrapper.java:1157)
+10-04 13:55:09.238 29498  5308 W LocaleConfig: 	at cgfc.createPackageContext(:com.google.android.gms@263131035@26.31.31 (260400-959389638):3)
+10-05 00:58:00.536   647  1099 W FastPrintWriter: 	at android.os.Binder.execTransactInternal(Binder.java:1328)
+10-05 00:58:00.536   647  1099 W FastPrintWriter: 	at android.os.Binder.execTransact(Binder.java:1282)
+10-05 00:58:00.536   647  1099 W FastPrintWriter: Caused by: android.system.ErrnoException: write failed: EPIPE (Broken pipe)
+10-05 00:58:00.536   647  1099 W FastPrintWriter: 	at libcore.io.Linux.writeBytes(Native Method)
+10-05 00:58:00.536   647  1099 W FastPrintWriter: 	at libcore.io.Linux.write(Linux.java:342)
+10-05 00:58:00.536   647  1099 W FastPrintWriter: 	at libcore.io.ForwardingOs.write(ForwardingOs.java:677)
+10-05 02:00:45.542  8312  8355 E fozk    : 	Suppressed: fpau: 
+10-05 02:00:45.542  8312  8355 E fozk    : 		at tk_trace.GET_FILE_GROUP_FINISHED(unfinished)(Unknown Source:0)
+10-05 02:00:45.542  8312  8355 E fozk    : 		at tk_trace.handleBroadcast 2 ms(Unknown Source:0)

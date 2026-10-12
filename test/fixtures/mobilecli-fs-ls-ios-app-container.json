@@ -1,0 +1,19 @@
+{
+  "status": "ok",
+  "data": [
+    {
+      "name": "Library",
+      "path": "/Users/user/Library/Developer/CoreSimulator/Devices/F2368465-C17E-4E1D-B270-D9433E8A6622/data/Containers/Data/Application/50A509E4-7327-4B18-A41C-ADA8C338B9B6/Library",
+      "size": 0,
+      "modTime": "2026-10-04T15:19:26.981124839+02:00",
+      "isDir": true
+    },
+    {
+      "name": "tmp",
+      "path": "/Users/user/Library/Developer/CoreSimulator/Devices/F2368465-C17E-4E1D-B270-D9433E8A6622/data/Containers/Data/Application/50A509E4-7327-4B18-A41C-ADA8C338B9B6/tmp",
+      "size": 0,
+      "modTime": "2026-10-04T15:32:02.10885302+02:00",
+      "isDir": true
+    }
+  ]
+}

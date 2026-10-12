@@ -1,0 +1,4 @@
+{
+  "status": "error",
+  "error": "failed to boot device 33915C06-CAF3-430C-9607-AFD7B6AAF75E: simulator is already running"
+}

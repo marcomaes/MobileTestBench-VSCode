@@ -1,0 +1,8 @@
+PID	Status	Label
+35979	0	UIKitApplication:com.mobilenext.playground[c757][rb-legacy]
+-	0	com.apple.managedconfiguration.passcodenagd
+-	0	com.apple.mediaanalysisd.service
+-	0	com.apple.mediastream.mstreamd
+-	0	com.apple.mobilegestalt.xpc
+-	0	com.apple.mediaartworkd
+74320	0	UIKitApplication:com.apple.Preferences[54bc][rb-legacy]

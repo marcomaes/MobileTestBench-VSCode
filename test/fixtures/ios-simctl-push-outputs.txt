@@ -1,0 +1,43 @@
+$ simctl push (ok) -> stdout, exit 0
+Notification sent to 'com.mobilenext.playground'
+[exit 0]
+$ unknown bundle id (still success)
+Notification sent to 'com.nope.app'
+[exit 0]
+$ invalid JSON (stderr, exit 0!)
+An error was encountered processing the command (domain=NSCocoaErrorDomain, code=3840):
+The data couldn’t be read because it isn’t in the correct format.
+The data is not in the correct format.
+[exit 0]
+$ missing aps (exit 22)
+An error was encountered processing the command (domain=NSPOSIXErrorDomain, code=22):
+Simulator device failed to complete the requested operation.
+Invalid argument
+Underlying error (domain=NSPOSIXErrorDomain, code=22):
+	Notification payload is missing the aps key
+	Invalid argument
+[exit ]
+$ aps wrong value (exit 14)
+An error was encountered processing the command (domain=NSPOSIXErrorDomain, code=14):
+Simulator device failed to complete the requested operation.
+Bad address
+Underlying error (domain=NSPOSIXErrorDomain, code=14):
+	Failed to allocate UNNotificationRequest
+	Bad address
+$ root not an object (exit 22)
+An error was encountered processing the command (domain=NSPOSIXErrorDomain, code=22):
+JSON root is not an object
+Invalid argument
+$ too large (4097 bytes, exit 28)
+An error was encountered processing the command (domain=NSPOSIXErrorDomain, code=28):
+Payload too large, must be 4096 bytes or less
+No space left on device
+$ missing file (exit 4)
+An error was encountered processing the command (domain=NSCocoaErrorDomain, code=260):
+The file “nonexistent.json” couldn’t be opened because there is no such file.
+The file doesn’t exist.
+Underlying error (domain=NSPOSIXErrorDomain, code=2):
+	The operation couldn’t be completed. No such file or directory
+	No such file or directory
+$ invalid device (exit 148)
+Invalid device: 00000000-0000-0000-0000-000000000000

@@ -1,0 +1,7 @@
+Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.mobilenext.playground/.MainActivity }
+Status: ok
+LaunchState: WARM
+Activity: com.mobilenext.playground/.MainActivity
+TotalTime: 7879
+WaitTime: 7936
+Complete
