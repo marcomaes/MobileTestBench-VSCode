@@ -78,7 +78,7 @@ describe('ios simulator session', () => {
 
   it('a stale session id is replaced once', async () => {
     let sessions = 0
-    const fake = (async (url: string, init: RequestInit) => {
+    const fake = (async (url: string, _init: RequestInit) => {
       if (url.endsWith('/session')) return new Response(JSON.stringify({ value: { sessionId: `S${++sessions}` } }))
       if (url.includes('/session/S1/')) return new Response(JSON.stringify({ value: { error: 'invalid session id', message: 'gone' } }), { status: 404 })
       return new Response(JSON.stringify({ value: null }))

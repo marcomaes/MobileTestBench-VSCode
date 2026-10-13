@@ -14,7 +14,6 @@ export abstract class ShowLocatorResult {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace ShowLocatorResult {
   export class Matches extends ShowLocatorResult {
     constructor(

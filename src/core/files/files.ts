@@ -87,6 +87,7 @@ export const FilePaths = {
     if (name.trim() === '') return 'Enter a name'
     if (name === '.' || name === '..') return `'${name}' is not a valid name`
     if (name.includes('/')) return "A name cannot contain '/'"
+    // eslint-disable-next-line no-control-regex
     if (/[\n\r\u0000]/.test(name)) return 'A name cannot contain line breaks'
     return undefined
   },

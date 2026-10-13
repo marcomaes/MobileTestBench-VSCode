@@ -7,6 +7,7 @@
 // device selection in here and Refresh Devices also refreshes that tree); the toolbar, hover line and status line are DOM in the
 // page; the recorder wiring (record / replay / assert, which the Kotlin panel keeps in this class) belongs to the Recorder tab,
 // which can use startSnapshots / awaitSnapshot / stopSnapshots below.
+import { viewerHtml } from './webviewHtml'
 import { homedir } from 'node:os'
 import * as path from 'node:path'
 import * as vscode from 'vscode'
@@ -974,13 +975,7 @@ export class DeviceViewer implements vscode.Disposable {
   private html(): string {
     const web = this.panel.webview
     const script = web.asWebviewUri(vscode.Uri.joinPath(this.extensionContext.extensionUri, 'dist/webview/mirror.js'))
-    const nonce = [...Array(24)].map(() => Math.random().toString(36)[2]).join('')
-    return `<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src ${web.cspSource} data: blob:; style-src 'unsafe-inline'; script-src 'nonce-${nonce}';">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mobile Test Bench</title></head>
-<body><div id="app"></div><script nonce="${nonce}" src="${script}"></script></body></html>`
+    return viewerHtml(web.cspSource, script.toString())
   }
 
   dispose(): void {

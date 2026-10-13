@@ -16,7 +16,10 @@ function descendantsOf(root: number): number[] {
     }
     const found: number[] = []
     const queue = [root]
-    while (queue.length) for (const c of children.get(queue.shift()!) ?? []) (found.push(c), queue.push(c))
+    while (queue.length) for (const c of children.get(queue.shift()!) ?? []) {
+      found.push(c)
+      queue.push(c)
+    }
     return found
   } catch {
     return []

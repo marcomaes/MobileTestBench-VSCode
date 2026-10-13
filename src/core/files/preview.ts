@@ -48,6 +48,7 @@ export const FilePreview = {
     }
     const text = FilePreview.decodeUtf8(bytes)
     if (text === undefined) return Preview.Message(`Binary file (${FileFormat.size(bytes.length)}). Use Download.`)
+    // eslint-disable-next-line no-irregular-whitespace -- the class holds a literal BOM
     const trimmed = text.replace(/^﻿+/, '').trim()
     if (trimmed.startsWith('<')) {
       const p = xml(name, trimmed)

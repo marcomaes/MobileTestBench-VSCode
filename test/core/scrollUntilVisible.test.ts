@@ -9,7 +9,6 @@ import { ScriptRecorder } from '../../src/core/recording/scriptRecorder'
 import { ScrollUntilVisible as Conversion } from '../../src/core/recording/scrollUntilVisible'
 import { BaseDeviceSession, type FrameListener } from '../../src/core/session/deviceSession'
 
-const ScrollUntilVisible = ScriptRecorder.ScrollUntilVisible
 
 const screen = (buttonY: number, visible = true): UiNode =>
   WdaSourceParser.parse(

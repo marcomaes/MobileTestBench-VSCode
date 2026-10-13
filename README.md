@@ -23,6 +23,10 @@ Setup per platform: [docs/DEVICE-SETUP.md](https://github.com/marcomaes/MobileTe
 
 No telemetry. The extension talks to your devices through adb, xcrun and mobilecli, to the local emulator gRPC port, and to a WebDriverAgent URL you configure.
 
+## Thank you
+
+A big thank you to [Gil Megidish](https://www.linkedin.com/in/gilmegidish/), CEO of [Mobile-Next](https://github.com/mobile-next), who created [mobilecli](https://github.com/mobile-next/mobilecli). Mirroring and controlling iPhones and simulators, reading the UI hierarchy on Android 17, and many of the Device Tools tabs run on mobilecli. Without it, this extension would not be possible.
+
 ## Development
 
 ```bash

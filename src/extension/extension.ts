@@ -69,7 +69,7 @@ export function activate(context: vscode.ExtensionContext): void {
  * Editor command "Show Locator on Device" (the Kotlin ShowLocatorAction): tries the locator of the selection or caret line on the device
  * of the viewer that was focused last and shows the result. Without a viewer it offers to open a device.
  */
-async function showLocator(context: vscode.ExtensionContext): Promise<void> {
+async function showLocator(_context: vscode.ExtensionContext): Promise<void> {
   const editor = vscode.window.activeTextEditor
   if (!editor) return
   const doc = editor.document

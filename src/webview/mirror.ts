@@ -1166,6 +1166,7 @@ if (bottomViews.length === 0) toolsBtn.style.display = 'none'
 // ---------------------------------------------------------------- host messages
 window.addEventListener('message', (event: MessageEvent<ToWebview>) => {
   const m = event.data
+  if (typeof m !== 'object' || m === null) return // not from the host
   switch (m.type) {
     case 'restore': {
       const l = m.layout

@@ -119,8 +119,14 @@ export const notificationsView: ToolView = {
       let text = ' '
       let warn = false
       if (id === '') text = 'Enter a bundle id'
-      else if (!NotificationCommands.validBundleId(id)) (text = 'Not a valid bundle id'), (warn = true)
-      else if (installed.length > 0 && !installed.includes(id)) (text = 'Not in the installed apps: simctl would still say sent'), (warn = true)
+      else if (!NotificationCommands.validBundleId(id)) {
+        text = 'Not a valid bundle id'
+        warn = true
+      }
+      else if (installed.length > 0 && !installed.includes(id)) {
+        text = 'Not in the installed apps: simctl would still say sent'
+        warn = true
+      }
       bundleNote.textContent = text
       bundleNote.style.color = warn ? 'var(--vscode-errorForeground)' : ''
       updateEnabled()

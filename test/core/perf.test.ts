@@ -38,9 +38,9 @@ describe('PerfTest', () => {
   })
 
   it('parsesTheProbeOutput', () => {
-    const out = '1791120996.737075986\nPID=8642\n' + fixture('android-proc-stat-playground.txt') + fixture('android-proc-status-playground.txt') + 'Total frames rendered: 65\nJanky frames: 65 (100.00%)\n'
+    const out = '1791120996.737076\nPID=8642\n' + fixture('android-proc-stat-playground.txt') + fixture('android-proc-status-playground.txt') + 'Total frames rendered: 65\nJanky frames: 65 (100.00%)\n'
     const p = AndroidPerfParsers.parseProbe(out)
-    expect(p.deviceSeconds).toBeCloseTo(1791120996.737075986, 2)
+    expect(p.deviceSeconds).toBeCloseTo(1791120996.737076, 2)
     expect(p.pid).toBe(8642)
     expect(p.cpuTicks).toBe(15625)
     expect(p.rssKb).toBe(240640)
