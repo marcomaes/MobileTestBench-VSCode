@@ -34,7 +34,7 @@ npm install
 npm run build && npm test
 ```
 
-Press F5 to start an Extension Development Host. See `CLAUDE.md`, `docs/PORTING.md` and `docs/SYNC.md`.
+Press F5 to start an Extension Development Host. See `docs/PORTING.md` and `docs/SYNC.md`.
 
 ### Staying in step with the IntelliJ plugin
 
