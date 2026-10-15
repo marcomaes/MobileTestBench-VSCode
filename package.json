@@ -1,13 +1,14 @@
 {
   "name": "mobile-test-bench",
   "displayName": "Mobile Test Bench",
+  "icon": "media/icon.png",
   "description": "Mirror and control Android and iOS devices in VS Code, inspect their UI, and get ready-to-use Mobilewright, Appium and WebdriverIO locators.",
   "version": "1.0.1",
   "publisher": "marcomaes",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/marcomaes/MobileTestBench"
+    "url": "https://github.com/marcomaes/MobileTestBench-VSCode.git"
   },
   "engines": {
     "vscode": "^1.90.0"
@@ -343,5 +344,9 @@
     "@grpc/proto-loader": "^0.8.1",
     "jpeg-js": "^0.4.4",
     "pngjs": "^7.0.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/marcomaes/MobileTestBench-VSCode/issues"
+  },
+  "homepage": "https://github.com/marcomaes/MobileTestBench-VSCode#readme"
 }

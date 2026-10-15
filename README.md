@@ -42,7 +42,7 @@ Press F5 to start an Extension Development Host. See `docs/PORTING.md` and `docs
 
 ## Status
 
-Ported from plugin version 1.0.1. The host and webview code has been type checked and bundled but not yet run in a real VS Code window; the pure core has 769 unit tests ported from the plugin. Expect UI rough edges until it has been exercised against real devices.
+Ported from plugin version 1.0.1. The pure core has 769 unit tests ported from the plugin, and the extension has been tested on Android emulators and devices and iOS simulators and iPhones.
 
 ## License
 
