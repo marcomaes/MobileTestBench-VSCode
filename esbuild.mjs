@@ -3,7 +3,7 @@ import { cpSync, mkdirSync } from 'node:fs'
 
 const watch = process.argv.includes('--watch')
 
-const common = { bundle: true, sourcemap: true, minify: !watch, logLevel: 'info', target: 'es2022' }
+const common = { bundle: true, sourcemap: watch, logLevel: 'info', target: 'es2022' }
 
 const host = {
   ...common,
