@@ -91,13 +91,13 @@ app.innerHTML = `
   :root { color-scheme: light dark; }
   body { margin: 0; padding: 0; font: var(--vscode-font-size) var(--vscode-font-family); color: var(--vscode-foreground); background: var(--vscode-editor-background); overflow: hidden; }
   #app { display: flex; flex-direction: column; height: 100vh; }
-  #toolbar { display: flex; gap: 4px; align-items: center; padding: 4px 6px; border-bottom: 1px solid var(--vscode-panel-border); flex-wrap: wrap; flex: none; }
-  #toolbar .sep { width: 1px; align-self: stretch; background: var(--vscode-panel-border); margin: 0 2px; }
-  #toolbar button, #tabs button { background: var(--vscode-button-secondaryBackground); color: var(--vscode-button-secondaryForeground); border: 0; padding: 3px 8px; border-radius: 2px; cursor: pointer; }
+  #toolbar { display: flex; gap: 4px 14px; align-items: center; padding: 4px 6px; border-bottom: 1px solid var(--vscode-panel-border); flex-wrap: wrap; flex: none; }
+  #toolbar .grp { display: inline-flex; gap: 4px; align-items: center; flex-wrap: nowrap; }
+  #toolbar button, #tabs button { background: var(--vscode-button-secondaryBackground); color: var(--vscode-button-secondaryForeground); border: 1px solid var(--vscode-button-border, var(--vscode-panel-border)); padding: 2px 8px; border-radius: 2px; cursor: pointer; white-space: nowrap; }
   #toolbar button:hover:not(:disabled) { background: var(--vscode-button-secondaryHoverBackground); }
   #toolbar button:disabled { opacity: .45; cursor: default; }
   #toolbar button.on { background: var(--vscode-button-background); color: var(--vscode-button-foreground); }
-  #title { font-weight: 600; margin-right: 8px; }
+  #title { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
   #work { flex: 1; min-height: 0; display: flex; flex-direction: column; }
   #main { display: flex; min-height: 0; min-width: 0; flex: 1 1 0; overflow: hidden; }
   #screen { position: relative; min-width: 0; min-height: 0; flex: 1 1 0; }
@@ -111,16 +111,18 @@ app.innerHTML = `
   .split:hover { background: var(--vscode-focusBorder); }
   #tools { display: none; flex-direction: column; min-height: 0; flex: 1 1 0; border-top: 1px solid var(--vscode-panel-border); }
   #tools.on { display: flex; }
-  #tabs { display: flex; overflow-x: auto; border-bottom: 1px solid var(--vscode-panel-border); flex: none; }
-  #tabs button { background: transparent; color: var(--vscode-foreground); border-radius: 0; border-bottom: 2px solid transparent; white-space: nowrap; }
+  *::-webkit-scrollbar { width: 8px; height: 8px; } *::-webkit-scrollbar-corner { background: transparent; }
+  *::-webkit-scrollbar-thumb { background: var(--vscode-scrollbarSlider-background); border-radius: 4px; } *::-webkit-scrollbar-thumb:hover { background: var(--vscode-scrollbarSlider-hoverBackground); }
+  #tabs { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--vscode-panel-border); flex: none; }
+  #tabs button { background: transparent; color: var(--vscode-foreground); border: 0; border-radius: 0; border-bottom: 2px solid transparent; white-space: nowrap; }
   #tabs button.on { border-bottom-color: var(--vscode-focusBorder); }
   #tabbody { flex: 1; overflow: auto; min-height: 0; }
   .tab { display: none; padding: 6px; } .tab.on { display: block; }
-  #infobar { display: flex; justify-content: space-between; gap: 12px; padding: 2px 8px; flex: none; border-top: 1px solid var(--vscode-panel-border); }
+  #infobar { display: flex; gap: 12px; padding: 2px 8px 0; flex: none; border-top: 1px solid var(--vscode-panel-border); }
   #hover { opacity: .8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-height: 1.3em; }
-  #foreground { cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: .8; display: none; max-width: 45%; }
-  #statusbar { display: flex; gap: 12px; padding: 2px 8px; flex: none; align-items: baseline; }
-  #statusline { opacity: .85; white-space: pre-wrap; word-break: break-word; flex: 1; }
+  #foreground { cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: .8; display: none; max-width: 45%; flex: none; }
+  #statusbar { display: flex; gap: 12px; padding: 0 8px 2px; flex: none; align-items: baseline; }
+  #statusline { opacity: .85; white-space: pre-wrap; word-break: break-word; flex: 1; min-width: 0; }
   #statusline.error { color: var(--vscode-errorForeground); opacity: 1; }
   #cancel { display: none; background: none; border: 0; color: var(--vscode-textLink-foreground); cursor: pointer; padding: 0; text-decoration: underline; }
   .popup { position: fixed; z-index: 20; min-width: 180px; background: var(--vscode-menu-background, var(--vscode-editorWidget-background)); color: var(--vscode-menu-foreground, var(--vscode-foreground)); border: 1px solid var(--vscode-menu-border, var(--vscode-panel-border)); box-shadow: 0 2px 8px rgba(0,0,0,.35); padding: 3px 0; }
@@ -140,8 +142,8 @@ app.innerHTML = `
   <div class="split h" id="splith"></div>
   <div id="tools"><div id="tabs"></div><div id="tabbody"></div></div>
 </div>
-<div id="infobar"><div id="hover" style="visibility:hidden"> </div><div id="foreground"></div></div>
-<div id="statusbar"><div id="statusline">Not connected</div><button id="cancel">Cancel</button></div>`
+<div id="infobar"><div id="hover" style="visibility:hidden"> </div></div>
+<div id="statusbar"><div id="statusline">Not connected</div><div id="foreground"></div><button id="cancel">Cancel</button></div>`
 
 injectToolStyles()
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T
@@ -207,7 +209,12 @@ function button(label: string, title: string, onClick: (e: MouseEvent) => void):
   b.onclick = onClick
   return b
 }
-const sep = (): HTMLElement => Object.assign(document.createElement('span'), { className: 'sep' })
+/** A toolbar group: its buttons stay together when the toolbar wraps. */
+const group = (...items: HTMLElement[]): HTMLElement => {
+  const g = Object.assign(document.createElement('span'), { className: 'grp' })
+  g.append(...items)
+  return g
+}
 const key = (k: HardwareKey) => () => interact({ type: 'key', key: k })
 
 const refreshDevicesBtn = button('Refresh', 'Refresh Devices', () => send({ type: 'refreshDevices' }))
@@ -259,27 +266,10 @@ const screenshotBtn = button('Screenshot ▾', 'Copy or save the current frame',
 const recordBtn = button('Record screen', 'Record the device screen to an MP4 file (needs mobilecli)', () => send({ type: 'screenRecord', on: !screenRecording }))
 const settingsBtn = button('Settings', 'Open the Mobile Test Bench settings', () => send({ type: 'openSettings' }))
 toolbar.append(
-  titleEl,
-  refreshDevicesBtn,
-  connectBtn,
-  disconnectBtn,
-  powerBtn,
-  sep(),
-  backBtn,
-  homeBtn,
-  recentsBtn,
-  typeBtn,
-  rotateBtn,
-  sep(),
-  inspectBtn,
-  refreshTreeBtn,
-  freezeBtn,
-  gridBtn,
-  toolsBtn,
-  sep(),
-  screenshotBtn,
-  recordBtn,
-  settingsBtn,
+  group(titleEl, refreshDevicesBtn, connectBtn, disconnectBtn, powerBtn),
+  group(backBtn, homeBtn, recentsBtn, typeBtn, rotateBtn),
+  group(inspectBtn, refreshTreeBtn, freezeBtn, gridBtn, toolsBtn),
+  group(screenshotBtn, recordBtn, settingsBtn),
 )
 
 /** Enables, hides and highlights the toolbar buttons from the state (the Kotlin action `update` methods). */
@@ -370,7 +360,7 @@ setInterval(() => {
   if (!connected || powerBusy || !device || Date.now() < statusHoldUntil) return
   const lg = logical()
   statusEl.className = ''
-  statusEl.textContent = `${device.name}  |  ${caps?.transport ?? ''}  |  ` + (frozen ? 'frozen' : `${fps} fps`) + (lg ? `  |  ${lg.width}x${lg.height}` : '')
+  statusEl.textContent = `${caps?.transport ?? ''}  |  ` + (frozen ? 'frozen' : `${fps} fps`) + (lg ? `  |  ${lg.width}x${lg.height}` : '')
   statusEl.title = caps?.transportTooltip ?? ''
 }, 1000)
 

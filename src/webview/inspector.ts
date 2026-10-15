@@ -225,10 +225,22 @@ export function createInspector(container: HTMLElement, options: InspectorOption
     propsEl.append(table)
   }
 
+  /**
+   * Scrolls the tree vertically until [row] is visible. scrollIntoView is not used: it also scrolls sideways to the end of a long
+   * row (the tree then shows only the tails of the rows) and scrolls the overflow-hidden panes around the tree, which the user cannot undo.
+   */
+  function revealRow(row: HTMLElement | undefined): void {
+    if (!row) return
+    const view = treeEl.getBoundingClientRect()
+    const r = row.getBoundingClientRect()
+    if (r.top < view.top) treeEl.scrollTop -= view.top - r.top
+    else if (r.bottom > view.bottom) treeEl.scrollTop += r.bottom - view.bottom
+  }
+
   function select(n: UiNode | undefined): void {
     selected = n
     for (const [node, row] of rowOf) row.classList.toggle('sel', node === n)
-    if (n) rowOf.get(n)?.scrollIntoView({ block: 'nearest' })
+    if (n) revealRow(rowOf.get(n))
     renderProps()
     options.onSelect?.(n)
     selectionListeners.forEach((cb) => cb(n))
@@ -308,8 +320,9 @@ export const inspectorCss = `
   .mtb-ibody { flex: 1; min-height: 0; position: relative; }
   .mtb-ipane { display: none; height: 100%; overflow: auto; }
   .mtb-ipane.on { display: block; }
-  .mtb-ipane.mtb-ielements.on { display: grid; grid-template-rows: 1fr auto; overflow: hidden; }
-  .mtb-itreewrap { display: flex; flex-direction: column; min-height: 0; }
+  /* minmax(0, ...): an auto column grows to the widest row, so the tree never overflowed and the clipped pane had no scroll bar. */
+  .mtb-ipane.mtb-ielements.on { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; overflow: hidden; }
+  .mtb-itreewrap { display: flex; flex-direction: column; min-height: 0; min-width: 0; }
   .mtb-ifilterbar { display: flex; gap: 8px; align-items: center; padding: 3px 4px; flex: none; }
   .mtb-ifilter { flex: 1; min-width: 0; background: var(--vscode-input-background); color: var(--vscode-input-foreground); border: 1px solid var(--vscode-input-border, transparent); padding: 2px 4px; }
   .mtb-ifilterbar label { white-space: nowrap; display: inline-flex; gap: 2px; align-items: center; }

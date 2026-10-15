@@ -58,11 +58,11 @@ afterEach(() => {
   server.forceShutdown()
 })
 
-const link = (token?: string): GrpcEmulatorLink => new GrpcEmulatorLink({ host: '127.0.0.1', port, token })
+const link = (token?: string): Promise<GrpcEmulatorLink> => GrpcEmulatorLink.open({ host: '127.0.0.1', port, token })
 
 describe('grpc emulator link', () => {
   it('streams screenshots as PNG frames and requests RGB888', async () => {
-    const l = link()
+    const l = await link()
     const frames: Frame[] = []
     l.startStreaming({ onFrame: (f) => frames.push(f), onError: () => {} })
     expect(await waitFor(() => frames.length === 1)).toBe(true)
@@ -80,14 +80,14 @@ describe('grpc emulator link', () => {
   })
 
   it('sends the auth token as a bearer token', async () => {
-    const l = link('secret')
+    const l = await link('secret')
     await l.tap(1, 2)
     expect(auth).toEqual(['Bearer secret', 'Bearer secret'])
     l.close()
   })
 
   it('tap is down, 40 ms, up', async () => {
-    const l = link()
+    const l = await link()
     await l.tap(10, 20)
     expect(mouse.map((m) => [m.x, m.y, m.buttons])).toEqual([[10, 20, 1], [10, 20, 0]])
     expect(mouse[1].at - mouse[0].at).toBeGreaterThanOrEqual(35)
@@ -95,7 +95,7 @@ describe('grpc emulator link', () => {
   })
 
   it('long press holds for the duration', async () => {
-    const l = link()
+    const l = await link()
     await l.longPress(5, 6, 200)
     expect(mouse.map((m) => m.buttons)).toEqual([1, 0])
     expect(mouse[1].at - mouse[0].at).toBeGreaterThanOrEqual(195)
@@ -103,7 +103,7 @@ describe('grpc emulator link', () => {
   })
 
   it('double tap is two taps 80 ms apart', async () => {
-    const l = link()
+    const l = await link()
     await l.doubleTap(3, 4)
     expect(mouse.map((m) => m.buttons)).toEqual([1, 0, 1, 0])
     expect(mouse[2].at - mouse[1].at).toBeGreaterThanOrEqual(75)
@@ -111,7 +111,7 @@ describe('grpc emulator link', () => {
   })
 
   it('swipe moves the held pointer in steps (duration / 16, at least 5) and releases at the end', async () => {
-    const l = link()
+    const l = await link()
     await l.swipe(0, 0, 100, 200, 160)
     // down + 10 held moves + up
     expect(mouse).toHaveLength(12)
@@ -123,7 +123,7 @@ describe('grpc emulator link', () => {
   })
 
   it('drag with hold waits before it moves', async () => {
-    const l = link()
+    const l = await link()
     await l.dragWithHold(0, 0, 10, 10, 150, 80)
     expect(mouse[0].buttons).toBe(1)
     expect(mouse[1].at - mouse[0].at).toBeGreaterThanOrEqual(145)
@@ -132,7 +132,7 @@ describe('grpc emulator link', () => {
   })
 
   it('maps keys to W3C names and sends text', async () => {
-    const l = link()
+    const l = await link()
     await l.press('HOME')
     await l.press('DELETE')
     await l.typeText('')
@@ -143,7 +143,7 @@ describe('grpc emulator link', () => {
 
   it('reports a failing stream through onError with the status code', async () => {
     failStream = grpc.status.UNAUTHENTICATED
-    const l = link()
+    const l = await link()
     const errors: string[] = []
     l.startStreaming({ onFrame: () => {}, onError: (m) => errors.push(m) })
     expect(await waitFor(() => errors.length === 1)).toBe(true)
@@ -152,7 +152,7 @@ describe('grpc emulator link', () => {
   })
 
   it('a closed link reports no error', async () => {
-    const l = link()
+    const l = await link()
     const frames: Frame[] = []
     const errors: string[] = []
     l.startStreaming({ onFrame: (f) => frames.push(f), onError: (m) => errors.push(m) })
@@ -164,7 +164,7 @@ describe('grpc emulator link', () => {
 
   it('an unreachable emulator fails the call', async () => {
     server.forceShutdown()
-    const l = link()
+    const l = await link()
     await expect(l.tap(1, 1)).rejects.toThrow()
     l.close()
   })

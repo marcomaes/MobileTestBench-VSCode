@@ -33,7 +33,8 @@ describe('viewer page', () => {
   })
 
   it('builds the toolbar, the tool tabs and the inspector tabs', () => {
-    expect(document.getElementById('toolbar')!.children.length).toBeGreaterThan(0)
+    expect(document.querySelectorAll('#toolbar .grp').length).toBe(4)
+    expect(document.querySelectorAll('#toolbar button').length).toBeGreaterThan(15)
     expect(document.getElementById('tabs')!.children.length).toBeGreaterThan(0)
     const tabs = [...document.querySelectorAll('.mtb-itabs button')].map((b) => b.textContent)
     expect(tabs).toEqual(expect.arrayContaining(['Elements', 'Locators', 'Recorder']))
@@ -61,5 +62,63 @@ describe('viewer page', () => {
     await settle()
     window.removeEventListener('error', errors)
     expect(errors).not.toHaveBeenCalled()
+  })
+})
+
+describe('element tree', () => {
+  it('keeps its grid column no wider than the pane, so the tree itself scrolls sideways', async () => {
+    const { inspectorCss } = await import('../../src/webview/inspector')
+    expect(inspectorCss).toMatch(/\.mtb-ielements\.on \{[^}]*grid-template-columns: minmax\(0, 1fr\)/)
+    expect(inspectorCss).toMatch(/\.mtb-itreewrap \{[^}]*min-width: 0/)
+  })
+
+  it('selecting a row scrolls only the tree, vertically', async () => {
+    const { createInspector, nodeFromDto } = await import('../../src/webview/inspector')
+    const host = document.createElement('div')
+    document.body.append(host)
+    const inspector = createInspector(host)
+    const leaf = { platform: 'ANDROID' as const, rawType: 'Button', attributes: { text: 'x'.repeat(400) }, bounds: { x: 0, y: 0, width: 1, height: 1 }, children: [] }
+    const root = nodeFromDto({ platform: 'ANDROID', rawType: 'FrameLayout', attributes: {}, bounds: { x: 0, y: 0, width: 10, height: 10 }, children: [leaf] })
+    inspector.setHierarchy(root)
+    const rows = host.querySelectorAll<HTMLElement>('.mtb-irow')
+    const scrollIntoView = vi.fn()
+    for (const r of rows) r.scrollIntoView = scrollIntoView
+    inspector.select(root.children[0])
+    expect(scrollIntoView).not.toHaveBeenCalled()
+    expect((host.querySelector('.mtb-itree') as HTMLElement).scrollLeft).toBe(0)
+  })
+})
+
+describe('locators tab', () => {
+  it('shows the hint of a warned locator in a tooltip when the pointer rests on its row', async () => {
+    const { createInspector, nodeFromDto } = await import('../../src/webview/inspector')
+    const host = document.createElement('div')
+    document.body.append(host)
+    const inspector = createInspector(host)
+    const leaf = { platform: 'ANDROID' as const, rawType: 'android.view.ViewGroup', attributes: { 'resource-id': 'item-1' }, bounds: { x: 0, y: 0, width: 5, height: 5 }, children: [] }
+    const root = nodeFromDto({ platform: 'ANDROID', rawType: 'android.widget.FrameLayout', attributes: {}, bounds: { x: 0, y: 0, width: 10, height: 10 }, children: [leaf] })
+    const { toolViews } = await import('../../src/webview/tools')
+    const view = toolViews.find((v) => v.id === 'locators')!
+    const el = document.createElement('div')
+    const api = { device: undefined, capabilities: undefined, request: async () => ({}), on: () => () => {}, hierarchy: () => undefined, highlight: () => {}, status: () => {}, viewer: { inspector, setCopyOptions: () => {}, setRecording: () => {}, setPicker: () => {} } }
+    document.body.append(el)
+    view.mount(el, api as never)
+    inspector.setHierarchy(root)
+    inspector.select(root.children[0])
+    const rows = [...el.querySelectorAll<HTMLTableRowElement>('.mtb-table tbody tr')]
+    const warned = rows.filter((r) => r.textContent?.includes('⚠'))
+    expect(warned.length).toBeGreaterThan(0)
+    for (const r of warned) expect(r.dataset.tip).toBeTruthy()
+    vi.useFakeTimers()
+    try {
+      warned[0].dispatchEvent(new MouseEvent('mouseover', { bubbles: true }))
+      expect(document.querySelector('.mtb-tip')).toBeNull()
+      vi.advanceTimersByTime(250)
+      expect(document.querySelector('.mtb-tip')?.textContent).toBe(warned[0].dataset.tip)
+      warned[0].dispatchEvent(new MouseEvent('mouseout', { bubbles: true }))
+      expect(document.querySelector('.mtb-tip')).toBeNull()
+    } finally {
+      vi.useRealTimers()
+    }
   })
 })

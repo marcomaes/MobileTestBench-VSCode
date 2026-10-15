@@ -52,6 +52,11 @@ export function table(headers: string[], rows: Child[][], onRow?: (index: number
     const tr = body.insertRow()
     for (const c of cells) tr.insertCell().append(c instanceof Node ? c : String(c ?? ''))
     if (onRow) onRow(i, tr)
+    // A row hint is shown by our own tooltip: the native title tooltip does not reliably appear in the webview (see showTips).
+    if (tr.title) {
+      tr.dataset.tip = tr.title
+      tr.removeAttribute('title')
+    }
   })
   return t
 }
@@ -83,9 +88,39 @@ export async function guarded(msg: { error(text: string): void }, fn: () => Prom
   }
 }
 
-/** Injects the shared tab CSS once. Called by the viewer; tools need not call it. */
+/**
+ * Tooltips for elements with a data-tip attribute (one delegated listener for the page): shown 200 ms after the pointer rests on the
+ * element, hidden when it leaves, a button goes down or the page scrolls.
+ */
+function showTips(): void {
+  let tip: HTMLElement | undefined
+  let timer: ReturnType<typeof setTimeout> | undefined
+  const hide = (): void => {
+    if (timer) clearTimeout(timer)
+    timer = undefined
+    tip?.remove()
+    tip = undefined
+  }
+  document.addEventListener('mouseover', (e) => {
+    const target = (e.target as Element | null)?.closest?.('[data-tip]') as HTMLElement | null
+    hide()
+    if (!target) return
+    timer = setTimeout(() => {
+      tip = h('div', { class: 'mtb-tip' }, target.dataset.tip)
+      document.body.append(tip)
+      tip.style.left = `${Math.max(0, Math.min(e.clientX + 12, window.innerWidth - tip.offsetWidth - 4))}px`
+      tip.style.top = `${Math.max(0, Math.min(e.clientY + 16, window.innerHeight - tip.offsetHeight - 4))}px`
+    }, 200)
+  })
+  document.addEventListener('mouseout', hide)
+  document.addEventListener('mousedown', hide)
+  document.addEventListener('scroll', hide, true)
+}
+
+/** Injects the shared tab CSS (and the tooltips) once. Called by the viewer; tools need not call it. */
 export function injectToolStyles(): void {
   if (document.getElementById('mtb-tool-styles')) return
+  showTips()
   const style = document.createElement('style')
   style.id = 'mtb-tool-styles'
   style.textContent = `
@@ -105,6 +140,7 @@ export function injectToolStyles(): void {
   .mtb-msg { opacity: .8; min-height: 1.2em; } .mtb-msg.err { color: var(--vscode-errorForeground); opacity: 1; }
   .mtb-code { font-family: var(--vscode-editor-font-family); white-space: pre-wrap; background: var(--vscode-textCodeBlock-background); padding: 4px 6px; }
   .mtb-muted { opacity: .7; }
+  .mtb-tip { position: fixed; z-index: 30; max-width: 420px; pointer-events: none; padding: 3px 8px; font-size: 12px; background: var(--vscode-editorHoverWidget-background); color: var(--vscode-editorHoverWidget-foreground, var(--vscode-foreground)); border: 1px solid var(--vscode-editorHoverWidget-border, var(--vscode-panel-border)); box-shadow: 0 2px 8px rgba(0,0,0,.35); }
   `
   document.head.append(style)
 }

@@ -50,7 +50,7 @@ export const createGrpcLink =
     const endpoint = await EmulatorDiscovery.findEndpoint(device.id, dirs)
     if (!endpoint) return undefined
     try {
-      return new GrpcEmulatorLink(endpoint)
+      return await GrpcEmulatorLink.open(endpoint)
     } catch {
       return undefined
     }

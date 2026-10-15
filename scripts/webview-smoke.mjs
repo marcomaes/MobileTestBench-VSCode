@@ -29,7 +29,7 @@ try {
   errors.push(e.stack)
 }
 
-const toolbar = w.document.getElementById('toolbar')?.children.length ?? 0
+const toolbar = w.document.querySelectorAll('#toolbar button').length
 const tabs = w.document.getElementById('tabs')?.children.length ?? 0
 console.log(`toolbar buttons: ${toolbar}, tool tabs: ${tabs}, messages to host: ${sent.join(',')}`)
 const inspectorTabs = [...w.document.querySelectorAll('.mtb-itabs button')].map((b) => b.textContent)

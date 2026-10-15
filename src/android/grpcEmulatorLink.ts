@@ -1,6 +1,6 @@
 // ported-from: android/GrpcEmulatorLink.kt
-import * as grpc from '@grpc/grpc-js'
-import * as protoLoader from '@grpc/proto-loader'
+import type * as grpc from '@grpc/grpc-js'
+import type * as protoLoaderTypes from '@grpc/proto-loader'
 import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { deflateSync } from 'node:zlib'
@@ -12,6 +12,14 @@ import type { FrameListener } from '../core/session/deviceSession'
 
 /** Between the two taps of a double tap; Android's timeout is 300 ms from the first up to the second down. */
 const DOUBLE_TAP_GAP_MS = 80
+
+// gRPC and protobuf are about 800 KB of the bundle and only Android emulators use them: load on the first link, not at activation.
+// (Kotlin loads the classes lazily too.) [GrpcEmulatorLink.open] fills this before any constructor runs.
+let rt: { grpc: typeof grpc; protoLoader: typeof protoLoaderTypes } | undefined
+const runtime = (): NonNullable<typeof rt> => {
+  if (!rt) throw new Error('Use GrpcEmulatorLink.open(): the gRPC modules are not loaded yet')
+  return rt
+}
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -42,8 +50,8 @@ type ClientConstructor = new (address: string, credentials: grpc.ChannelCredenti
 let cachedConstructor: ClientConstructor | undefined
 function clientConstructor(): ClientConstructor {
   if (!cachedConstructor) {
-    const definition = protoLoader.loadSync(protoPath(), { keepCase: false, longs: Number, enums: String, defaults: true, oneofs: true })
-    const loaded = grpc.loadPackageDefinition(definition) as unknown as { android: { emulation: { control: { EmulatorController: ClientConstructor } } } }
+    const definition = runtime().protoLoader.loadSync(protoPath(), { keepCase: false, longs: Number, enums: String, defaults: true, oneofs: true })
+    const loaded = runtime().grpc.loadPackageDefinition(definition) as unknown as { android: { emulation: { control: { EmulatorController: ClientConstructor } } } }
     cachedConstructor = loaded.android.emulation.control.EmulatorController
   }
   return cachedConstructor
@@ -112,16 +120,22 @@ export function imageToFrame(value: ImageMessage): Frame | undefined {
  */
 export class GrpcEmulatorLink implements EmulatorLink {
   private readonly client: EmulatorControllerClient
-  private readonly metadata = new grpc.Metadata()
+  private readonly metadata = new (runtime().grpc.Metadata)()
   private streamCall: grpc.ClientReadableStream<ImageMessage> | undefined
   private closed = false
 
-  constructor(endpoint: EmulatorGrpcEndpoint) {
+  /** Loads the gRPC modules (once) and opens the link. */
+  static async open(endpoint: EmulatorGrpcEndpoint): Promise<GrpcEmulatorLink> {
+    rt ??= { grpc: await import('@grpc/grpc-js'), protoLoader: await import('@grpc/proto-loader') }
+    return new GrpcEmulatorLink(endpoint)
+  }
+
+  private constructor(endpoint: EmulatorGrpcEndpoint) {
     // The emulator's optional auth token (grpc.token in its pid_*.ini) travels as a bearer token on every call,
     // like the Kotlin BearerTokenInterceptor. A JWT protected emulator (Android Studio's own keys) is not supported
     // and fails with UNAUTHENTICATED, after which AndroidSession falls back to adb.
     if (endpoint.token) this.metadata.set('authorization', `Bearer ${endpoint.token}`)
-    this.client = new (clientConstructor())(`${endpoint.host}:${endpoint.port}`, grpc.credentials.createInsecure(), {
+    this.client = new (clientConstructor())(`${endpoint.host}:${endpoint.port}`, runtime().grpc.credentials.createInsecure(), {
       'grpc.max_receive_message_length': 128 * 1024 * 1024,
     })
   }
@@ -135,8 +149,8 @@ export class GrpcEmulatorLink implements EmulatorLink {
       if (frame) listener.onFrame(frame)
     })
     call.on('error', (e: grpc.ServiceError) => {
-      if (this.closed || e.code === grpc.status.CANCELLED) return
-      const code = grpc.status[e.code] ?? String(e.code)
+      if (this.closed || e.code === runtime().grpc.status.CANCELLED) return
+      const code = runtime().grpc.status[e.code] ?? String(e.code)
       const description = e.details ? `: ${e.details}` : ''
       listener.onError(`Emulator gRPC stream failed (${code}${description})`, e)
     })
@@ -220,7 +234,7 @@ export class GrpcEmulatorLink implements EmulatorLink {
   /** Every unary call has a 3 second deadline, like the Kotlin blocking stub. */
   private unary(method: Unary<object>, request: object): Promise<void> {
     return new Promise((resolve, reject) => {
-      method.call(this.client, request, this.metadata, { deadline: Date.now() + 3000 }, (err) => (err ? reject(new Error(`${grpc.status[err.code] ?? err.code}: ${err.details || err.message}`)) : resolve()))
+      method.call(this.client, request, this.metadata, { deadline: Date.now() + 3000 }, (err) => (err ? reject(new Error(`${runtime().grpc.status[err.code] ?? err.code}: ${err.details || err.message}`)) : resolve()))
     })
   }
 }

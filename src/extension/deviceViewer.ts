@@ -226,9 +226,10 @@ export class DeviceViewer implements vscode.Disposable {
     try {
       switch (m.type) {
         case 'ready': {
+          // The device goes first: restore opens the saved tool tab, and a tab mounted without a device stays on "Not connected".
+          this.sendDevice()
           const settings = readSettings()
           this.post({ type: 'restore', layout: this.layout.toJSON(), showGrid: settings.showGrid, saveHierarchyWithScreenshot: settings.saveHierarchyWithScreenshot, elementFilter: settings.elementFilter, locatorLanguage: settings.locatorLanguage, locatorWholeLine: settings.locatorWholeLine })
-          this.sendDevice()
           if (this.device.bootable) this.placeholder(`${this.device.name} is offline. Use Device Power > Boot.`)
           else await this.connect()
           break
