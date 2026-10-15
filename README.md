@@ -21,7 +21,7 @@ Setup per platform: [docs/DEVICE-SETUP.md](https://github.com/marcomaes/MobileTe
 
 ## Privacy
 
-No telemetry. The extension talks to your devices through adb, xcrun and mobilecli, to the local emulator gRPC port, and to a WebDriverAgent URL you configure.
+No telemetry. The extension talks to your devices through adb, xcrun and mobilecli, to the local emulator gRPC port, and to a WebDriverAgent URL you configure. See [PRIVACY.md](PRIVACY.md).
 
 ## Thank you
 
@@ -43,3 +43,7 @@ Press F5 to start an Extension Development Host. See `CLAUDE.md`, `docs/PORTING.
 ## Status
 
 Ported from plugin version 1.0.1. The host and webview code has been type checked and bundled but not yet run in a real VS Code window; the pure core has 769 unit tests ported from the plugin. Expect UI rough edges until it has been exercised against real devices.
+
+## License
+
+Copyright 2026 Marco Maes. Licensed under the Apache License 2.0, see [LICENSE](LICENSE) and [NOTICE](NOTICE).
