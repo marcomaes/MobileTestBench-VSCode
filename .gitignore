@@ -4,3 +4,7 @@ dist/
 .DS_Store
 .idea/
 .vscode-test/
+# Backups left by `sed -i` on macOS
+*-E
+.claude/
+CLAUDE.md
