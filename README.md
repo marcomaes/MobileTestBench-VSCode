@@ -21,7 +21,7 @@ Setup per platform: [docs/DEVICE-SETUP.md](https://github.com/marcomaes/MobileTe
 
 ## Privacy
 
-No telemetry. The extension talks to your devices through adb, xcrun and mobilecli, to the local emulator gRPC port, and to a WebDriverAgent URL you configure. See [PRIVACY.md](PRIVACY.md).
+No telemetry. The extension talks to your devices through adb, xcrun and mobilecli, to the local emulator gRPC port, and to a WebDriverAgent URL you configure. See [PRIVACY.md](https://github.com/marcomaes/MobileTestBench-VSCode/blob/main/PRIVACY.md).
 
 ## Thank you
 
@@ -46,4 +46,4 @@ Ported from plugin version 1.0.1. The pure core has 769 unit tests ported from t
 
 ## License
 
-Copyright 2026 Marco Maes. Licensed under the Apache License 2.0, see [LICENSE](LICENSE) and [NOTICE](NOTICE).
+Copyright 2026 Marco Maes. Licensed under the Apache License 2.0, see [LICENSE](https://github.com/marcomaes/MobileTestBench-VSCode/blob/main/LICENSE) and [NOTICE](https://github.com/marcomaes/MobileTestBench-VSCode/blob/main/NOTICE).
