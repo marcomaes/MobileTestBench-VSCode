@@ -620,7 +620,7 @@
         "src/deviceServices.ts"
       ]
     },
-    "settings/JBViewMobileSettings.kt": {
+    "settings/MobileTestBenchSettings.kt": {
       "hash": "3629b6052e79c99867056666f778e98e086d0b75",
       "commit": "287683b576a08b75b66c82751d3690ecd52d441a",
       "ts": [

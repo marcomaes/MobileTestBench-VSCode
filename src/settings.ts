@@ -1,4 +1,4 @@
-// ported-from: settings/JBViewMobileSettings.kt
+// ported-from: settings/MobileTestBenchSettings.kt
 // Defaults must match package.json "contributes.configuration" (checked by test/settings.test.ts).
 
 /** The persistent settings. Names match the Kotlin MobileTestBenchSettings state where one exists. */

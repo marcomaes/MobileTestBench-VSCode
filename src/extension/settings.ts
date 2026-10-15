@@ -1,4 +1,4 @@
-// ported-from: settings/JBViewMobileSettings.kt
+// ported-from: settings/MobileTestBenchSettings.kt
 import * as vscode from 'vscode'
 import { defaultSettings, type Settings } from '../settings'
 

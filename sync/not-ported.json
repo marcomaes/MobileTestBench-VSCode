@@ -1,6 +1,6 @@
 {
   "_comment": "Kotlin files that have no TypeScript counterpart on purpose. Key: path under the Kotlin root (or test:<path> for tests). Value: why.",
-  "settings/JBViewMobileConfigurable.kt": "Swing settings page. VS Code renders contributes.configuration from package.json instead.",
+  "settings/MobileTestBenchConfigurable.kt": "Swing settings page. VS Code renders contributes.configuration from package.json instead.",
   "ui/WrappingLabel.kt": "Swing label that wraps text. The webview wraps through CSS.",
   "test:ui/LogPanelTest.kt": "IntelliJ platform test of the Swing panel. Pure log logic is covered by test/core/logs*.test.ts.",
   "test:ui/ToolWindowSmokeTest.kt": "IntelliJ platform test that builds the tool window. No headless VS Code harness yet; see docs/PORTING.md.",
