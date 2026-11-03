@@ -8,3 +8,7 @@ dist/
 *-E
 .claude/
 CLAUDE.md
+
+# Local release script and its tokens
+publish.sh
+.publish.env
