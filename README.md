@@ -17,7 +17,7 @@ Mirror and control Android and iOS devices in VS Code, inspect their UI, and get
 - `adb` from the Android SDK platform-tools for Android.
 - macOS with Xcode (`simctl`) for iOS simulators.
 
-Setup per platform: [docs/DEVICE-SETUP.md](https://github.com/marcomaes/MobileTestBench/blob/main/docs/DEVICE-SETUP.md).
+Setup per platform: [docs/DEVICE-SETUP.md](https://github.com/marcomaes/MobileTestBench-VSCode/blob/main/docs/DEVICE-SETUP.md).
 
 ## Privacy
 
@@ -26,23 +26,6 @@ No telemetry. The extension talks to your devices through adb, xcrun and mobilec
 ## Thank you
 
 A big thank you to [Gil Megidish](https://www.linkedin.com/in/gilmegidish/), CEO of [Mobile-Next](https://github.com/mobile-next), who created [mobilecli](https://github.com/mobile-next/mobilecli) and [Mobilewright](https://github.com/mobile-next/mobilewright). Mirroring and controlling iPhones and simulators, reading the UI hierarchy on Android 17, and many of the Device Tools tabs run on mobilecli, and the locators follow Mobilewright's Inspector rules. Without his work, this extension would not be possible.
-
-## Development
-
-```bash
-npm install
-npm run build && npm test
-```
-
-Press F5 to start an Extension Development Host. See `docs/PORTING.md` and `docs/SYNC.md`.
-
-### Staying in step with the IntelliJ plugin
-
-`npm run sync:check` reports which Kotlin files changed since they were ported, `npm run sync:fixtures` shares the plugin's test fixtures, and `docs/PARITY.md` lists every Kotlin file with its TypeScript counterpart. Details in `docs/SYNC.md`.
-
-## Status
-
-Ported from plugin version 1.0.1. The pure core has 769 unit tests ported from the plugin, and the extension has been tested on Android emulators and devices and iOS simulators and iPhones.
 
 ## License
 

@@ -32,7 +32,7 @@ export function activate(context: vscode.ExtensionContext): void {
     }),
     vscode.commands.registerCommand('mobileTestBench.showLocator', () => showLocator(context)),
     vscode.commands.registerCommand('mobileTestBench.openSetupGuide', () =>
-      vscode.env.openExternal(vscode.Uri.parse('https://github.com/marcomaes/MobileTestBench/blob/main/docs/DEVICE-SETUP.md')),
+      vscode.env.openExternal(vscode.Uri.parse('https://github.com/marcomaes/MobileTestBench-VSCode/blob/main/docs/DEVICE-SETUP.md')),
     ),
   )
   // Device Power from the Devices view (the viewer toolbar has the same actions): boot an offline device, shut down or reboot a running one.
