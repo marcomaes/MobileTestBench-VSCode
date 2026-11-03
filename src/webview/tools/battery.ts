@@ -227,7 +227,7 @@ export const batteryView: ToolView = {
         'div',
         { class: 'mtb-muted', style: 'margin-top:6px' },
         'The values are set with dumpsys battery set; Android then stops following the real battery until you press Reset to real battery ' +
-          '(dumpsys battery reset). The simulated state stays on the device after the tab or IDE closes. ' +
+          '(dumpsys battery reset). The simulated state stays on the device after the tab or VS Code closes. ' +
           'Whether an app reacts (low battery warnings, power saver) depends on the app and Android version and is not verified here.',
       ),
       h('hr', { style: 'width:100%;border:0;border-top:1px solid var(--vscode-panel-border);margin-top:10px' }),

@@ -254,7 +254,7 @@ export class InputActions {
     await this.mobilecli!.keys(this.mobilecliId!, [this.platform === 'ANDROID' ? 'ctrl+v' : 'cmd+v'])
     return this.platform === 'ANDROID'
       ? 'Clipboard set and paste pressed'
-      : 'Clipboard set and paste pressed. Tap Allow Paste in the dialog on the device; the plugin cannot confirm the paste'
+      : 'Clipboard set and paste pressed. Tap Allow Paste in the dialog on the device; the extension cannot confirm the paste'
   }
 
   private requireMobilecli(): MobilecliClient {
