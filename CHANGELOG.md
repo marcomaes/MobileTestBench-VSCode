@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4
+
+- Texts in the Input and Battery tabs say extension and VS Code instead of plugin and IDE.
+- Update @vscode/vsce to 4.1.0.
+
 ## 1.0.3
 
 - README trimmed to what users need; contributor notes moved to CONTRIBUTING.md.
