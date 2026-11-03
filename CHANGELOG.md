@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3
+
+- README trimmed to what users need; contributor notes moved to CONTRIBUTING.md.
+- Device setup guide for VS Code in docs/DEVICE-SETUP.md; Open Setup Guide opens it.
+
 ## 1.0.2
 
 - Marketplace release: unminified bundle without source maps, Marketplace icon, repository links point to the VS Code repository.
